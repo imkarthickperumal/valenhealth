@@ -1,0 +1,42 @@
+import type { Metadata } from "next";
+import { League_Spartan, Open_Sans, Fraunces } from "next/font/google";
+import "./globals.css";
+
+const leagueSpartan = League_Spartan({
+  variable: "--font-league-spartan",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["300", "400"],
+});
+
+export const metadata: Metadata = {
+  title: "Valen Health",
+  description: "Vitality And Longevity Exercise Network",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${leagueSpartan.variable} ${openSans.variable} ${fraunces.variable}`}
+    >
+      <body>{children}</body>
+    </html>
+  );
+}
