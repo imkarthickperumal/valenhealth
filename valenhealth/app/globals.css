@@ -125,7 +125,8 @@ nav.nav-menu a {
   transition: color 0.2s;
 }
 
-nav.nav-menu a:hover {
+nav.nav-menu a:hover,
+nav.nav-menu a.active {
   color: var(--orange);
 }
 

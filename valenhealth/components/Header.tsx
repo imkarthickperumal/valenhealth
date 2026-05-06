@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -25,18 +27,18 @@ export default function Header() {
       <nav 
         className={`nav-menu ${isMenuOpen ? 'mobile-open' : ''}`}
       >
-        <a href="/" onClick={closeMenu}>HOME</a>
-        <a href="/#gym" onClick={closeMenu}>GYM</a>
-        <Link href="/exercise-physiology" onClick={closeMenu}>EXERCISE PHYSIOLOGY</Link>
-        <a href="/#memberships" onClick={closeMenu}>MEMBERSHIPS</a>
-        <Link href="/about" onClick={closeMenu}>ABOUT</Link>
-        <a href="/#contact" onClick={closeMenu}>CONTACT</a>
-        <a className="mobile-only-link" href="#" onClick={closeMenu}>REFER →</a>
+        <Link href="/" className={pathname === '/' ? 'active' : ''} onClick={closeMenu}>HOME</Link>
+        <Link href="/#gym" onClick={closeMenu}>GYM</Link>
+        <Link href="/exercise-physiology" className={pathname === '/exercise-physiology' ? 'active' : ''} onClick={closeMenu}>EXERCISE PHYSIOLOGY</Link>
+        <Link href="/#memberships" onClick={closeMenu}>MEMBERSHIPS</Link>
+        <Link href="/about" className={pathname === '/about' ? 'active' : ''} onClick={closeMenu}>ABOUT</Link>
+        <Link href="/#contact" onClick={closeMenu}>CONTACT</Link>
+        <Link className="mobile-only-link" href="#" onClick={closeMenu}>REFER →</Link>
       </nav>
       
       <div className="header-cta">
         <Link className="btn btn-ghost-w" href="#">REFER →</Link>
-        <a className="btn btn-outline-white" href="/#book">BOOK NOW</a>
+        <Link className="btn btn-outline-white" href="/#book">BOOK NOW</Link>
         <Link className="btn btn-orange" href="/join">JOIN NOW</Link>
       </div>
 
