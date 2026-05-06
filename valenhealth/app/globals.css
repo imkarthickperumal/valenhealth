@@ -94,7 +94,7 @@ nav a,
 .logo-svg .wordmark {
   font-family: var(--font-league-spartan), sans-serif;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  /* letter-spacing: 0.08em; */
 }
 
 /* HEADER — BLACK */
@@ -477,7 +477,7 @@ nav.nav-menu a:hover {
   font-family: var(--font-league-spartan), sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  /* letter-spacing: 0.08em; */
   text-transform: uppercase;
   color: var(--ink);
   text-decoration: none;
@@ -1346,7 +1346,7 @@ section.ink .section-head p {
   font-family: var(--font-league-spartan), sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  /* letter-spacing: 0.08em; */
   text-transform: uppercase;
   border-radius: 6px;
 }

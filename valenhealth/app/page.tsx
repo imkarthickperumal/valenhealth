@@ -118,7 +118,7 @@ export default function Home() {
           <li>GP progress reports</li>
         </ul>
         <div className="price-tag">From $135 · rebated with referral</div>
-        <a className="btn btn-outline btn-full" href="#exercise-physiology">Book EP Consult →</a>
+        <Link className="btn btn-outline btn-full" href="/exercise-physiology">Book EP Consult →</Link>
       </div>
     </div>
   </div>

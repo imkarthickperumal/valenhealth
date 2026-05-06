@@ -27,9 +27,9 @@ export default function Header() {
       >
         <a href="/" onClick={closeMenu}>HOME</a>
         <a href="/#gym" onClick={closeMenu}>GYM</a>
-        <a href="/#exercise-physiology" onClick={closeMenu}>EXERCISE PHYSIOLOGY</a>
+        <Link href="/exercise-physiology" onClick={closeMenu}>EXERCISE PHYSIOLOGY</Link>
         <a href="/#memberships" onClick={closeMenu}>MEMBERSHIPS</a>
-        <a href="/#about" onClick={closeMenu}>ABOUT</a>
+        <Link href="/about" onClick={closeMenu}>ABOUT</Link>
         <a href="/#contact" onClick={closeMenu}>CONTACT</a>
         <a className="mobile-only-link" href="#" onClick={closeMenu}>REFER →</a>
       </nav>

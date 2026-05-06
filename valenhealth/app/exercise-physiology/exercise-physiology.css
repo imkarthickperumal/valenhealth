@@ -1,0 +1,566 @@
+.ep-page {
+  --orange: #ED6C15;
+  --orange-deep: #C85A0F;
+  --black: #000000;
+  --cream: #FBF1E6;
+  --cream-warm: #F4E6D2;
+  --grey-soft: #2A2A2A;
+  --display: var(--font-league-spartan), 'League Spartan', sans-serif;
+  --body: var(--font-open-sans), 'Open Sans', sans-serif;
+
+  font-family: var(--body);
+  background: var(--cream);
+  color: var(--black);
+  line-height: 1.6;
+}
+
+/* HERO */
+.ep-page .ep-hero {
+  background: var(--black);
+  color: var(--cream);
+  padding: 140px 48px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.ep-page .ep-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 50%; height: 100%;
+  background: radial-gradient(circle at 70% 30%, rgba(237,108,21,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.ep-page .ep-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.ep-page .ep-hero-eyebrow {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--orange);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: fadeUp 0.8s ease-out;
+}
+.ep-page .ep-hero-eyebrow::before {
+  content: '';
+  width: 48px;
+  height: 1px;
+  background: var(--orange);
+}
+.ep-page .ep-hero-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(56px, 8vw, 120px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  animation: fadeUp 1s ease-out 0.1s both;
+}
+.ep-page .ep-hero-title--soft {
+  font-weight: 600;
+  font-size: clamp(44px, 5.5vw, 78px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-transform: none;
+}
+.ep-page .ep-hero-title .ep-accent-word {
+  color: var(--orange);
+  font-style: italic;
+  font-weight: 400;
+  font-family: var(--font-fraunces), 'Georgia', serif;
+  text-transform: lowercase;
+  letter-spacing: -0.01em;
+}
+.ep-page .ep-hero-sub {
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(251,241,230,0.7);
+  max-width: 680px;
+  margin-top: 28px;
+  animation: fadeUp 1s ease-out 0.25s both;
+}
+
+/* SHARED */
+.ep-page .ep-section-heading {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(44px, 6vw, 84px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.ep-page .ep-section-heading .ep-italic-orange {
+  font-family: var(--font-fraunces), 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--orange);
+  text-transform: lowercase;
+  letter-spacing: -0.01em;
+}
+.ep-page .ep-section-heading .ep-italic-orange .ep-acronym-up,
+.ep-page .ep-italic-orange .ep-acronym-up {
+  text-transform: uppercase;
+  font-variant: small-caps;
+}
+.ep-page .ep-section-heading .ep-ep-accent {
+  font-family: var(--font-fraunces), 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--orange);
+  letter-spacing: -0.01em;
+}
+
+/* WHAT IS AN EP */
+.ep-page .ep-what {
+  background: var(--cream);
+  padding: 140px 48px 120px;
+}
+.ep-page .ep-what-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.ep-page .ep-what-body p {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--grey-soft);
+  margin-bottom: 24px;
+}
+.ep-page .ep-what-body p:last-child { margin-bottom: 0; }
+.ep-page .ep-what-body strong { color: var(--black); font-weight: 700; }
+
+/* BENEFITS */
+.ep-page .ep-benefits {
+  background: var(--black);
+  color: var(--cream);
+  padding: 140px 48px;
+}
+.ep-page .ep-benefits-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.ep-page .ep-benefits-header {
+  margin-bottom: 64px;
+  max-width: 900px;
+}
+.ep-page .ep-benefits-header .ep-section-heading { margin-bottom: 24px; }
+.ep-page .ep-benefits-header .ep-lead {
+  font-size: 19px;
+  line-height: 1.7;
+  color: rgba(251,241,230,0.75);
+  max-width: 720px;
+}
+.ep-page .ep-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.ep-page .ep-benefit-card {
+  padding: 36px 32px;
+  border: 1px solid rgba(251,241,230,0.15);
+  background: rgba(251,241,230,0.02);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.ep-page .ep-benefit-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--orange);
+}
+.ep-page .ep-benefit-num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+.ep-page .ep-benefit-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  margin-bottom: 14px;
+  color: var(--cream);
+}
+.ep-page .ep-benefit-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(251,241,230,0.75);
+}
+
+/* FUNDING */
+.ep-page .ep-funding {
+  background: var(--cream);
+  padding: 140px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.ep-page .ep-funding-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.ep-page .ep-funding-header {
+  margin-bottom: 64px;
+  max-width: 1000px;
+}
+.ep-page .ep-funding-header .ep-section-heading { margin-bottom: 24px; }
+.ep-page .ep-funding-header .ep-lead {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--grey-soft);
+  max-width: 800px;
+}
+.ep-page .ep-funding-list {
+  list-style: none;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  padding-left: 0;
+}
+.ep-page .ep-funding-item {
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+  align-items: start;
+  transition: padding-left 0.3s ease;
+}
+.ep-page .ep-funding-item:hover { padding-left: 16px; }
+.ep-page .ep-funding-name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(20px, 2.2vw, 26px);
+  color: var(--black);
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+}
+.ep-page .ep-funding-name .ep-acronym {
+  font-family: var(--font-fraunces), 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--orange);
+  margin-left: 8px;
+  font-size: 0.7em;
+  text-transform: lowercase;
+  letter-spacing: 0;
+}
+.ep-page .ep-funding-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--grey-soft);
+}
+
+/* WHAT EP TREATS */
+.ep-page .ep-treats {
+  background: var(--cream-warm);
+  padding: 140px 48px;
+}
+.ep-page .ep-treats-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: start;
+}
+.ep-page .ep-treats-aside {
+  position: sticky;
+  top: 120px;
+}
+.ep-page .ep-treats-aside .ep-section-heading {
+  font-size: clamp(32px, 3.6vw, 48px);
+  margin-bottom: 20px;
+}
+.ep-page .ep-treats-sub {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--grey-soft);
+  max-width: 360px;
+}
+.ep-page .ep-treats-list {
+  list-style: none;
+  counter-reset: trt;
+  padding-left: 0;
+}
+.ep-page .ep-treats-list li {
+  counter-increment: trt;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  transition: padding 0.3s ease;
+}
+.ep-page .ep-treats-list li:first-child { padding-top: 0; }
+.ep-page .ep-treats-list li:hover { padding-left: 16px; }
+.ep-page .ep-treats-list li::before {
+  content: counter(trt, decimal-leading-zero);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+}
+.ep-page .ep-treat-text {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  color: var(--black);
+}
+
+/* VALD */
+.ep-page .ep-vald {
+  background: var(--black);
+  color: var(--cream);
+  padding: 140px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.ep-page .ep-vald::before {
+  content: 'VALD';
+  position: absolute;
+  top: 60px; left: -30px;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(180px, 28vw, 420px);
+  color: rgba(237,108,21,0.06);
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+  pointer-events: none;
+}
+.ep-page .ep-vald-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.ep-page .ep-vald-header {
+  margin-bottom: 56px;
+  max-width: 1000px;
+}
+.ep-page .ep-vald-header .ep-section-heading { margin-bottom: 24px; }
+.ep-page .ep-vald-header .ep-lead {
+  font-size: 19px;
+  line-height: 1.7;
+  color: rgba(251,241,230,0.85);
+  max-width: 820px;
+}
+.ep-page .ep-vald-header .ep-lead strong { color: var(--cream); font-weight: 700; }
+.ep-page .ep-vald-uses {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+.ep-page .ep-vald-use {
+  padding: 40px 36px;
+  border: 1px solid rgba(251,241,230,0.15);
+  background: rgba(251,241,230,0.02);
+}
+.ep-page .ep-vald-use-num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+.ep-page .ep-vald-use-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  margin-bottom: 16px;
+  color: var(--cream);
+}
+.ep-page .ep-vald-use-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(251,241,230,0.75);
+}
+
+/* COMPARISON TABLE */
+.ep-page .ep-compare {
+  background: var(--cream);
+  padding: 140px 48px;
+}
+.ep-page .ep-compare-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.ep-page .ep-compare-header {
+  margin-bottom: 56px;
+  max-width: 1000px;
+}
+.ep-page .ep-compare-header .ep-section-heading { margin-bottom: 24px; }
+.ep-page .ep-compare-header .ep-lead {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--grey-soft);
+  max-width: 820px;
+}
+.ep-page .ep-compare-table {
+  border: 1px solid rgba(0,0,0,0.12);
+  background: var(--cream);
+  overflow: hidden;
+}
+.ep-page .ep-compare-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr 1fr;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.ep-page .ep-compare-row:last-child { border-bottom: none; }
+.ep-page .ep-compare-row.ep-head {
+  background: var(--black);
+  color: var(--cream);
+}
+.ep-page .ep-compare-row.ep-head .ep-compare-cell {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 24px 24px;
+  border-right: 1px solid rgba(251,241,230,0.1);
+}
+.ep-page .ep-compare-row.ep-head .ep-compare-cell.ep-label-col {
+  color: rgba(251,241,230,0.5);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+.ep-page .ep-compare-row.ep-head .ep-compare-cell.ep-highlight {
+  background: var(--orange);
+  color: var(--black);
+}
+.ep-page .ep-compare-cell {
+  padding: 22px 24px;
+  border-right: 1px solid rgba(0,0,0,0.08);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--black);
+}
+.ep-page .ep-compare-cell:last-child { border-right: none; }
+.ep-page .ep-compare-cell.ep-label-col {
+  background: rgba(0,0,0,0.03);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--black);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.ep-page .ep-compare-cell.ep-highlight {
+  background: rgba(237,108,21,0.06);
+  color: var(--black);
+  font-weight: 500;
+}
+
+/* FINAL CTA */
+.ep-page .ep-final-cta {
+  background: var(--orange);
+  color: var(--black);
+  padding: 140px 48px;
+  text-align: center;
+}
+.ep-page .ep-final-cta-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.ep-page .ep-final-cta-title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(48px, 7vw, 92px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.ep-page .ep-final-cta-title .ep-italic {
+  font-family: var(--font-fraunces), 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: lowercase;
+  letter-spacing: -0.015em;
+}
+.ep-page .ep-final-cta-body {
+  font-size: 19px;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto 48px;
+  font-weight: 500;
+}
+.ep-page .ep-final-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ep-page .ep-btn-primary, .ep-page .ep-btn-secondary {
+  padding: 20px 36px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--black);
+  transition: all 0.25s;
+  display: inline-block;
+}
+.ep-page .ep-btn-primary { background: var(--black); color: var(--cream); }
+.ep-page .ep-btn-primary:hover { background: transparent; color: var(--black); }
+.ep-page .ep-btn-secondary { background: transparent; color: var(--black); }
+.ep-page .ep-btn-secondary:hover { background: var(--black); color: var(--cream); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ep-page .ep-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.ep-page .ep-reveal.ep-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .ep-page .ep-compare-row { grid-template-columns: 140px 1fr 1fr 1fr; }
+  .ep-page .ep-compare-cell { padding: 16px 14px; font-size: 13px; }
+  .ep-page .ep-compare-row.ep-head .ep-compare-cell { padding: 16px 14px; font-size: 14px; }
+}
+@media (max-width: 900px) {
+  .ep-page .ep-hero { padding: 110px 20px 60px; }
+  .ep-page .ep-what, .ep-page .ep-benefits, .ep-page .ep-funding, .ep-page .ep-treats, .ep-page .ep-vald, .ep-page .ep-compare, .ep-page .ep-final-cta {
+    padding-left: 20px; padding-right: 20px;
+  }
+  .ep-page .ep-what-inner, .ep-page .ep-treats-inner { grid-template-columns: 1fr; gap: 32px; }
+  .ep-page .ep-treats-aside { position: static; }
+  .ep-page .ep-benefits-grid, .ep-page .ep-vald-uses { grid-template-columns: 1fr; }
+  .ep-page .ep-funding-item { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
+  .ep-page .ep-compare-table { overflow-x: auto; }
+  .ep-page .ep-compare-row { grid-template-columns: 110px 1fr 1fr 1fr; min-width: 600px; }
+  .ep-page .ep-final-cta-actions .ep-btn-primary, .ep-page .ep-final-cta-actions .ep-btn-secondary { width: 100%; }
+}

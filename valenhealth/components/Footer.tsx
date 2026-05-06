@@ -23,18 +23,18 @@ export default function Footer() {
             <ul>
               <li><Link href="/join">Join Now · $17.88/wk</Link></li>
               <li><a href="/#book">7-Day Free Trial</a></li>
-              <li><a href="/#exercise-physiology">Book EP Consult</a></li>
+              <li><Link href="/exercise-physiology">Book EP Consult</Link></li>
               <li><a href="/#book">Book a Tour</a></li>
-              <li><a href="/#exercise-physiology">VALD Assessment</a></li>
+              <li><Link href="/exercise-physiology">VALD Assessment</Link></li>
             </ul>
           </div>
           <div className="foot-col">
             <h4>Services</h4>
             <ul>
               <li><a href="/#gym">24/7 Gym</a></li>
-              <li><a href="/#exercise-physiology">Exercise Physiology</a></li>
-              <li><a href="/#exercise-physiology">Medicare / CDM</a></li>
-              <li><a href="/#exercise-physiology">WorkCover Rehab</a></li>
+              <li><Link href="/exercise-physiology">Exercise Physiology</Link></li>
+              <li><Link href="/exercise-physiology">Medicare / CDM</Link></li>
+              <li><Link href="/exercise-physiology">WorkCover Rehab</Link></li>
               <li><Link href="#">For Employers</Link></li>
               <li><Link href="#">GP Referrals</Link></li>
             </ul>
