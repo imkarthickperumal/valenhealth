@@ -16,7 +16,7 @@ export default function ExercisePhysiologyPage() {
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-    
+
     document.querySelectorAll('.ep-reveal').forEach(el => observer.observe(el));
 
     return () => {
@@ -42,7 +42,7 @@ export default function ExercisePhysiologyPage() {
   return (
     <>
       <Header />
-      
+
       <main className="ep-page">
         {/* HERO */}
         <section className="ep-hero">
@@ -60,14 +60,20 @@ export default function ExercisePhysiologyPage() {
         {/* 1. WHAT IS AN EP */}
         <section className="ep-what">
           <div className="ep-what-inner">
-            <div className="ep-reveal">
-              <h2 className="ep-section-heading">What is <span className="ep-italic-orange">an</span> <span className="ep-ep-accent">EP?</span></h2>
-            </div>
-            <div className="ep-reveal">
-              <div className="ep-what-body">
-                <p>An <strong>Accredited Exercise Physiologist (AEP)</strong> is a university-qualified allied health professional who specialises in clinical exercise prescription for injury, chronic disease, and performance.</p>
-                <p>In simple terms: where a personal trainer helps you train, and a physiotherapist treats your acute injury, an EP is the bridge that takes you from rehab to long-term capacity using exercise as medicine.</p>
+            <div className="ep-what-content">
+              <div className="ep-reveal">
+                <h2 className="ep-section-heading">What is <span className="ep-italic-orange">an</span> <span className="ep-ep-accent">EP?</span></h2>
               </div>
+              <div className="ep-reveal">
+                <div className="ep-what-body">
+                  <p>An <strong>Accredited Exercise Physiologist (AEP)</strong> is a university-qualified allied health professional who specialises in clinical exercise prescription for injury, chronic disease, and performance.</p>
+                  <p>In simple terms: where a personal trainer helps you train, and a physiotherapist treats your acute injury, an EP is the bridge that takes you from rehab to long-term capacity using exercise as medicine.</p>
+                </div>
+              </div>
+            </div>
+            <div className="ep-what-image ep-reveal">
+              <img src="/images/ep-specialist.jpg" alt="Accredited Exercise Physiologist" />
+              <div className="ep-image-tag">Accredited Exercise Physiologist</div>
             </div>
           </div>
         </section>
@@ -169,10 +175,15 @@ export default function ExercisePhysiologyPage() {
         {/* 5. VALD */}
         <section className="ep-vald">
           <div className="ep-vald-inner">
-            <div className="ep-vald-header ep-reveal">
-              <h2 className="ep-section-heading">VALD <span className="ep-italic-orange">technology.</span></h2>
-              <p className="ep-lead">VALD is the same body-assessment technology used by elite sporting teams and hospital rehab programs around the world. <strong>At Valen Health, every member has access</strong> — whether you&apos;re rebuilding from injury, managing a condition, or chasing a heavier squat or a target physique.</p>
-              <p className="ep-lead" style={{ marginTop: '16px' }}>In simple terms — VALD measures exactly how your muscles are performing. It identifies weaknesses, imbalances, and asymmetries that can&apos;t be seen with the naked eye. It takes the guesswork out of training, recovery, and performance.</p>
+            <div className="ep-vald-top">
+              <div className="ep-vald-header ep-reveal">
+                <h2 className="ep-section-heading">VALD <span className="ep-italic-orange">technology.</span></h2>
+                <p className="ep-lead">VALD is the same body-assessment technology used by elite sporting teams and hospital rehab programs around the world. <strong>At Valen Health, every member has access</strong> — whether you&apos;re rebuilding from injury, managing a condition, or chasing a heavier squat or a target physique.</p>
+                <p className="ep-lead" style={{ marginTop: '16px' }}>In simple terms — VALD measures exactly how your muscles are performing. It identifies weaknesses, imbalances, and asymmetries that can&apos;t be seen with the naked eye. It takes the guesswork out of training, recovery, and performance.</p>
+              </div>
+              <div className="ep-vald-image ep-reveal">
+                <img src="/images/valid-image.jpg" alt="VALD Force Plates" />
+              </div>
             </div>
 
             <div className="ep-vald-uses">

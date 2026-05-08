@@ -127,9 +127,9 @@
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 80px;
-  align-items: start;
+  align-items: center;
 }
 .ep-page .ep-what-body p {
   font-size: 19px;
@@ -139,6 +139,33 @@
 }
 .ep-page .ep-what-body p:last-child { margin-bottom: 0; }
 .ep-page .ep-what-body strong { color: var(--black); font-weight: 700; }
+
+.ep-page .ep-what-image {
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ep-page .ep-what-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: saturate(0.9) contrast(1.05);
+  border-radius: 12px;
+}
+.ep-page .ep-image-tag {
+  position: absolute;
+  bottom: 24px; left: 24px;
+  background: var(--orange);
+  color: var(--black);
+  padding: 8px 16px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 2;
+}
 
 /* BENEFITS */
 .ep-page .ep-benefits {
@@ -343,15 +370,26 @@
   line-height: 0.8;
   pointer-events: none;
 }
-.ep-page .ep-vald-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
+.ep-page .ep-vald-top {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 80px;
 }
 .ep-page .ep-vald-header {
-  margin-bottom: 56px;
   max-width: 1000px;
+}
+.ep-page .ep-vald-image {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(251,241,230,0.15);
+}
+.ep-page .ep-vald-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: saturate(0.9) contrast(1.1);
 }
 .ep-page .ep-vald-header .ep-section-heading { margin-bottom: 24px; }
 .ep-page .ep-vald-header .ep-lead {
@@ -546,21 +584,44 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 980px) {
-  .ep-page .ep-compare-row { grid-template-columns: 140px 1fr 1fr 1fr; }
-  .ep-page .ep-compare-cell { padding: 16px 14px; font-size: 13px; }
-  .ep-page .ep-compare-row.ep-head .ep-compare-cell { padding: 16px 14px; font-size: 14px; }
+@media (max-width: 1024px) {
+  .ep-page .ep-what-inner, .ep-page .ep-vald-top { gap: 48px; }
+  .ep-page .ep-benefits-grid, .ep-page .ep-vald-uses { gap: 20px; }
+  .ep-page .ep-compare-row { grid-template-columns: 180px 1fr 1fr 1fr; }
 }
+
 @media (max-width: 900px) {
-  .ep-page .ep-hero { padding: 110px 20px 60px; }
-  .ep-page .ep-what, .ep-page .ep-benefits, .ep-page .ep-funding, .ep-page .ep-treats, .ep-page .ep-vald, .ep-page .ep-compare, .ep-page .ep-final-cta {
-    padding-left: 20px; padding-right: 20px;
+  .ep-page .ep-hero { padding: 120px 24px 70px; }
+  .ep-page .ep-hero-sub { font-size: 16px; margin-top: 20px; }
+  
+  .ep-page .ep-what, .ep-page .ep-benefits, .ep-page .ep-funding, 
+  .ep-page .ep-treats, .ep-page .ep-vald, .ep-page .ep-compare, 
+  .ep-page .ep-final-cta {
+    padding-left: 24px; padding-right: 24px; padding-top: 90px; padding-bottom: 90px;
   }
-  .ep-page .ep-what-inner, .ep-page .ep-treats-inner { grid-template-columns: 1fr; gap: 32px; }
+  
+  .ep-page .ep-what-inner, .ep-page .ep-treats-inner, .ep-page .ep-vald-top { 
+    grid-template-columns: 1fr; 
+    gap: 40px; 
+  }
+  .ep-page .ep-vald-top { margin-bottom: 48px; }
   .ep-page .ep-treats-aside { position: static; }
-  .ep-page .ep-benefits-grid, .ep-page .ep-vald-uses { grid-template-columns: 1fr; }
+  
+  .ep-page .ep-benefits-grid, .ep-page .ep-vald-uses { grid-template-columns: 1fr; gap: 16px; }
+  
   .ep-page .ep-funding-item { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
-  .ep-page .ep-compare-table { overflow-x: auto; }
-  .ep-page .ep-compare-row { grid-template-columns: 110px 1fr 1fr 1fr; min-width: 600px; }
+  .ep-page .ep-funding-item:hover { padding-left: 0; }
+  
+  .ep-page .ep-compare-table { overflow-x: auto; display: block; }
+  .ep-page .ep-compare-row { grid-template-columns: 110px 1fr 1fr 1fr; min-width: 700px; }
+  
   .ep-page .ep-final-cta-actions .ep-btn-primary, .ep-page .ep-final-cta-actions .ep-btn-secondary { width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .ep-page .ep-hero { padding: 110px 20px 60px; }
+  .ep-page .ep-hero-eyebrow { margin-bottom: 20px; font-size: 11px; }
+  .ep-page .ep-section-heading { font-size: clamp(34px, 10vw, 48px); }
+  .ep-page .ep-benefit-card, .ep-page .ep-vald-use { padding: 28px 24px; }
+  .ep-page .ep-final-cta-title { font-size: clamp(40px, 12vw, 64px); }
 }

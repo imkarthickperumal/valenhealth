@@ -1,0 +1,295 @@
+/* GYM PAGE STYLES */
+.gym-page { background: var(--cream); }
+
+/* HERO */
+.gym-hero {
+  background: var(--black); color: var(--cream); padding-top: 64px; position: relative;
+}
+.gym-hero-image {
+  position: relative; height: 720px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.75) 100%);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.gym-hero-content {
+  position: relative; z-index: 2; text-align: center; padding: 0 32px; max-width: 900px;
+}
+.gym-hero-eyebrow {
+  font-family: var(--font-display); font-weight: 600; font-size: 13px;
+  letter-spacing: 0.4em; color: var(--orange); text-transform: uppercase;
+  margin-bottom: 28px; animation: fadeUp 0.8s ease-out;
+}
+.gym-hero-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(72px,11vw,160px); line-height: 0.95; letter-spacing: -0.03em;
+  text-transform: uppercase; color: var(--cream);
+  animation: fadeUp 1s ease-out 0.1s both; margin-bottom: 24px;
+}
+.gym-hero-title .accent {
+  color: var(--orange); font-style: italic; font-weight: 400;
+  font-family: 'Georgia', serif; text-transform: lowercase; letter-spacing: -0.01em;
+}
+.gym-hero-sub {
+  font-size: 18px; line-height: 1.65; color: rgba(251,241,230,0.85);
+  max-width: 620px; margin: 0 auto; animation: fadeUp 1s ease-out 0.25s both;
+}
+.gym-hero-photo-tag {
+  position: absolute; bottom: 24px; right: 24px; z-index: 3;
+  font-family: var(--font-display); font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(251,241,230,0.4);
+  border: 1px solid rgba(251,241,230,0.2);
+  padding: 6px 12px;
+}
+
+/* INTRO */
+.gym-intro { background: var(--cream); padding: 130px 80px 110px; }
+.gym-intro-inner { max-width: 1280px; margin: 0 auto; }
+.gym-intro-body { max-width: 800px; }
+.gym-intro-body p { font-size: 19px; line-height: 1.75; color: #2A2A2A; margin-bottom: 22px; }
+.gym-intro-body strong { color: var(--black); font-weight: 700; }
+
+/* MEMBERSHIPS */
+.gym-memberships { background: var(--black); color: var(--cream); padding: 130px 80px; }
+.gym-memberships-inner { max-width: 1280px; margin: 0 auto; }
+.gym-memberships-header { max-width: 900px; margin-bottom: 56px; }
+.gym-memberships-supertitle {
+  font-family: 'Georgia', serif; font-style: italic; font-weight: 400;
+  font-size: 18px; color: var(--orange); margin-bottom: 16px;
+}
+.gym-tier-rows { border-top: 1px solid rgba(251,241,230,0.18); }
+.gym-tier-row {
+  display: grid; grid-template-columns: 100px 220px 1fr 120px 160px;
+  gap: 32px; align-items: center; padding: 32px 8px;
+  border-bottom: 1px solid rgba(251,241,230,0.18);
+  transition: padding-left 0.3s ease, background 0.3s ease;
+}
+.gym-tier-row:hover { padding-left: 24px; background: rgba(237,108,21,0.08); }
+.gym-tier-letter {
+  font-family: var(--font-display); font-weight: 900; font-size: 76px;
+  line-height: 0.9; color: var(--orange); letter-spacing: -0.04em;
+}
+.gym-tier-meta { display: flex; flex-direction: column; gap: 4px; }
+.gym-tier-verb {
+  font-family: var(--font-display); font-weight: 800; font-size: 26px;
+  line-height: 1; text-transform: uppercase; color: var(--cream);
+}
+.gym-tier-name { font-size: 13px; color: rgba(251,241,230,0.6); }
+.gym-tier-incs { font-size: 14px; line-height: 1.65; color: rgba(251,241,230,0.75); }
+.gym-tier-incs strong { color: var(--cream); font-weight: 600; }
+.gym-tier-price { text-align: right; }
+.gym-tier-price-amount {
+  font-family: var(--font-display); font-weight: 800; font-size: 36px;
+  line-height: 1; color: var(--cream);
+}
+.gym-tier-price-amount .dollar { font-size: 22px; vertical-align: top; margin-right: 2px; color: var(--orange); }
+.gym-tier-price-period { font-size: 11px; color: rgba(251,241,230,0.6); letter-spacing: 0.05em; margin-top: 4px; }
+.gym-tier-cta {
+  background: transparent; color: var(--cream); padding: 14px 22px;
+  font-family: var(--font-display); font-weight: 700; font-size: 12px;
+  letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+  border: 2px solid var(--cream); transition: all 0.25s; text-align: center; white-space: nowrap;
+}
+.gym-tier-cta:hover { background: var(--orange); border-color: var(--orange); color: var(--black); }
+.gym-tier-note { margin-top: 32px; font-size: 14px; color: rgba(251,241,230,0.7); line-height: 1.65; max-width: 700px; }
+.gym-tier-note strong { color: var(--cream); }
+
+/* HEALTH ECOSYSTEM */
+.gym-ecosystem {
+  background: var(--cream);
+  color: var(--black);
+  padding: 80px 80px;
+}
+.gym-ecosystem-inner { max-width: 1280px; margin: 0 auto; }
+.gym-ecosystem-header { max-width: 900px; }
+.gym-ecosystem-header .section-heading {
+  font-size: clamp(28px, 3.6vw, 44px);
+}
+.gym-ecosystem-header .section-lead {
+  font-size: 16px;
+  margin-top: 16px;
+}
+
+
+/* AMENITIES */
+.gym-amenities { background: var(--black); color: var(--cream); padding: 110px 80px; }
+.gym-amenities-inner { max-width: 1280px; margin: 0 auto; }
+.gym-amenities-header { max-width: 900px; margin-bottom: 64px; }
+.gym-amenities-header .section-lead { color: rgba(251,241,230,0.8); }
+.gym-amenities-groups {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 0;
+  border-top: 1px solid rgba(251,241,230,0.18); border-bottom: 1px solid rgba(251,241,230,0.18);
+}
+.gym-amenity-group {
+  padding: 40px 36px 44px; border-right: 1px solid rgba(251,241,230,0.18);
+  position: relative; transition: background 0.3s ease;
+}
+.gym-amenity-group:last-child { border-right: none; }
+.gym-amenity-group:hover { background: rgba(237,108,21,0.04); }
+.gym-amenity-group::before {
+  content: ''; position: absolute; top: -1px; left: 0; width: 56px; height: 3px; background: var(--orange);
+}
+.gym-amenity-group-label {
+  font-family: var(--font-display); font-weight: 700; font-size: 11px;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px;
+}
+.gym-amenity-group-title {
+  font-family: var(--font-display); font-weight: 800; font-size: 26px;
+  line-height: 1.05; text-transform: uppercase; color: var(--cream); margin-bottom: 28px;
+}
+.gym-amenity-group-list { list-style: none; }
+.gym-amenity-group-list li {
+  padding: 12px 0; font-size: 15px; line-height: 1.5; color: rgba(251,241,230,0.85);
+  display: flex; align-items: baseline; gap: 12px; border-bottom: 1px solid rgba(251,241,230,0.08);
+}
+.gym-amenity-group-list li:last-child { border-bottom: none; }
+.gym-amenity-group-list li::before { content: '+'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+
+/* GALLERY — Inside the facility */
+.gym-gallery {
+  background: #F4E6D2;
+  padding: 130px 80px;
+}
+.gym-gallery-inner { max-width: 1280px; margin: 0 auto; }
+.gym-gallery-header { max-width: 900px; margin-bottom: 56px; }
+.gym-gallery-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 280px 280px;
+  gap: 12px;
+}
+.gym-gallery-item {
+  background: var(--black);
+  color: rgba(251,241,230,0.4);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; text-align: center;
+  padding: 24px;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.gym-gallery-item:hover { transform: scale(0.99); }
+.gym-gallery-item::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(237,108,21,0.08), transparent 60%);
+  pointer-events: none;
+}
+.gym-gallery-item:nth-child(1) { grid-column: 1 / 2; grid-row: 1 / 3; }
+.gym-gallery-item:nth-child(2) { grid-column: 2 / 3; grid-row: 1 / 2; }
+.gym-gallery-item:nth-child(3) { grid-column: 3 / 4; grid-row: 1 / 2; }
+.gym-gallery-item:nth-child(4) { grid-column: 2 / 4; grid-row: 2 / 3; }
+.gym-gallery-placeholder-label {
+  font-family: var(--font-display); font-weight: 700; font-size: 11px;
+  letter-spacing: 0.25em; color: var(--orange);
+  text-transform: uppercase; margin-bottom: 12px;
+  position: relative; z-index: 1;
+}
+.gym-gallery-placeholder-name {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 20px; color: var(--cream);
+  text-transform: uppercase; letter-spacing: -0.005em;
+  position: relative; z-index: 1;
+}
+
+/* VALD */
+.gym-vald { background: var(--black); color: var(--cream); padding: 130px 80px; position: relative; overflow: hidden; }
+.gym-vald::before {
+  content: 'VALD'; position: absolute; top: 60px; right: -30px;
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(180px,26vw,380px);
+  color: rgba(237,108,21,0.05); letter-spacing: -0.04em; line-height: 0.8; pointer-events: none;
+}
+.gym-vald-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+.gym-vald-content { max-width: 1000px; }
+.gym-vald-content .section-heading { margin-bottom: 28px; }
+.gym-vald-content p { font-size: 19px; line-height: 1.75; color: rgba(251,241,230,0.85); max-width: 820px; margin-bottom: 18px; }
+.gym-vald-content p:last-child { margin-bottom: 0; }
+.gym-vald-content strong { color: var(--cream); font-weight: 700; }
+
+/* GOALS */
+.gym-goals { background: var(--cream); padding: 130px 80px; }
+.gym-goals-inner { max-width: 1280px; margin: 0 auto; }
+.gym-goals-content { max-width: 900px; }
+.gym-goals-content .section-heading { margin-bottom: 32px; }
+.gym-goals-content p { font-size: 19px; line-height: 1.75; color: #2A2A2A; margin-bottom: 22px; max-width: 820px; }
+.gym-goals-content p:last-child { margin-bottom: 0; }
+.gym-goals-content strong { color: var(--black); font-weight: 700; }
+.gym-goals-content em { color: var(--orange); font-family: 'Georgia', serif; font-style: italic; }
+
+/* FINAL CTA */
+.gym-final-cta { background: var(--orange); color: var(--black); padding: 130px 48px; text-align: center; }
+.gym-final-cta-inner { max-width: 1080px; margin: 0 auto; }
+.gym-final-cta-title {
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(48px,7vw,92px);
+  line-height: 0.95; letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 24px;
+}
+.gym-final-cta-title .italic {
+  font-family: 'Georgia', serif; font-style: italic; font-weight: 400;
+  text-transform: lowercase; letter-spacing: -0.015em;
+}
+.gym-final-cta-body { font-size: 19px; line-height: 1.6; max-width: 640px; margin: 0 auto 48px; font-weight: 500; }
+.gym-final-cta-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .gym-hero-image { height: 600px; }
+  .gym-ecosystem-flow { grid-template-columns: 1fr; }
+  .gym-eco-step { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.15); }
+  .gym-eco-step:last-child { border-bottom: none; }
+  .gym-amenities-groups { grid-template-columns: 1fr; }
+  .gym-amenity-group { border-right: none; border-bottom: 1px solid rgba(251,241,230,0.18); }
+  .gym-amenity-group:last-child { border-bottom: none; }
+  .gym-tier-row { grid-template-columns: 80px 180px 1fr 110px; gap: 24px; padding: 28px 8px; }
+  .gym-tier-incs { display: none; }
+  .gym-tier-cta { grid-column: 1 / -1; justify-self: end; }
+  .gym-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 280px 280px;
+  }
+  .gym-gallery-item:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 2; }
+  .gym-gallery-item:nth-child(2) { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .gym-gallery-item:nth-child(3) { grid-column: 2 / 3; grid-row: 2 / 3; }
+  .gym-gallery-item:nth-child(4) { grid-column: 1 / 3; grid-row: 3 / 4; }
+}
+
+@media (max-width: 1024px) {
+  .gym-intro-inner, .gym-amenities-inner, .gym-vald-inner, .gym-goals-inner { gap: 48px; }
+  .gym-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 300px);
+  }
+  .gym-gallery-item:nth-child(1) { grid-column: 1 / 3; }
+  .gym-gallery-item:nth-child(4) { grid-column: 1 / 3; }
+}
+
+@media (max-width: 900px) {
+  .gym-hero-image { height: 480px; }
+  .gym-intro, .gym-memberships, .gym-amenities, .gym-vald, .gym-goals {
+    padding-left: 24px; padding-right: 24px; padding-top: 90px; padding-bottom: 90px;
+  }
+  .gym-ecosystem { padding: 60px 24px; }
+  .gym-gallery { padding: 80px 24px; }
+  .gym-final-cta { padding-left: 20px; padding-right: 20px; }
+  
+  .gym-tier-row {
+    grid-template-columns: 64px 1fr auto; gap: 16px; padding: 24px 8px; align-items: center;
+  }
+  .gym-tier-letter { font-size: 48px; grid-row: 1 / 2; }
+  .gym-tier-meta { grid-column: 2 / 3; }
+  .gym-tier-incs { display: none; }
+  .gym-tier-price { grid-column: 3 / 4; }
+  .gym-tier-cta { grid-column: 1 / 4; grid-row: 2 / 3; justify-self: stretch; margin-top: 12px; }
+  
+  .gym-gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 240px);
+    gap: 16px;
+  }
+  .gym-gallery-item:nth-child(n) { grid-column: auto; grid-row: auto; }
+  .gym-final-cta-actions .btn-primary, .gym-final-cta-actions .btn-secondary { width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .gym-hero { padding: 110px 20px 60px; }
+  .gym-section-heading { font-size: clamp(34px, 10vw, 48px); }
+  .gym-tier-row { grid-template-columns: 48px 1fr; }
+  .gym-tier-price { grid-column: 2 / 3; grid-row: 2 / 3; justify-self: start; margin-top: 4px; }
+  .gym-tier-cta { grid-row: 3 / 4; }
+}

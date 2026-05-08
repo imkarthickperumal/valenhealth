@@ -12,30 +12,36 @@
   background: var(--cream);
   color: var(--black);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* HERO */
 .about-page .about-hero {
   background: var(--black);
   color: var(--cream);
-  padding: 140px 48px 100px;
+  padding: 180px 48px 140px;
   position: relative;
   overflow: hidden;
 }
+
 .about-page .about-hero::before {
   content: '';
   position: absolute;
-  top: 0; right: 0;
-  width: 50%; height: 100%;
-  background: radial-gradient(circle at 70% 30%, rgba(237,108,21,0.15) 0%, transparent 60%);
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(circle at 70% 30%, rgba(237, 108, 21, 0.15) 0%, transparent 60%);
   pointer-events: none;
 }
+
 .about-page .about-hero-inner {
   max-width: 1280px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
+
 .about-page .about-hero-eyebrow {
   font-family: var(--display);
   font-weight: 600;
@@ -47,14 +53,15 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  animation: fadeUp 0.8s ease-out;
 }
+
 .about-page .about-hero-eyebrow::before {
   content: '';
   width: 48px;
   height: 1px;
   background: var(--orange);
 }
+
 .about-page .about-hero-title {
   font-family: var(--display);
   font-weight: 800;
@@ -62,8 +69,8 @@
   line-height: 0.92;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  animation: fadeUp 1s ease-out 0.1s both;
 }
+
 .about-page .about-hero-title--soft {
   font-weight: 600;
   font-size: clamp(44px, 5.5vw, 78px);
@@ -71,7 +78,8 @@
   letter-spacing: -0.015em;
   text-transform: none;
 }
-.about-page .about-hero-title .about-accent {
+
+.about-page .about-hero-title .accent {
   color: var(--orange);
   font-style: italic;
   font-weight: 400;
@@ -81,7 +89,7 @@
 }
 
 /* SHARED */
-.about-page .about-section-heading {
+.about-page .section-heading {
   font-family: var(--display);
   font-weight: 800;
   font-size: clamp(44px, 6vw, 84px);
@@ -89,7 +97,8 @@
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
-.about-page .about-section-heading .about-italic-orange {
+
+.about-page .italic-orange {
   font-family: var(--font-fraunces), 'Georgia', serif;
   font-style: italic;
   font-weight: 400;
@@ -103,6 +112,7 @@
   background: var(--cream);
   padding: 140px 48px 120px;
 }
+
 .about-page .about-us-inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -111,24 +121,37 @@
   gap: 80px;
   align-items: start;
 }
-.about-page .about-us-body { margin-top: 0; }
+
+.about-page .about-us-body {
+  margin-top: 0;
+}
+
 .about-page .about-us-body p {
   font-size: 19px;
   line-height: 1.7;
   color: var(--grey-soft);
   margin-bottom: 24px;
 }
-.about-page .about-us-body p:last-child { margin-bottom: 0; }
-.about-page .about-us-body strong { color: var(--black); font-weight: 700; }
+
+.about-page .about-us-body p:last-child {
+  margin-bottom: 0;
+}
+
+.about-page .about-us-body strong {
+  color: var(--black);
+  font-weight: 700;
+}
+
 .about-page .about-stats {
   margin-top: 48px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding-top: 40px;
-  border-top: 1px solid rgba(0,0,0,0.12);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
-.about-page .about-stat-num {
+
+.about-page .stat-num {
   font-family: var(--display);
   font-weight: 800;
   font-size: 56px;
@@ -137,7 +160,8 @@
   letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
-.about-page .about-stat-label {
+
+.about-page .stat-label {
   font-family: var(--display);
   font-size: 12px;
   letter-spacing: 0.2em;
@@ -146,7 +170,7 @@
   line-height: 1.4;
 }
 
-/* MISSION — toned down */
+/* MISSION */
 .about-page .about-mission {
   background: var(--black);
   color: var(--cream);
@@ -154,6 +178,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .about-page .about-mission-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -161,6 +186,7 @@
   z-index: 2;
   text-align: center;
 }
+
 .about-page .about-mission-title {
   font-family: var(--display);
   font-weight: 800;
@@ -170,26 +196,29 @@
   text-transform: uppercase;
   margin-bottom: 32px;
 }
+
 .about-page .about-mission-statement {
   font-family: var(--display);
   font-weight: 600;
   font-size: clamp(20px, 2.2vw, 28px);
   line-height: 1.4;
   letter-spacing: -0.005em;
-  color: rgba(251,241,230,0.9);
+  color: rgba(251, 241, 230, 0.9);
   max-width: 820px;
   margin: 0 auto;
 }
-.about-page .about-mission-statement .about-italic-orange {
+
+.about-page .about-mission-statement .italic-orange {
   font-family: var(--font-fraunces), 'Georgia', serif;
   font-style: italic;
   font-weight: 400;
   color: var(--orange);
 }
+
 .about-page .about-mission-sub {
   font-size: 16px;
   line-height: 1.7;
-  color: rgba(251,241,230,0.6);
+  color: rgba(251, 241, 230, 0.6);
   max-width: 640px;
   margin: 32px auto 0;
 }
@@ -201,36 +230,48 @@
   position: relative;
   overflow: hidden;
 }
+
 .about-page .about-how::before {
   content: 'METHOD';
   position: absolute;
-  top: 40px; left: -30px;
+  top: 40px;
+  left: -30px;
   font-family: var(--display);
   font-weight: 900;
   font-size: clamp(140px, 22vw, 320px);
-  color: rgba(0,0,0,0.04);
+  color: rgba(0, 0, 0, 0.04);
   letter-spacing: -0.04em;
   line-height: 0.8;
   pointer-events: none;
 }
+
 .about-page .about-how-inner {
   max-width: 1280px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
+
 .about-page .about-how-header {
   margin-bottom: 64px;
   max-width: 1000px;
 }
-.about-page .about-how-header .about-section-heading { margin-bottom: 24px; }
+
+.about-page .about-how-header .section-heading {
+  margin-bottom: 24px;
+}
+
 .about-page .about-how-intro {
   font-size: 19px;
   line-height: 1.7;
   color: var(--grey-soft);
   max-width: 800px;
 }
-.about-page .about-how-intro strong { color: var(--black); font-weight: 700; }
+
+.about-page .about-how-intro strong {
+  color: var(--black);
+  font-weight: 700;
+}
 
 .about-page .about-equation {
   display: flex;
@@ -243,10 +284,12 @@
   background: var(--black);
   color: var(--cream);
 }
-.about-page .about-eq-term {
+
+.about-page .eq-term {
   text-align: center;
 }
-.about-page .about-eq-term-word {
+
+.about-page .eq-term-word {
   font-family: var(--display);
   font-weight: 800;
   font-size: clamp(28px, 3.5vw, 44px);
@@ -254,14 +297,16 @@
   letter-spacing: -0.01em;
   line-height: 1;
 }
-.about-page .about-eq-op {
+
+.about-page .eq-op {
   font-family: var(--display);
   font-weight: 300;
   font-size: clamp(36px, 4vw, 56px);
   color: var(--orange);
   line-height: 1;
 }
-.about-page .about-eq-result {
+
+.about-page .eq-result {
   font-family: var(--display);
   font-weight: 800;
   font-size: clamp(28px, 3.5vw, 44px);
@@ -278,10 +323,12 @@
   gap: 80px;
   align-items: start;
 }
+
 .about-page .about-how-services-aside {
   position: sticky;
   top: 120px;
 }
+
 .about-page .about-how-services-title {
   font-family: var(--display);
   font-weight: 800;
@@ -291,25 +338,39 @@
   text-transform: uppercase;
   margin-bottom: 20px;
 }
+
 .about-page .about-how-services-sub {
   font-size: 16px;
   line-height: 1.7;
   color: var(--grey-soft);
   max-width: 360px;
 }
-.about-page .about-services-list { list-style: none; counter-reset: svc; padding-left: 0; }
+
+.about-page .about-services-list {
+  list-style: none;
+  counter-reset: svc;
+  padding-left: 0;
+}
+
 .about-page .about-service-item {
   counter-increment: svc;
   padding: 24px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   display: grid;
   grid-template-columns: 60px 1fr;
   gap: 24px;
   align-items: baseline;
   transition: padding 0.3s ease;
 }
-.about-page .about-service-item:first-child { padding-top: 0; }
-.about-page .about-service-item:hover { padding-left: 16px; }
+
+.about-page .about-service-item:first-child {
+  padding-top: 0;
+}
+
+.about-page .about-service-item:hover {
+  padding-left: 16px;
+}
+
 .about-page .about-service-item::before {
   content: counter(svc, decimal-leading-zero);
   font-family: var(--display);
@@ -318,6 +379,7 @@
   color: var(--orange);
   letter-spacing: 0.1em;
 }
+
 .about-page .about-service-text {
   font-family: var(--display);
   font-weight: 600;
@@ -335,24 +397,28 @@
   position: relative;
   overflow: hidden;
 }
+
 .about-page .about-why::before {
   content: 'WHY';
   position: absolute;
-  top: 60px; left: -30px;
+  top: 60px;
+  left: -30px;
   font-family: var(--display);
   font-weight: 900;
   font-size: clamp(180px, 28vw, 420px);
-  color: rgba(237,108,21,0.06);
+  color: rgba(237, 108, 21, 0.06);
   letter-spacing: -0.04em;
   line-height: 0.8;
   pointer-events: none;
 }
+
 .about-page .about-why-inner {
   max-width: 1280px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
+
 .about-page .about-why-headline {
   font-family: var(--display);
   font-weight: 800;
@@ -362,39 +428,36 @@
   text-transform: uppercase;
   margin-bottom: 40px;
 }
-.about-page .about-why-headline .about-italic-orange {
-  font-family: var(--font-fraunces), 'Georgia', serif;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--orange);
-  text-transform: lowercase;
-  letter-spacing: -0.01em;
-}
+
 .about-page .about-why-intro {
   font-size: 19px;
   line-height: 1.7;
-  color: rgba(251,241,230,0.85);
+  color: rgba(251, 241, 230, 0.85);
   max-width: 820px;
   margin-bottom: 64px;
 }
+
 .about-page .about-why-compare {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
 }
+
 .about-page .about-why-col {
   padding: 40px 36px;
-  border: 1px solid rgba(251,241,230,0.15);
-  background: rgba(251,241,230,0.02);
+  border: 1px solid rgba(251, 241, 230, 0.15);
+  background: rgba(251, 241, 230, 0.02);
 }
+
 .about-page .about-why-col-label {
   font-family: var(--display);
   font-size: 11px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(251,241,230,0.4);
+  color: rgba(251, 241, 230, 0.4);
   margin-bottom: 20px;
 }
+
 .about-page .about-why-col-title {
   font-family: var(--display);
   font-weight: 800;
@@ -402,12 +465,13 @@
   text-transform: uppercase;
   letter-spacing: -0.005em;
   margin-bottom: 16px;
-  color: rgba(251,241,230,0.6);
+  color: rgba(251, 241, 230, 0.6);
 }
+
 .about-page .about-why-col-body {
   font-size: 16px;
   line-height: 1.7;
-  color: rgba(251,241,230,0.7);
+  color: rgba(251, 241, 230, 0.7);
 }
 
 /* FAQ */
@@ -415,20 +479,25 @@
   background: var(--cream);
   padding: 140px 48px;
 }
+
 .about-page .about-faq-inner {
   max-width: 1100px;
   margin: 0 auto;
 }
+
 .about-page .about-faq-header {
   text-align: center;
   margin-bottom: 80px;
 }
+
 .about-page .about-faq-list {
-  border-top: 1px solid rgba(0,0,0,0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
+
 .about-page .about-faq-item {
-  border-bottom: 1px solid rgba(0,0,0,0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
+
 .about-page .about-faq-question {
   width: 100%;
   background: transparent;
@@ -444,24 +513,28 @@
   color: var(--black);
   transition: padding 0.3s ease, background 0.3s ease;
 }
+
 .about-page .about-faq-question:hover {
   padding-left: 24px;
-  background: rgba(237,108,21,0.04);
+  background: rgba(237, 108, 21, 0.04);
 }
-.about-page .about-faq-num {
+
+.about-page .faq-num {
   font-family: var(--font-fraunces), 'Georgia', serif;
   font-style: italic;
   font-size: 16px;
   color: var(--orange);
 }
-.about-page .about-faq-q-text {
+
+.about-page .faq-q-text {
   font-weight: 700;
   font-size: clamp(20px, 2.4vw, 30px);
   line-height: 1.25;
   letter-spacing: -0.01em;
   text-transform: uppercase;
 }
-.about-page .about-faq-toggle {
+
+.about-page .faq-toggle {
   width: 44px;
   height: 44px;
   border: 2px solid var(--black);
@@ -471,52 +544,74 @@
   justify-self: end;
   flex-shrink: 0;
 }
-.about-page .about-faq-toggle::before,
-.about-page .about-faq-toggle::after {
+
+.about-page .faq-toggle::before,
+.about-page .faq-toggle::after {
   content: '';
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   background: var(--black);
   transition: all 0.3s ease;
 }
-.about-page .about-faq-toggle::before {
-  width: 16px; height: 2px;
+
+.about-page .faq-toggle::before {
+  width: 16px;
+  height: 2px;
   transform: translate(-50%, -50%);
 }
-.about-page .about-faq-toggle::after {
-  width: 2px; height: 16px;
+
+.about-page .faq-toggle::after {
+  width: 2px;
+  height: 16px;
   transform: translate(-50%, -50%);
 }
-.about-page .about-faq-item.open .about-faq-toggle {
+
+.about-page .about-faq-item.open .faq-toggle {
   background: var(--orange);
   border-color: var(--orange);
 }
-.about-page .about-faq-item.open .about-faq-toggle::before,
-.about-page .about-faq-item.open .about-faq-toggle::after {
+
+.about-page .about-faq-item.open .faq-toggle::before,
+.about-page .about-faq-item.open .faq-toggle::after {
   background: var(--cream);
 }
-.about-page .about-faq-item.open .about-faq-toggle::after {
+
+.about-page .about-faq-item.open .faq-toggle::after {
   transform: translate(-50%, -50%) rotate(90deg);
   opacity: 0;
 }
+
 .about-page .about-faq-answer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
 }
+
 .about-page .about-faq-item.open .about-faq-answer {
   max-height: 600px;
   padding: 0 8px 36px 92px;
 }
+
 .about-page .about-faq-answer-body {
   font-size: 17px;
   line-height: 1.75;
   color: var(--grey-soft);
   max-width: 760px;
 }
-.about-page .about-faq-answer-body p { margin-bottom: 16px; }
-.about-page .about-faq-answer-body p:last-child { margin-bottom: 0; }
-.about-page .about-faq-answer-body strong { color: var(--black); font-weight: 700; }
+
+.about-page .about-faq-answer-body p {
+  margin-bottom: 16px;
+}
+
+.about-page .about-faq-answer-body p:last-child {
+  margin-bottom: 0;
+}
+
+.about-page .about-faq-answer-body strong {
+  color: var(--black);
+  font-weight: 700;
+}
 
 /* FINAL CTA */
 .about-page .about-final-cta {
@@ -525,10 +620,12 @@
   padding: 140px 48px;
   text-align: center;
 }
+
 .about-page .about-final-cta-inner {
   max-width: 1080px;
   margin: 0 auto;
 }
+
 .about-page .about-final-cta-title {
   font-family: var(--display);
   font-weight: 900;
@@ -538,13 +635,15 @@
   text-transform: uppercase;
   margin-bottom: 24px;
 }
-.about-page .about-final-cta-title .about-italic {
+
+.about-page .about-final-cta-title .italic {
   font-family: var(--font-fraunces), 'Georgia', serif;
   font-style: italic;
   font-weight: 400;
   text-transform: lowercase;
   letter-spacing: -0.015em;
 }
+
 .about-page .about-final-cta-body {
   font-size: 19px;
   line-height: 1.6;
@@ -552,13 +651,16 @@
   margin: 0 auto 48px;
   font-weight: 500;
 }
+
 .about-page .about-final-cta-actions {
   display: flex;
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
 }
-.about-page .about-btn-primary, .about-page .about-btn-secondary {
+
+.about-page .btn-primary,
+.about-page .btn-secondary {
   padding: 20px 36px;
   font-family: var(--display);
   font-weight: 700;
@@ -570,40 +672,91 @@
   transition: all 0.25s;
   display: inline-block;
 }
-.about-page .about-btn-primary { background: var(--black); color: var(--cream); }
-.about-page .about-btn-primary:hover { background: transparent; color: var(--black); }
-.about-page .about-btn-secondary { background: transparent; color: var(--black); }
-.about-page .about-btn-secondary:hover { background: var(--black); color: var(--cream); }
+
+.about-page .btn-primary {
+  background: var(--black);
+  color: var(--cream);
+}
+
+.about-page .btn-primary:hover {
+  background: transparent;
+  color: var(--black);
+}
+
+.about-page .btn-secondary {
+  background: transparent;
+  color: var(--black);
+}
+
+.about-page .btn-secondary:hover {
+  background: var(--black);
+  color: var(--cream);
+}
 
 /* ANIMATIONS */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.about-page .about-reveal {
+.about-page .reveal {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.about-page .about-reveal.about-visible {
+
+.about-page .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .about-page .about-hero { padding: 110px 20px 60px; }
-  .about-page .about-us, .about-page .about-mission, .about-page .about-how, .about-page .about-why, .about-page .about-faq, .about-page .about-final-cta {
-    padding-left: 20px; padding-right: 20px;
+  .about-page .about-hero {
+    padding: 140px 20px 80px;
   }
-  .about-page .about-us-inner { grid-template-columns: 1fr; gap: 32px; }
-  .about-page .about-how-services { grid-template-columns: 1fr; gap: 32px; }
-  .about-page .about-how-services-aside { position: static; }
-  .about-page .about-why-compare { grid-template-columns: 1fr; gap: 20px; }
-  .about-page .about-equation { gap: 16px; padding: 40px 20px; }
-  .about-page .about-faq-question { grid-template-columns: 32px 1fr 44px; gap: 16px; padding: 24px 4px; }
-  .about-page .about-faq-item.open .about-faq-answer { padding: 0 4px 28px 52px; }
-  .about-page .about-final-cta-actions .about-btn-primary, .about-page .about-final-cta-actions .about-btn-secondary {
+
+  .about-page .about-us,
+  .about-page .about-mission,
+  .about-page .about-how,
+  .about-page .about-why,
+  .about-page .about-faq,
+  .about-page .about-final-cta {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .about-page .about-us-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-page .about-how-services {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-page .about-how-services-aside {
+    position: static;
+  }
+
+  .about-page .about-why-compare {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-page .about-equation {
+    gap: 16px;
+    padding: 40px 20px;
+  }
+
+  .about-page .about-faq-question {
+    grid-template-columns: 32px 1fr 44px;
+    gap: 16px;
+    padding: 24px 4px;
+  }
+
+  .about-page .about-faq-item.open .about-faq-answer {
+    padding: 0 4px 28px 52px;
+  }
+
+  .about-page .about-final-cta-actions .btn-primary,
+  .about-page .about-final-cta-actions .btn-secondary {
     width: 100%;
   }
 }
