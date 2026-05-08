@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <header className="sub-header">
       <Link href="/" className="sub-logo" onClick={closeMenu}>
-        VALEN HEALTH
+        <img src="/images/logo/3.png" alt="Valen Health" style={{ height: '56px', width: 'auto', display: 'block' }} />
       </Link>
 
       <nav className={`sub-nav ${isMenuOpen ? "mobile-open" : ""}`}>

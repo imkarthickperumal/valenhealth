@@ -121,7 +121,7 @@
 .contact-form-submit:hover { background: transparent; color: var(--orange); }
 
 /* MAP */
-.contact-map { background: var(--cream); padding: 130px 48px 0; }
+.contact-map { background: var(--cream); padding: 130px 48px 100px; }
 .contact-map-inner { max-width: 1280px; margin: 0 auto; }
 .contact-map-header { margin-bottom: 48px; max-width: 800px; }
 .contact-map-header .section-heading { margin-bottom: 20px; }

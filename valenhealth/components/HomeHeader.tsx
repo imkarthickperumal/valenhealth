@@ -11,9 +11,7 @@ export default function HomeHeader() {
   return (
     <header className="home-header">
       <Link href="/" className="home-logo" aria-label="Valen Health home" onClick={closeMenu}>
-        <svg width="46" height="52" viewBox="0 0 22 26" aria-hidden="true">
-          <path d="M2 2 L11 22 L20 2 L15 2 L11 12 L7 2 Z M14 2 L20 12 L17 2 Z" fill="#000" />
-        </svg>
+        <img src="/images/logo/3.png" alt="Valen Health" style={{ height: '64px', width: 'auto', display: 'block' }} />
       </Link>
 
       <nav className={`home-nav ${isMenuOpen ? "mobile-open" : ""}`}>

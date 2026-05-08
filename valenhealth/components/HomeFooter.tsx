@@ -6,10 +6,7 @@ export default function HomeFooter() {
       <div className="home-footer-grid">
         <div className="home-footer-brand">
           <div className="home-footer-logo-row">
-            <svg width="34" height="40" viewBox="0 0 22 26" aria-hidden="true">
-              <path d="M2 2 L11 22 L20 2 L15 2 L11 12 L7 2 Z M14 2 L20 12 L17 2 Z" fill="#ED6C15" />
-            </svg>
-            <span>VALEN HEALTH</span>
+            <img src="/images/logo/2.png" alt="Valen Health" style={{ height: '52px', width: 'auto', display: 'block' }} />
           </div>
           <p className="home-footer-tagline">Move with purpose.</p>
           <address>
