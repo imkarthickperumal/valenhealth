@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import ReadyToStart from "../../components/ReadyToStart";
 import "./gym.css";
 
 export default function GymPage() {
@@ -189,17 +190,7 @@ export default function GymPage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="gym-final-cta">
-          <div className="gym-final-cta-inner">
-            <h2 className="gym-final-cta-title">Ready to <span className="italic">start?</span></h2>
-            <p className="gym-final-cta-body">Pick whichever first step feels right — we&apos;ll take it from there.</p>
-            <div className="gym-final-cta-actions">
-              <Link href="/contact" className="btn-primary">Book a Tour</Link>
-              <Link href="/exercise-physiology" className="btn-secondary">Book an Assessment</Link>
-              <Link href="/gym#memberships" className="btn-secondary">Find Out About Memberships</Link>
-            </div>
-          </div>
-        </section>
+        <ReadyToStart />
       </main>
       <Footer />
     </>

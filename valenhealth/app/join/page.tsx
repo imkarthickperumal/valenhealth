@@ -15,7 +15,9 @@ export default function JoinPage() {
           </h1>
         </div>
         
-        <RegistrationForm />
+        <div style={{ maxWidth: "500px", margin: "0 auto", background: "white", borderRadius: "12px", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", overflow: "hidden" }}>
+          <RegistrationForm />
+        </div>
       </main>
 
       <Footer />

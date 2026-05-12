@@ -4,9 +4,11 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import ReadyToStart from "../../components/ReadyToStart";
 import "./exercise-physiology.css";
 
 export default function ExercisePhysiologyPage() {
+  // Force recompile
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -275,21 +277,7 @@ export default function ExercisePhysiologyPage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="ep-final-cta">
-          <div className="ep-final-cta-inner">
-            <h2 className="ep-final-cta-title">
-              Ready to <span className="ep-italic">start?</span>
-            </h2>
-            <p className="ep-final-cta-body">
-              Pick whichever first step feels right — we&apos;ll take it from there.
-            </p>
-            <div className="ep-final-cta-actions">
-              <Link href="/#book" className="ep-btn-primary">Book a Tour</Link>
-              <Link href="/exercise-physiology" className="ep-btn-secondary">Book an Assessment</Link>
-              <Link href="/join" className="ep-btn-secondary">Find Out About Memberships</Link>
-            </div>
-          </div>
-        </section>
+        <ReadyToStart />
       </main>
 
       <Footer />

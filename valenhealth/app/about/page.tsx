@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import ReadyToStart from "../../components/ReadyToStart";
 import "./about.css";
 
 export default function AboutPage() {
@@ -237,21 +238,7 @@ export default function AboutPage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="about-final-cta">
-          <div className="about-final-cta-inner">
-            <h2 className="about-final-cta-title">
-              Ready to <span className="italic">start?</span>
-            </h2>
-            <p className="about-final-cta-body">
-              Pick whichever first step feels right — we&apos;ll take it from there.
-            </p>
-            <div className="about-final-cta-actions">
-              <Link href="/contact" className="btn-primary">Book a Tour</Link>
-              <Link href="/exercise-physiology" className="btn-secondary">Book an Assessment</Link>
-              <Link href="/gym#memberships" className="btn-secondary">Find Out About Memberships</Link>
-            </div>
-          </div>
-        </section>
+        <ReadyToStart />
       </main>
 
       <Footer />

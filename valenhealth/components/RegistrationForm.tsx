@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import "./RegistrationForm.css";
 
 type FormValues = {
   fullName: string;
@@ -49,8 +50,10 @@ export default function RegistrationForm() {
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="reg-form">
-        <h2 className="form-title">Gym Registration</h2>
-        <p className="form-sub">Start your journey with Valen Health today.</p>
+        <div className="form-header">
+          <h2 className="form-title">Gym Registration</h2>
+          <p className="form-sub">Start your journey with Valen Health today.</p>
+        </div>
 
         <div className="form-group">
           <label>Full Name</label>
@@ -99,7 +102,7 @@ export default function RegistrationForm() {
           {errors.membershipType && <span className="error-msg">{errors.membershipType.message}</span>}
         </div>
 
-        <div className="form-group">
+        <div className="form-group form-group-full">
           <label>Additional Comments (Optional)</label>
           <textarea
             {...register("comments")}
@@ -113,115 +116,7 @@ export default function RegistrationForm() {
         </button>
       </form>
 
-      <style jsx>{`
-        .form-container {
-          max-width: 500px;
-          margin: 40px auto;
-          padding: 40px;
-          background: white;
-          border-radius: 12px;
-          box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        .form-title {
-          font-family: var(--font-league-spartan), sans-serif;
-          font-size: 28px;
-          font-weight: 700;
-          margin-bottom: 8px;
-          color: var(--ink);
-        }
-        .form-sub {
-          font-size: 14px;
-          color: var(--stone-500);
-          margin-bottom: 32px;
-        }
-        .form-group {
-          margin-bottom: 20px;
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-        label {
-          font-family: var(--font-league-spartan), sans-serif;
-          font-size: 12px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          color: var(--stone-500);
-        }
-        input, select, textarea {
-          padding: 12px 16px;
-          border: 1px solid var(--stone-200);
-          border-radius: 6px;
-          font-size: 15px;
-          transition: border-color 0.2s;
-        }
-        input:focus, select:focus, textarea:focus {
-          outline: none;
-          border-color: var(--orange);
-        }
-        input.error {
-          border-color: #ff4d4d;
-        }
-        .error-msg {
-          color: #ff4d4d;
-          font-size: 12px;
-        }
-        .snackbar {
-          position: fixed;
-          top: 24px;
-          right: 24px;
-          background: #333;
-          color: white;
-          padding: 16px 24px;
-          border-radius: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 24px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-          z-index: 1000;
-          animation: slideIn 0.3s ease-out;
-          border-left: 4px solid var(--orange);
-        }
-        @keyframes slideIn {
-          from { transform: translateX(100%); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        .snackbar-content {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-        }
-        .check-icon {
-          background: var(--orange);
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: bold;
-        }
-        .snackbar p {
-          font-size: 13px;
-          opacity: 0.8;
-          margin: 0;
-        }
-        .snackbar strong {
-          font-size: 15px;
-        }
-        .close-btn {
-          background: none;
-          border: none;
-          color: white;
-          font-size: 20px;
-          cursor: pointer;
-          opacity: 0.5;
-        }
-        .close-btn:hover {
-          opacity: 1;
-        }
-      `}</style>
+
     </div>
   );
 }
