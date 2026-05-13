@@ -33,10 +33,10 @@ export default function GymPage() {
   ];
 
   const galleryItems = [
-    { label: "Image 01", name: "Main Floor" },
-    { label: "Image 02", name: "EP Room" },
-    { label: "Image 03", name: "VALD Setup" },
-    { label: "Image 04", name: "Class Space" },
+    { name: "Main Floor", image: "/images/GYM/GYM_A738781.jpg" },
+    { name: "EP Room", image: "/images/GYM/GYM_A738792.jpg" },
+    { name: "VALD Setup", image: "/images/GYM/GYM_A738801.jpg" },
+    { name: "Class Space", image: "/images/GYM/GYM_A738808.jpg" },
   ];
 
   return (
@@ -157,8 +157,16 @@ export default function GymPage() {
             </div>
             <div className="gym-gallery-grid reveal">
               {galleryItems.map((item, i) => (
-                <div className="gym-gallery-item" key={i}>
-                  <div className="gym-gallery-placeholder-label">{item.label}</div>
+                <div
+                  className="gym-gallery-item"
+                  key={i}
+                  style={{
+                    backgroundImage: `url(${item.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                  {/* <div className="gym-gallery-placeholder-label">{item.label}</div> */}
                   <div className="gym-gallery-placeholder-name">{item.name}</div>
                 </div>
               ))}

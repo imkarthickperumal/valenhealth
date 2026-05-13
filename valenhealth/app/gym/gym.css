@@ -7,7 +7,8 @@
 }
 .gym-hero-image {
   position: relative; height: 720px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.75) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.75) 100%), 
+              url('/images/GYM/gymimg.jpg') no-repeat center/cover;
   display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
 .gym-hero-content {
@@ -158,20 +159,22 @@
   gap: 12px;
 }
 .gym-gallery-item {
-  background: var(--black);
   color: rgba(251,241,230,0.4);
   display: flex; align-items: center; justify-content: center;
   flex-direction: column; text-align: center;
   padding: 24px;
   position: relative; overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
 }
-.gym-gallery-item:hover { transform: scale(0.99); }
+.gym-gallery-item:hover { transform: scale(1.02); z-index: 10; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 .gym-gallery-item::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(237,108,21,0.08), transparent 60%);
-  pointer-events: none;
+  background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 50%, rgba(0,0,0,0.3) 100%);
+  z-index: 0;
+  transition: opacity 0.3s ease;
 }
+.gym-gallery-item:hover::before { opacity: 0.8; }
 .gym-gallery-item:nth-child(1) { grid-column: 1 / 2; grid-row: 1 / 3; }
 .gym-gallery-item:nth-child(2) { grid-column: 2 / 3; grid-row: 1 / 2; }
 .gym-gallery-item:nth-child(3) { grid-column: 3 / 4; grid-row: 1 / 2; }

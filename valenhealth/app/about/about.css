@@ -5,9 +5,10 @@
 
 /* HERO */
 .about-hero {
-  background: var(--black);
+  background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.7) 100%), 
+              url('/images/GYM/gymimg.jpg') no-repeat center/cover;
   color: var(--cream);
-  padding: 160px 48px 100px;
+  padding: 160px 48px 140px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -119,10 +120,12 @@
 
 /* 2. OUR MISSION */
 .about-mission {
-  background: var(--black);
+  background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+              url('/images/GYM/GYM_A738781.jpg') no-repeat center/cover;
   color: var(--cream);
-  padding: 140px 48px;
+  padding: 180px 48px;
   text-align: center;
+  position: relative;
 }
 
 .about-mission-inner {

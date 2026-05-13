@@ -5,9 +5,10 @@
 
 /* HERO */
 .ep-hero {
-  background: var(--black);
+  background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.7) 100%), 
+              url('/images/GYM/GYM_A738801.jpg') no-repeat center/cover;
   color: var(--cream);
-  padding: 180px 48px 120px;
+  padding: 180px 48px 140px;
   text-align: center;
   position: relative;
   overflow: hidden;
