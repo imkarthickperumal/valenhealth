@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ReadyToStart from "../../components/ReadyToStart";
+import ClassSchedule from "../../components/ClassSchedule";
 import "./exercise-physiology.css";
 
 export default function ExercisePhysiologyPage() {
@@ -275,6 +276,9 @@ export default function ExercisePhysiologyPage() {
             </div>
           </div>
         </section>
+
+        {/* CLASS SCHEDULE */}
+        <ClassSchedule />
 
         {/* FINAL CTA */}
         <ReadyToStart />

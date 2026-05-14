@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ReadyToStart from "../../components/ReadyToStart";
+import ClassSchedule from "../../components/ClassSchedule";
 import "./gym.css";
 
 export default function GymPage() {
@@ -33,10 +34,10 @@ export default function GymPage() {
   ];
 
   const galleryItems = [
-    { name: "Main Floor", image: "/images/GYM/GYM_A738781.jpg" },
-    { name: "EP Room", image: "/images/GYM/GYM_A738792.jpg" },
-    { name: "VALD Setup", image: "/images/GYM/GYM_A738801.jpg" },
-    { name: "Class Space", image: "/images/GYM/GYM_A738808.jpg" },
+    { image: "/images/GYM/GYM_A738781.jpg" },
+    { image: "/images/GYM/GYM_A738792.jpg" },
+    { image: "/images/GYM/GYM_A738801.jpg" },
+    { image: "/images/GYM/GYM_A738808.jpg" },
   ];
 
   return (
@@ -96,6 +97,9 @@ export default function GymPage() {
             <p className="gym-tier-note reveal"><strong>Commit longer, save more.</strong> 3, 6, and 12-month commitments lock in a lower weekly rate and waive the $68 sign-up fee. All prices include GST.</p>
           </div>
         </section>
+
+        {/* CLASS SCHEDULE */}
+        <ClassSchedule />
 
         {/* HEALTH ECOSYSTEM */}
         <section className="gym-ecosystem">
@@ -166,8 +170,7 @@ export default function GymPage() {
                     backgroundPosition: 'center'
                   }}
                 >
-                  {/* <div className="gym-gallery-placeholder-label">{item.label}</div> */}
-                  <div className="gym-gallery-placeholder-name">{item.name}</div>
+
                 </div>
               ))}
             </div>

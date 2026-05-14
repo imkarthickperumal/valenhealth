@@ -6,7 +6,7 @@ export default function HomeFooter() {
       <div className="home-footer-grid">
         <div className="home-footer-brand">
           <div className="home-footer-logo-row">
-            <img src="/images/logo/2.png" alt="Valen Health" style={{ height: '52px', width: 'auto', display: 'block' }} />
+            <img src="/images/logo/1.png" alt="Valen Health" style={{ height: '100px', width: 'auto', display: 'block' }} />
           </div>
           <p className="home-footer-tagline">Move with purpose.</p>
           <address>
