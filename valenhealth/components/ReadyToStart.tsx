@@ -35,7 +35,7 @@ export default function ReadyToStart() {
           </p>
           <div className="rts-actions">
             <Link href="/contact" className="btn-primary">Book a Tour</Link>
-            <Link href="/exercise-physiology" className="btn-secondary">Book an Assessment</Link>
+            <Link href="/contact" className="btn-secondary">Book an Assessment</Link>
             <button onClick={openModal} className="btn-secondary">Find Out About Memberships</button>
           </div>
         </div>

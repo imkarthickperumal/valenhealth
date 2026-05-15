@@ -68,12 +68,12 @@ export default function ContactPage() {
               <div className="contact-visit-banner-eyebrow">Drop in</div>
               <div className="contact-visit-banner-title">Pop down for a tour and a chat — or get booked in.</div>
             </div>
-            <a href="#" className="contact-visit-banner-cta">Book a Tour</a>
+            <a href="#contact-form" className="contact-visit-banner-cta">Book a Tour</a>
           </div>
         </section>
 
         {/* FORM */}
-        <section className="contact-form">
+        <section id="contact-form" className="contact-form">
           <div className="contact-form-inner">
             <div className="contact-form-header reveal">
               <h2 className="section-heading">Send us a <span className="italic-orange">message.</span></h2>
