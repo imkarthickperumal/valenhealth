@@ -26,11 +26,11 @@ export default function GymPage() {
   }, []);
 
   const tiers = [
-    { letter: "V", verb: "Move", name: "Basic", price: "18", desc: "24/7 gym access.", detail: "Just get in here. The most fundamental act of fitness — your gym, on your terms, on your schedule. No clinical wrapping, no programme — just you and the equipment.", cta: "Choose Move" },
-    { letter: "A", verb: "Build", name: "Foundation", price: "26", desc: "24/7 gym + clinical oversight.", detail: "Where the clinical work begins. After your initial EP assessment, you have a programme built around your body, your history, and your goals. Every six weeks your EP reviews progress and adjusts the plan.", cta: "Choose Build" },
-    { letter: "L", verb: "Train", name: "Foundation + 2 Classes", price: "34", desc: "Foundation + 2 EP-led classes per week.", detail: "Show up, do the work, with a coach. Twice a week in a structured group session (max 8 participants). Discipline, repetition, accountability — and a clinician in the room.", cta: "Choose Train" },
-    { letter: "E", verb: "Thrive", name: "Foundation + Unlimited", price: "40", desc: "Foundation + unlimited EP-led classes.", detail: "The full programme. 24/7 gym access, clinical oversight, and unlimited group training led by an EP. The peak tier for members who go all-in.", cta: "Choose Thrive" },
-    { letter: "N", verb: "Restore", name: "Clinical", price: "28", desc: "EP session + 6-weekly reviews + unlimited classes", detail: "(class times only). The parallel restorative path — designed for members managing chronic conditions, recovering from surgery, or maintaining function as they age.", cta: "Choose Restore" },
+    { letter: "V", verb: "Move", name: "Basic", price: "18", desc: "24/7 gym access.", detail: "Just get in here. The most fundamental act of fitness — your gym, on your terms, on your schedule. No clinical wrapping, no programme — just you and the equipment.", cta: "Choose Move", link: "https://valenhealth.gymmasteronline.com/portal/signup/details/45bf18ce45032c6c95d355141a75cad9?src=purchase" },
+    { letter: "A", verb: "Build", name: "Foundation", price: "26", desc: "24/7 gym + clinical oversight.", detail: "Where the clinical work begins. After your initial EP assessment, you have a programme built around your body, your history, and your goals. Every six weeks your EP reviews progress and adjusts the plan.", cta: "Choose Build", link: "https://valenhealth.gymmasteronline.com/portal/signup/details/9bbc06aa341eb2787d00fb1b80b2acfc?src=purchase" },
+    { letter: "L", verb: "Train", name: "Foundation + 2 Classes", price: "34", desc: "Foundation + 2 EP-led classes per week.", detail: "Show up, do the work, with a coach. Twice a week in a structured group session (max 8 participants). Discipline, repetition, accountability — and a clinician in the room.", cta: "Choose Train", link: "https://valenhealth.gymmasteronline.com/portal/signup/details/a345b92770ef83e1cb662887ce049376?src=purchase" },
+    { letter: "E", verb: "Thrive", name: "Foundation + Unlimited", price: "40", desc: "Foundation + unlimited EP-led classes.", detail: "The full programme. 24/7 gym access, clinical oversight, and unlimited group training led by an EP. The peak tier for members who go all-in.", cta: "Choose Thrive", link: "https://valenhealth.gymmasteronline.com/portal/signup/details/a345b92770ef83e1cb662887ce049376?src=purchase" },
+    { letter: "N", verb: "Restore", name: "Clinical", price: "28", desc: "EP session + 6-weekly reviews + unlimited classes", detail: "(class times only). The parallel restorative path — designed for members managing chronic conditions, recovering from surgery, or maintaining function as they age.", cta: "Choose Restore", link: "https://valenhealth.gymmasteronline.com/portal/signup/details/88a387cd8178b5a29526739dff6ccb8b?src=purchase" },
   ];
 
   const galleryItems = [
@@ -90,7 +90,7 @@ export default function GymPage() {
                     <div className="gym-tier-price-amount"><span className="dollar">$</span>{t.price}</div>
                     <div className="gym-tier-price-period">per week</div>
                   </div>
-                  <Link href="/contact" className="gym-tier-cta">{t.cta}</Link>
+                  <Link href={t.link} target="_blank" rel="noopener noreferrer" className="gym-tier-cta">{t.cta}</Link>
                 </div>
               ))}
             </div>
