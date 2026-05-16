@@ -17,12 +17,42 @@ export default function GymPage() {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    }, { threshold: 0.05, rootMargin: "50px" });
+    
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
     document.querySelectorAll(".gym-tier-row").forEach((el, i) => {
       (el as HTMLElement).style.transitionDelay = `${i * 0.06}s`;
     });
-    return () => observer.disconnect();
+
+    // Fallback for instant scroll restorations
+    const checkVisibility = () => {
+      document.querySelectorAll(".reveal:not(.visible)").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add("visible");
+        }
+      });
+    };
+    setTimeout(checkVisibility, 100);
+    setTimeout(checkVisibility, 500);
+
+    // Handle bfcache (back button) restorations
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        // Force a reload to prevent Next.js from showing a blank page with no styles
+        // when returning from an external link via the back button.
+        window.location.reload();
+      } else {
+        checkVisibility();
+        document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+      }
+    };
+    window.addEventListener("pageshow", handlePageShow);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("pageshow", handlePageShow);
+    };
   }, []);
 
   const tiers = [
@@ -90,7 +120,7 @@ export default function GymPage() {
                     <div className="gym-tier-price-amount"><span className="dollar">$</span>{t.price}</div>
                     <div className="gym-tier-price-period">per week</div>
                   </div>
-                  <Link href={t.link} target="_blank" rel="noopener noreferrer" className="gym-tier-cta">{t.cta}</Link>
+                  <a href={t.link} target="_blank" rel="noopener noreferrer" className="gym-tier-cta">{t.cta}</a>
                 </div>
               ))}
             </div>
