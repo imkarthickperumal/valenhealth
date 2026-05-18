@@ -156,3 +156,30 @@
   .contact-detail-card-value { font-size: 20px; word-break: break-all; }
   .contact-map-embed { height: 300px; }
 }
+
+/* CONTACT FORM ALERTS */
+.contact-alert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 32px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  border: 1px solid transparent;
+}
+
+.contact-alert--success {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.25);
+  color: #25D366;
+}
+
+.contact-alert--error {
+  background: rgba(234, 67, 53, 0.08);
+  border-color: rgba(234, 67, 53, 0.25);
+  color: #EA4335;
+}

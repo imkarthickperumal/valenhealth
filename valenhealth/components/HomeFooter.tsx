@@ -1,8 +1,11 @@
 import Link from "next/link";
+import GoogleReviews from "./GoogleReviews";
 
 export default function HomeFooter() {
   return (
-    <footer className="home-footer">
+    <>
+      <GoogleReviews />
+      <footer className="home-footer">
       <div className="home-footer-grid">
         <div className="home-footer-brand">
           <div className="home-footer-logo-row">
@@ -56,5 +59,6 @@ export default function HomeFooter() {
         <a href="#" className="social">@valenhealthspearwood</a>
       </div>
     </footer>
+  </>
   );
 }
