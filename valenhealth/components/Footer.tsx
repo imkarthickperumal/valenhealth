@@ -1,5 +1,5 @@
 import Link from "next/link";
-import GoogleReviews from "./GoogleReviews";
+import GoogleReviews from "./GoogleReviews/GoogleReviews";
 
 export default function Footer() {
   return (

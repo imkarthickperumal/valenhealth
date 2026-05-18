@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import RegistrationForm from "../../components/RegistrationForm";
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
 export default function JoinPage() {
   return (

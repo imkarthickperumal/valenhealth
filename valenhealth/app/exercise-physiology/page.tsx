@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import ReadyToStart from "../../components/ReadyToStart";
-import ClassSchedule from "../../components/ClassSchedule";
+import ReadyToStart from "../../components/ReadyToStart/ReadyToStart";
+import ClassSchedule from "../../components/ClassSchedule/ClassSchedule";
 import "./exercise-physiology.css";
 
 export default function ExercisePhysiologyPage() {

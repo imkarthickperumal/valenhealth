@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import RegistrationForm from "./RegistrationForm";
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import "./ReadyToStart.css";
 
 export default function ReadyToStart() {

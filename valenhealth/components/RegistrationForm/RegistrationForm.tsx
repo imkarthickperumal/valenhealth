@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./RegistrationForm.css";
-import * as fpixel from "../lib/fpixel";
+import * as fpixel from "../../lib/fpixel";
 
 type FormValues = {
   fullName: string;

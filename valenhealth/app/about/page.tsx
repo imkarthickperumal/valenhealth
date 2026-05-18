@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import ReadyToStart from "../../components/ReadyToStart";
+import ReadyToStart from "../../components/ReadyToStart/ReadyToStart";
 import "./about.css";
 
 export default function AboutPage() {
