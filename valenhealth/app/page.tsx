@@ -43,7 +43,7 @@ export default function Home() {
               </div>
             </div>
             <div className="hp-hero-buttons">
-              <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="btn btn-orange">Book a Tour →</Link>
+              <Link href="/contact#contact-form" className="btn btn-orange">Book a Tour →</Link>
               <Link href="/contact" className="btn btn-black-outline">Book an EP Consultation</Link>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default function Home() {
           <div className="hp-unifier-divider"></div>
           <div className="hp-unifier-tag">— All Under One Roof —</div>
           <div className="hp-unifier-buttons">
-            <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="btn btn-orange btn-orange-large">Book a Tour →</Link>
+            <Link href="/contact#contact-form" className="btn btn-orange btn-orange-large">Book a Tour →</Link>
             <Link href="/contact" className="btn btn-white-outline">Book EP Consultation</Link>
           </div>
         </div>
@@ -263,7 +263,7 @@ export default function Home() {
           <h2>Ready to move<span className="accent">with purpose?</span></h2>
           <p className="lede">Book a tour of the facility, or book a clinical EP consultation. Whichever path you choose — we&apos;re with you.</p>
           <div className="hp-final-cta-buttons">
-            <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="btn btn-black">Book a Tour →</Link>
+            <Link href="/contact#contact-form" className="btn btn-black">Book a Tour →</Link>
             <Link href="/contact" className="btn btn-black-outline">Book EP Consultation</Link>
           </div>
         </div>

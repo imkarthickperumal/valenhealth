@@ -34,7 +34,7 @@ export default function ReadyToStart() {
             Pick whichever first step feels right — we&apos;ll take it from there.
           </p>
           <div className="rts-actions">
-            <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="btn-primary">Book a Tour</Link>
+            <Link href="/contact#contact-form" className="btn-primary">Book a Tour</Link>
             <Link href="/contact" className="btn-secondary">Book an Assessment</Link>
             <Link href="/gym#memberships" className="btn-secondary">Find Out About Memberships</Link>
           </div>
