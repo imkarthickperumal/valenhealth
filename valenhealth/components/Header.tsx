@@ -35,8 +35,8 @@ export default function Header() {
             {link.label}
           </Link>
         ))}
-        <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="mobile-cta" onClick={closeMenu}>
-          Book Now
+        <Link href="/contact#contact-form" className="mobile-cta" onClick={closeMenu}>
+          Book a Tour
         </Link>
         <Link href="/gym#memberships" className="mobile-cta" onClick={closeMenu}>
           Join Now
@@ -47,8 +47,8 @@ export default function Header() {
       </nav>
 
       <div className="header-actions">
-        <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="sub-header-cta" onClick={closeMenu}>
-          Book Now
+        <Link href="/contact#contact-form" className="sub-header-cta" onClick={closeMenu}>
+          Book a Tour
         </Link>
         <Link href="/gym#memberships" className="sub-header-cta" onClick={closeMenu}>
           Join Now
