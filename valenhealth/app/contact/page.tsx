@@ -68,7 +68,7 @@ export default function ContactPage() {
               <div className="contact-visit-banner-eyebrow">Drop in</div>
               <div className="contact-visit-banner-title">Pop down for a tour and a chat — or get booked in.</div>
             </div>
-            <a href="#contact-form" className="contact-visit-banner-cta">Book a Tour</a>
+            <a href="https://valenhealth.bookings.pracsuite.com/guest" className="contact-visit-banner-cta">Book a Tour</a>
           </div>
         </section>
 

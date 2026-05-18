@@ -41,11 +41,13 @@ export default function ReferralPage() {
                   <select className="form-select" required defaultValue="">
                     <option value="" disabled>Workers Compensation</option>
                     <option value="workers_comp">Workers Compensation</option>
+                    <option value="ctp_mva">CTP/MVA</option>
                     <option value="ndis">NDIS</option>
-                    <option value="medicare">Medicare (EPC)</option>
+                    <option value="life_insurance">Life Insurance</option>
+                    <option value="medicare">Medicare</option>
                     <option value="dva">DVA</option>
-                    <option value="private">Private Health</option>
-                    <option value="other">Other</option>
+                    <option value="private">Private</option>
+                    <option value="others">Others</option>
                   </select>
                 </div>
               </div>

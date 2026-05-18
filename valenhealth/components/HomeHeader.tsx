@@ -22,11 +22,13 @@ export default function HomeHeader() {
         <Link href="/gym" onClick={closeMenu}>Gym</Link>
         <Link href="/contact" onClick={closeMenu}>Contact Us</Link>
         <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="mobile-cta" onClick={closeMenu}>Book Now</Link>
+        <Link href="/gym#memberships" className="mobile-cta" onClick={closeMenu}>Join Now</Link>
         <Link href="/referral" className="mobile-cta" onClick={closeMenu}>Referral</Link>
       </nav>
 
       <div className="header-actions">
         <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="home-header-cta" onClick={closeMenu}>Book Now</Link>
+        <Link href="/gym#memberships" className="home-header-cta" onClick={closeMenu}>Join Now</Link>
         <Link href="/referral" className="home-header-cta" onClick={closeMenu}>Referral</Link>
       </div>
 
