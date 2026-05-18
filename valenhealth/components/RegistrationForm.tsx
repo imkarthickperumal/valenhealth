@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./RegistrationForm.css";
+import * as fpixel from "../lib/fpixel";
 
 type FormValues = {
   fullName: string;
@@ -25,6 +26,13 @@ export default function RegistrationForm() {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log("Form submitted:", data);
+    
+    // Track complete registration event on Meta Pixel
+    fpixel.event("CompleteRegistration", {
+      content_name: "Gym Registration Form",
+      status: "success",
+    });
+
     setShowSuccess(true);
     reset();
     

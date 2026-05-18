@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { sendReferralEmail, type FormState } from "./actions";
 import "./referral.css";
+import * as fpixel from "../../lib/fpixel";
 
 const initialState: FormState = { status: "idle", message: "" };
 
@@ -12,10 +13,14 @@ export default function ReferralPage() {
   const [state, formAction, isPending] = useActionState(sendReferralEmail, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Reset form on success
+  // Reset form and track lead event on success
   useEffect(() => {
     if (state.status === "success") {
       formRef.current?.reset();
+      fpixel.event("Lead", {
+        content_name: "Referral Form",
+        status: "success",
+      });
     }
   }, [state.status]);
 

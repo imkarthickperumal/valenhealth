@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { League_Spartan, Open_Sans, Playfair_Display, Fraunces } from "next/font/google";
 import "./globals.css";
+import MetaPixel from "../components/MetaPixel";
 
 const leagueSpartan = League_Spartan({
   variable: "--font-league-spartan",
@@ -44,7 +45,10 @@ export default function RootLayout({
       lang="en-AU"
       className={`${leagueSpartan.variable} ${openSans.variable} ${fraunces.variable} ${playfairDisplay.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <MetaPixel />
+        {children}
+      </body>
     </html>
   );
 }

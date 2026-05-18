@@ -1,6 +1,7 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { sendMetaCapiEvent } from "../../lib/meta-capi";
 
 export type FormState = {
   status: "idle" | "success" | "error";
@@ -156,6 +157,22 @@ export async function sendReferralEmail(
       html,
       attachments,
     });
+
+    // Dispatch Conversions API event to Meta
+    try {
+      await sendMetaCapiEvent({
+        eventName: "Lead",
+        eventUrl: "https://valenhealth.com.au/referral",
+        userData: {
+          email: yourEmail,
+          phone: yourMobile,
+          firstName: yourName.split(" ")[0],
+          lastName: yourName.split(" ").slice(1).join(" ") || undefined,
+        },
+      });
+    } catch (capiErr) {
+      console.error("Meta CAPI dispatch error:", capiErr);
+    }
 
     return { status: "success", message: "Your referral has been sent successfully! We will be in touch within 24 hours." };
   } catch (err) {
