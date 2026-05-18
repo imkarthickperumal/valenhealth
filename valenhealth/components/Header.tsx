@@ -35,11 +35,22 @@ export default function Header() {
             {link.label}
           </Link>
         ))}
+        <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="mobile-cta" onClick={closeMenu}>
+          Book a Tour
+        </Link>
+        <Link href="/referral" className="mobile-cta" onClick={closeMenu}>
+          Referral
+        </Link>
       </nav>
 
-      <Link href="/contact" className="sub-header-cta" onClick={closeMenu}>
-        Book a Tour
-      </Link>
+      <div className="header-actions">
+        <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="sub-header-cta" onClick={closeMenu}>
+          Book a Tour
+        </Link>
+        <Link href="/referral" className="sub-header-cta" onClick={closeMenu}>
+          Referral
+        </Link>
+      </div>
 
       <button
         className={`sub-hamburger ${isMenuOpen ? "open" : ""}`}

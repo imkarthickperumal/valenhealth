@@ -21,9 +21,14 @@ export default function HomeHeader() {
         <Link href="/exercise-physiology" onClick={closeMenu}>Exercise Physiology</Link>
         <Link href="/gym" onClick={closeMenu}>Gym</Link>
         <Link href="/contact" onClick={closeMenu}>Contact Us</Link>
+        <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="mobile-cta" onClick={closeMenu}>Book Now</Link>
+        <Link href="/referral" className="mobile-cta" onClick={closeMenu}>Referral</Link>
       </nav>
 
-      <Link href="/contact" className="home-header-cta" onClick={closeMenu}>Book Now</Link>
+      <div className="header-actions">
+        <Link href="https://valenhealth.bookings.pracsuite.com/guest" className="home-header-cta" onClick={closeMenu}>Book Now</Link>
+        <Link href="/referral" className="home-header-cta" onClick={closeMenu}>Referral</Link>
+      </div>
 
       <button
         className={`home-hamburger ${isMenuOpen ? "open" : ""}`}
