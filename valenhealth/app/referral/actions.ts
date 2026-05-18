@@ -1,6 +1,7 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { headers } from "next/headers";
 import { sendMetaCapiEvent } from "../../lib/meta-capi";
 
 export type FormState = {
@@ -63,77 +64,75 @@ export async function sendReferralEmail(
     });
   }
 
-  // ── Build HTML email body ────────────────────────────────────────────────
-  const html = `
-    <div style="font-family: Arial, sans-serif; max-width: 700px; margin: 0 auto; color: #222;">
-      <h2 style="background:#1a1a2e;color:#fff;padding:20px;margin:0;border-radius:6px 6px 0 0;">
-        New Referral — Valen Health
-      </h2>
+  // ── Extract Metadata ──────────────────────────────────────────────────────
+  const headersList = await headers();
+  const userAgent = headersList.get("user-agent") || "Unknown";
+  const forwardedFor = headersList.get("x-forwarded-for");
+  const remoteIp = forwardedFor ? forwardedFor.split(",")[0].trim() : (headersList.get("x-real-ip") || "Unknown");
 
-      <div style="border:1px solid #ddd;border-top:none;padding:24px;border-radius:0 0 6px 6px;">
+  const now = new Date();
+  const dateStr = now.toLocaleDateString("en-US", {
+    timeZone: "Australia/Perth",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+  const timeStr = now.toLocaleTimeString("en-US", {
+    timeZone: "Australia/Perth",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true
+  }).toLowerCase();
 
-        <h3 style="color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:6px;">Your Details</h3>
-        <table style="width:100%;border-collapse:collapse;">
-          <tr><td style="padding:6px 0;color:#555;width:200px;">Full Name</td><td><strong>${yourName}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Email</td><td><strong>${yourEmail}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Mobile</td><td><strong>${yourMobile}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Scheme</td><td><strong>${scheme}</strong></td></tr>
-        </table>
+  // ── Build Plain Text Body EXACTLY matching template ──────────────────────
+  const textBody = `Your Full Name: ${yourName}
+Your Email: ${yourEmail}
+Your Mobile: ${yourMobile}
+Please Select relevant Scheme: ${scheme}
 
-        <h3 style="color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:6px;margin-top:24px;">Client Details</h3>
-        <table style="width:100%;border-collapse:collapse;">
-          <tr><td style="padding:6px 0;color:#555;width:200px;">Full Name</td><td><strong>${clientName}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Email</td><td><strong>${clientEmail}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Mobile</td><td><strong>${clientMobile}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Claim Number</td><td><strong>${claimNumber}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Injury / Condition</td><td><strong>${injuryCondition}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;vertical-align:top;">Current Certification</td><td><strong>${certification}</strong></td></tr>
-        </table>
+Clients Full Name: ${clientName}
+Clients Email: ${clientEmail}
+Clients Mobile: ${clientMobile}
+Claim Number: ${claimNumber}
+Injury Condition: ${injuryCondition}
+Current Certification: ${certification}
 
-        <h3 style="color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:6px;margin-top:24px;">Agent / Insurance Details</h3>
-        <table style="width:100%;border-collapse:collapse;">
-          <tr><td style="padding:6px 0;color:#555;width:200px;">Company</td><td><strong>${agentCompany}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Contact Person</td><td><strong>${agentContact}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Email</td><td><strong>${agentEmail}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Phone</td><td><strong>${agentPhone}</strong></td></tr>
-        </table>
+Name Of The Company: ${agentCompany}
+Contact Person: ${agentContact}
+Email: ${agentEmail || ""}
+Phone: ${agentPhone}
 
-        <h3 style="color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:6px;margin-top:24px;">Treating Doctor Details</h3>
-        <table style="width:100%;border-collapse:collapse;">
-          <tr><td style="padding:6px 0;color:#555;width:200px;">Doctor Name</td><td><strong>${doctorName}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Practice Name</td><td><strong>${practiceName}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Email</td><td><strong>${doctorEmail}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Phone</td><td><strong>${doctorPhone}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Address</td><td><strong>${streetAddress}, ${city}, ${state} ${postcode}</strong></td></tr>
-        </table>
+Doctor Name: ${doctorName}
+Name of Practice: ${practiceName}
+Email: ${doctorEmail || ""}
+Phone: ${doctorPhone}
+Street Address: ${streetAddress || ""}
+City: ${city || ""}
+State: ${state || ""}
+Postcode: ${postcode || ""}
 
-        <h3 style="color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:6px;margin-top:24px;">Employer Details</h3>
-        <table style="width:100%;border-collapse:collapse;">
-          <tr><td style="padding:6px 0;color:#555;width:200px;">Company</td><td><strong>${employerCompany}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Contact Person</td><td><strong>${employerContact}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Email</td><td><strong>${employerEmail}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Phone</td><td><strong>${employerPhone}</strong></td></tr>
-        </table>
+Name of Company: ${employerCompany}
+Contact Person: ${employerContact}
+Email: ${employerEmail}
+Phone: ${employerPhone}
 
-        <h3 style="color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:6px;margin-top:24px;">Other Allied Health</h3>
-        <table style="width:100%;border-collapse:collapse;">
-          <tr><td style="padding:6px 0;color:#555;width:200px;">Company</td><td><strong>${alliedCompany}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Contact Person</td><td><strong>${alliedContact}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Email</td><td><strong>${alliedEmail}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#555;">Phone</td><td><strong>${alliedPhone}</strong></td></tr>
-        </table>
+Name of Company: ${alliedCompany}
+Contact Person: ${alliedContact}
+Email: ${alliedEmail}
+Phone: ${alliedPhone}
 
-        ${additionalInfo ? `
-        <h3 style="color:#1a1a2e;border-bottom:2px solid #e0e0e0;padding-bottom:6px;margin-top:24px;">Additional Comments / Information</h3>
-        <p style="white-space:pre-line;">${additionalInfo}</p>
-        ` : ""}
+Fill Out/Attach Information: ${additionalInfo || ""}
 
-        <p style="margin-top:32px;font-size:12px;color:#999;">
-          Submitted via Valen Health Referral Form
-        </p>
-      </div>
-    </div>
-  `;
+
+---
+
+Date: ${dateStr}
+Time: ${timeStr}
+Page URL: https://valenhealth.com.au/make-a-referral/
+User Agent: ${userAgent}
+Remote IP: ${remoteIp}`;
+
+  const htmlBody = `<pre style="font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; white-space: pre-wrap; margin: 0; padding: 24px; color: #222; background: #ffffff;">${textBody}</pre>`;
 
   // ── Send via Nodemailer ──────────────────────────────────────────────────
   try {
@@ -154,7 +153,8 @@ export async function sendReferralEmail(
       to: process.env.REFERRAL_TO_EMAIL,
       replyTo: yourEmail,
       subject: `New Referral from ${yourName}`,
-      html,
+      text: textBody,
+      html: htmlBody,
       attachments,
     });
 
