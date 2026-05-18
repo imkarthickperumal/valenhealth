@@ -146,7 +146,7 @@ export async function sendReferralEmail(
       },
       connectionTimeout: 8000, // 8 seconds
       timeout: 8000,           // 8 seconds
-    });
+    } as any);
 
     await transporter.sendMail({
       from: `"Valen Health Referrals" <${process.env.SMTP_USER}>`,
