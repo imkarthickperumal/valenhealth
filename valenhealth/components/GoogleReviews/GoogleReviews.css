@@ -54,9 +54,9 @@
 .reviews-cta {
   display: inline-block;
   padding: 14px 28px;
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #ffffff;
+  color: var(--black, #111111);
+  border: 1px solid #ffffff;
   border-radius: 50px;
   font-family: var(--font-display);
   font-size: 13px;
@@ -68,11 +68,11 @@
 }
 
 .reviews-cta:hover {
-  background-color: #ffffff;
-  color: var(--black, #111111);
-  border-color: #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.05);
 }
 
 .reviews-cta:active {
