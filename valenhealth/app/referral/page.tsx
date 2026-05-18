@@ -65,7 +65,7 @@ export default function ReferralPage() {
                 </div>
               )}
 
-              <form ref={formRef} className="referral-form" action={formAction} encType="multipart/form-data">
+              <form ref={formRef} className="referral-form" action={formAction}>
 
                 {/* YOUR DETAILS */}
                 <div className="referral-section">
