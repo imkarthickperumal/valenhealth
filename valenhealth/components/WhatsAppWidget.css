@@ -1,0 +1,366 @@
+/* WhatsApp Floating Widget Containers */
+.wa-widget-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  font-family: var(--font-body);
+}
+
+.wa-trigger-wrapper {
+  position: relative;
+}
+
+/* Floating Pulsing Trigger Button */
+.wa-trigger-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  z-index: 10;
+}
+
+.wa-trigger-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
+}
+
+.wa-trigger-btn:active {
+  transform: scale(0.95);
+}
+
+.wa-trigger-btn.active {
+  background-color: var(--black, #111111);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Close & Open SVG Transitions */
+.wa-icon-message, .wa-icon-close {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.wa-trigger-btn.active .wa-icon-message {
+  transform: rotate(90deg) scale(0);
+  opacity: 0;
+  position: absolute;
+}
+
+.wa-trigger-btn:not(.active) .wa-icon-close {
+  transform: rotate(-90deg) scale(0);
+  opacity: 0;
+  position: absolute;
+}
+
+/* Pulsating Animation Rings */
+.wa-pulse-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 2px solid #25D366;
+  opacity: 0;
+  z-index: -1;
+  animation: wa-pulsate 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.wa-pulse-ring.delay {
+  animation-delay: 0.8s;
+}
+
+@keyframes wa-pulsate {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Cute Attention-Grabbing Tooltip Banner */
+.wa-tooltip {
+  position: absolute;
+  bottom: 76px;
+  right: 4px;
+  width: 260px;
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  animation: wa-slideUpTooltip 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+  z-index: 9;
+}
+
+.wa-tooltip p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--black, #111111);
+  margin: 0;
+  font-weight: 500;
+}
+
+.wa-tooltip-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 16px;
+  color: #bbb;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.wa-tooltip-close:hover {
+  color: #555;
+}
+
+@keyframes wa-slideUpTooltip {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Chat Window Box Layout */
+.wa-chat-box {
+  position: absolute;
+  bottom: 84px;
+  right: 0;
+  width: 350px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px) scale(0.95);
+  transform-origin: bottom right;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+}
+
+.wa-chat-box.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Chat Box Header Section */
+.wa-chat-header {
+  background-color: var(--black, #111111);
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.wa-avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wa-avatar-wrapper {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+
+.wa-brand-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ffffff;
+  object-fit: contain;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 4px;
+}
+
+.wa-online-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 11px;
+  height: 11px;
+  background-color: #25D366;
+  border: 2px solid var(--black, #111111);
+  border-radius: 50%;
+  animation: wa-blink 1.8s infinite;
+}
+
+@keyframes wa-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.wa-brand-info h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 2px 0;
+  letter-spacing: 0.02em;
+}
+
+.wa-brand-info p {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.wa-close-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.wa-close-btn:hover {
+  color: #ffffff;
+}
+
+/* Chat Box Content Area (WhatsApp Soft Pattern Background) */
+.wa-chat-body {
+  background-color: #efeae2;
+  padding: 24px 20px;
+  position: relative;
+  max-height: 280px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Add custom WhatsApp background grid lines pattern overlay */
+.wa-chat-body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.08;
+  background-image: radial-gradient(var(--black) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+/* Chat bubble styling */
+.wa-bubble-container {
+  display: flex;
+  position: relative;
+  max-width: 88%;
+}
+
+.wa-bubble-arrow {
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #ffffff;
+  border-left: 10px solid transparent;
+}
+
+.wa-chat-bubble {
+  background: #ffffff;
+  padding: 12px 14px;
+  border-radius: 0 14px 14px 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.wa-bubble-sender {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--orange, #ed6c15);
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.wa-bubble-text {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #333333;
+  margin: 0 0 6px 0;
+}
+
+.wa-bubble-time {
+  font-size: 10px;
+  color: #999999;
+  display: block;
+  text-align: right;
+}
+
+/* Chat Box CTA Bottom Action Row */
+.wa-chat-footer {
+  padding: 20px;
+  background: #ffffff;
+  border-top: 1px solid #f0f0f0;
+}
+
+.wa-action-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #25D366;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.25);
+  transition: all 0.25s ease;
+}
+
+.wa-action-btn:hover {
+  background-color: #20ba59;
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
+  transform: translateY(-1px);
+}
+
+.wa-action-btn:active {
+  transform: translateY(1px);
+}
+
+/* Responsive adjustment for Mobile screens */
+@media (max-width: 480px) {
+  .wa-widget-container {
+    bottom: 16px;
+    right: 16px;
+  }
+  .wa-chat-box {
+    width: calc(100vw - 32px);
+    right: 0;
+    bottom: 76px;
+  }
+}

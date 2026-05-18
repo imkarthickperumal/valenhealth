@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { League_Spartan, Open_Sans, Playfair_Display, Fraunces } from "next/font/google";
 import "./globals.css";
 import MetaPixel from "../components/MetaPixel";
+import WhatsAppWidget from "../components/WhatsAppWidget";
 
 const leagueSpartan = League_Spartan({
   variable: "--font-league-spartan",
@@ -48,6 +49,7 @@ export default function RootLayout({
       <body>
         <MetaPixel />
         {children}
+        <WhatsAppWidget />
       </body>
     </html>
   );
