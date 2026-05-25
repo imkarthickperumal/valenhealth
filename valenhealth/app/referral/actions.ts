@@ -3,6 +3,7 @@
 import nodemailer from "nodemailer";
 import { headers } from "next/headers";
 import { sendMetaCapiEvent } from "../../lib/meta-capi";
+import { buildReferralEmailHtml } from "../../lib/email-templates";
 
 export type FormState = {
   status: "idle" | "success" | "error";
@@ -84,7 +85,7 @@ export async function sendReferralEmail(
     hour12: true
   }).toLowerCase();
 
-  // ── Build Plain Text Body EXACTLY matching template ──────────────────────
+  // ── Build Plain Text Body (fallback) ──────────────────────────────────────
   const textBody = `Your Full Name: ${yourName}
 Your Email: ${yourEmail}
 Your Mobile: ${yourMobile}
@@ -132,7 +133,44 @@ Page URL: https://valenhealth.com.au/make-a-referral/
 User Agent: ${userAgent}
 Remote IP: ${remoteIp}`;
 
-  const htmlBody = `<pre style="font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; white-space: pre-wrap; margin: 0; padding: 24px; color: #222; background: #ffffff;">${textBody}</pre>`;
+  // Build professionally styled HTML email
+  const htmlBody = buildReferralEmailHtml({
+    yourName,
+    yourEmail,
+    yourMobile,
+    scheme,
+    clientName,
+    clientEmail,
+    clientMobile,
+    claimNumber,
+    injuryCondition,
+    certification,
+    agentCompany,
+    agentContact,
+    agentEmail,
+    agentPhone,
+    doctorName,
+    practiceName,
+    doctorEmail,
+    doctorPhone,
+    streetAddress,
+    city,
+    state,
+    postcode,
+    employerCompany,
+    employerContact,
+    employerEmail,
+    employerPhone,
+    alliedCompany,
+    alliedContact,
+    alliedEmail,
+    alliedPhone,
+    additionalInfo,
+    date: dateStr,
+    time: timeStr,
+    userAgent,
+    remoteIp,
+  });
 
   // ── Send via Nodemailer ──────────────────────────────────────────────────
   try {

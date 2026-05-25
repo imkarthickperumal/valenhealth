@@ -3,6 +3,7 @@
 import nodemailer from "nodemailer";
 import { headers } from "next/headers";
 import { sendMetaCapiEvent } from "../../lib/meta-capi";
+import { buildContactEmailHtml } from "../../lib/email-templates";
 
 export type ContactFormState = {
   status: "idle" | "success" | "error";
@@ -58,7 +59,17 @@ Page URL: https://valenhealth.com.au/contact/
 User Agent: ${userAgent}
 Remote IP: ${remoteIp}`;
 
-  const htmlBody = `<pre style="font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; white-space: pre-wrap; margin: 0; padding: 24px; color: #222; background: #ffffff;">${textBody}</pre>`;
+  // Build professionally styled HTML email
+  const htmlBody = buildContactEmailHtml({
+    name,
+    phone,
+    email,
+    message,
+    date: dateStr,
+    time: timeStr,
+    userAgent,
+    remoteIp,
+  });
 
   try {
     const transporter = nodemailer.createTransport({
