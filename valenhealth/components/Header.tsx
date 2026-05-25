@@ -7,44 +7,59 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About Us" },
+    { href: "/gym", label: "Gym" },
+    { href: "/exercise-physiology", label: "Exercise Physiology" },
+    { href: "/contact", label: "Contact Us" },
+  ];
+
   return (
-    <header className="relative">
-      <Link href="/" style={{ textDecoration: "none" }} onClick={closeMenu}>
-        <svg className="logo-svg" viewBox="0 0 260 60" xmlns="http://www.w3.org/2000/svg">
-          <polygon className="v-body" points="4,4 26,4 42,52 28,52"/>
-          <polygon className="v-body" points="44,4 58,4 42,52 34,52"/>
-          <polygon className="v-body" points="50,0 62,0 46,32 38,32"/>
-          <polygon className="v-body" points="62,2 68,2 58,22 53,22"/>
-          <text className="wordmark" x="86" y="39" fontSize="26" fill="#FFFFFF">VALEN HEALTH</text>
-        </svg>
+    <header className="sub-header">
+      <Link href="/" className="sub-logo" onClick={closeMenu}>
+        <img src="/images/logo/3.png" alt="Valen Health" style={{ height: '56px', width: 'auto', display: 'block' }} />
       </Link>
-      
-      {/* Desktop & Mobile Nav */}
-      <nav 
-        className={`nav-menu ${isMenuOpen ? 'mobile-open' : ''}`}
-      >
-        <Link href="/" className={pathname === '/' ? 'active' : ''} onClick={closeMenu}>HOME</Link>
-        <Link href="/#gym" onClick={closeMenu}>GYM</Link>
-        <Link href="/exercise-physiology" className={pathname === '/exercise-physiology' ? 'active' : ''} onClick={closeMenu}>EXERCISE PHYSIOLOGY</Link>
-        <Link href="/#memberships" onClick={closeMenu}>MEMBERSHIPS</Link>
-        <Link href="/about" className={pathname === '/about' ? 'active' : ''} onClick={closeMenu}>ABOUT</Link>
-        <Link href="/#contact" onClick={closeMenu}>CONTACT</Link>
-        <Link className="mobile-only-link" href="#" onClick={closeMenu}>REFER →</Link>
+
+      <nav className={`sub-nav ${isMenuOpen ? "mobile-open" : ""}`}>
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={pathname === link.href ? "active" : ""}
+            onClick={closeMenu}
+          >
+            {link.label}
+          </Link>
+        ))}
+        <Link href="/contact#contact-form" className="mobile-cta" onClick={closeMenu}>
+          Book a Tour
+        </Link>
+        <Link href="/gym#memberships" className="mobile-cta" onClick={closeMenu}>
+          Join Now
+        </Link>
+        <Link href="/referral" className="mobile-cta" onClick={closeMenu}>
+          Referral
+        </Link>
       </nav>
-      
-      <div className="header-cta">
-        <Link className="btn btn-ghost-w" href="#">REFER →</Link>
-        <Link className="btn btn-outline-white" href="/#book">BOOK NOW</Link>
-        <Link className="btn btn-orange" href="/join">JOIN NOW</Link>
+
+      <div className="header-actions">
+        <Link href="/contact#contact-form" className="sub-header-cta" onClick={closeMenu}>
+          Book a Tour
+        </Link>
+        <Link href="/gym#memberships" className="sub-header-cta" onClick={closeMenu}>
+          Join Now
+        </Link>
+        <Link href="/referral" className="sub-header-cta" onClick={closeMenu}>
+          Referral
+        </Link>
       </div>
 
-      {/* Hamburger Icon for Mobile */}
-      <button 
-        className={`mobile-menu-btn ${isMenuOpen ? 'open' : ''}`}
+      <button
+        className={`sub-hamburger ${isMenuOpen ? "open" : ""}`}
         onClick={toggleMenu}
         aria-label="Toggle Menu"
       >

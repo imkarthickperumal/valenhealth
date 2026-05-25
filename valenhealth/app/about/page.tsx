@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import ReadyToStart from "../../components/ReadyToStart/ReadyToStart";
 import "./about.css";
 
 export default function AboutPage() {
@@ -13,13 +14,13 @@ export default function AboutPage() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('about-visible');
+          entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     
-    document.querySelectorAll('.about-reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     return () => {
       observer.disconnect();
@@ -81,7 +82,7 @@ export default function AboutPage() {
             <div className="about-hero-eyebrow">About Valen Health</div>
             <h1 className="about-hero-title about-hero-title--soft">
               A clinic and a gym,<br />
-              <span className="about-accent">under one roof.</span>
+              <span className="accent">under one roof.</span>
             </h1>
           </div>
         </section>
@@ -89,22 +90,22 @@ export default function AboutPage() {
         {/* 1. ABOUT US */}
         <section className="about-us" id="about-us">
           <div className="about-us-inner">
-            <div className="about-reveal">
-              <h2 className="about-section-heading">About <span className="about-italic-orange">us.</span></h2>
+            <div className="reveal">
+              <h2 className="section-heading">About <span className="italic-orange">us.</span></h2>
             </div>
-            <div className="about-reveal">
+            <div className="reveal">
               <div className="about-us-body">
                 <p>Valen Health is Spearwood&apos;s <strong>first and only</strong> science-backed gym and Exercise Physiology clinic — purpose-built to bridge the gap between traditional healthcare and everyday fitness.</p>
                 <p>We combine the clinical expertise of accredited Exercise Physiologists with a modern, fully equipped 24/7 gym to create a complete health ecosystem designed around long-term vitality.</p>
                 <p>It&apos;s not a gym with a clinic attached. It&apos;s not a clinic with some equipment in the corner. It&apos;s one continuous environment — built so your assessment, your program, and your training all live under the same roof, supported by the same team.</p>
                 <div className="about-stats">
                   <div>
-                    <div className="about-stat-num">24/7</div>
-                    <div className="about-stat-label">Gym access<br />for members</div>
+                    <div className="stat-num">24/7</div>
+                    <div className="stat-label">Gym access<br />for members</div>
                   </div>
                   <div>
-                    <div className="about-stat-num">1st</div>
-                    <div className="about-stat-label">Of its kind<br />in Spearwood</div>
+                    <div className="stat-num">1st</div>
+                    <div className="stat-label">Of its kind<br />in Spearwood</div>
                   </div>
                 </div>
               </div>
@@ -114,10 +115,10 @@ export default function AboutPage() {
 
         {/* 2. OUR MISSION */}
         <section className="about-mission" id="our-mission">
-          <div className="about-mission-inner about-reveal">
-            <h2 className="about-mission-title">Our <span style={{ fontFamily: "var(--font-fraunces), 'Georgia', serif", fontStyle: 'italic', fontWeight: 400, color: 'var(--orange)', textTransform: 'lowercase' }}>mission.</span></h2>
+          <div className="about-mission-inner reveal">
+            <h2 className="about-mission-title">Our <span className="italic-orange">mission.</span></h2>
             <p className="about-mission-statement">
-              To transform the way people <span className="about-italic-orange">move, live,</span> and age.
+              To transform the way people <span className="italic-orange">move, live,</span> and age.
             </p>
             <p className="about-mission-sub">
               Through evidence-based practice, personalised care, and a genuine understanding of the individual — not generic programs or short-term fixes.
@@ -128,31 +129,31 @@ export default function AboutPage() {
         {/* 3. HOW WE DO IT */}
         <section className="about-how" id="how-we-do-it">
           <div className="about-how-inner">
-            <div className="about-how-header about-reveal">
-              <h2 className="about-section-heading">How we <span className="about-italic-orange">do it.</span></h2>
+            <div className="about-how-header reveal">
+              <h2 className="section-heading">How we <span className="italic-orange">do it.</span></h2>
               <p className="about-how-intro" style={{ marginTop: '24px' }}>
                 At Valen Health, we don&apos;t guess — we assess. Every client journey begins with a comprehensive clinical movement screening using <strong>VALD technology</strong> — the same standard of testing used by elite sporting organisations and hospital rehabilitation programs worldwide. From there, your accredited Exercise Physiologist builds a personalised, science-led program around your body, your limitations, and your goals.
               </p>
             </div>
 
-            <div className="about-equation about-reveal">
-              <div className="about-eq-term">
-                <div className="about-eq-term-word">Assessment</div>
+            <div className="about-equation reveal">
+              <div className="eq-term">
+                <div className="eq-term-word">Assessment</div>
               </div>
-              <div className="about-eq-op">+</div>
-              <div className="about-eq-term">
-                <div className="about-eq-term-word">Evidence</div>
+              <div className="eq-op">+</div>
+              <div className="eq-term">
+                <div className="eq-term-word">Evidence</div>
               </div>
-              <div className="about-eq-op">+</div>
-              <div className="about-eq-term">
-                <div className="about-eq-term-word">Support</div>
+              <div className="eq-op">+</div>
+              <div className="eq-term">
+                <div className="eq-term-word">Support</div>
               </div>
-              <div className="about-eq-op">=</div>
-              <div className="about-eq-result">Lifelong<br />Results</div>
+              <div className="eq-op">=</div>
+              <div className="eq-result">Lifelong<br />Results</div>
             </div>
 
             <div className="about-how-services">
-              <aside className="about-how-services-aside about-reveal">
+              <aside className="about-how-services-aside reveal">
                 <h3 className="about-how-services-title">All under<br />one roof.</h3>
                 <p className="about-how-services-sub">From your first clinical assessment to your hundredth training session — every step of your health journey lives in a single space, backed by a single team.</p>
               </aside>
@@ -161,7 +162,7 @@ export default function AboutPage() {
                 {services.map((service, index) => (
                   <li 
                     key={index} 
-                    className="about-service-item about-reveal" 
+                    className="about-service-item reveal" 
                     style={{ transitionDelay: `${index * 0.05}s` }}
                   >
                     <div className="about-service-text">{service}</div>
@@ -175,23 +176,23 @@ export default function AboutPage() {
         {/* 4. WHY WE DO IT */}
         <section className="about-why" id="why-we-do-it">
           <div className="about-why-inner">
-            <div className="about-reveal">
+            <div className="reveal">
               <h2 className="about-why-headline">
-                Why we <span className="about-italic-orange">do it.</span>
+                Why we <span className="italic-orange">do it.</span>
               </h2>
             </div>
 
-            <p className="about-why-intro about-reveal">
+            <p className="about-why-intro reveal">
               Most clinics treat you for a short time, then discharge you with no plan. Most gyms give you access but no guidance, measurement, or proof of success. Valen Health was built to fix this — because we believe the people of Spearwood deserve a place where clinical expertise and everyday fitness aren&apos;t two separate worlds.
             </p>
 
             <div className="about-why-compare">
-              <div className="about-why-col about-reveal">
+              <div className="about-why-col reveal">
                 <div className="about-why-col-label">The Clinic Problem</div>
                 <h3 className="about-why-col-title">Treated, then released.</h3>
                 <p className="about-why-col-body">Most clinics treat you for a short time, then discharge you with no plan, no continued support, and no clear path forward. The acute issue resolves — but long-term capacity is left to chance.</p>
               </div>
-              <div className="about-why-col about-reveal">
+              <div className="about-why-col reveal">
                 <div className="about-why-col-label">The Gym Problem</div>
                 <h3 className="about-why-col-title">Access, not guidance.</h3>
                 <p className="about-why-col-body">Most gyms give you equipment but no expert eye, no measurement, and no proof of success. You&apos;re left to figure it out alone — or hope a generic program works for your unique body.</p>
@@ -203,8 +204,8 @@ export default function AboutPage() {
         {/* 5. FAQ */}
         <section className="about-faq" id="faq">
           <div className="about-faq-inner">
-            <div className="about-faq-header about-reveal">
-              <h2 className="about-section-heading">Frequently asked<br /><span className="about-italic-orange">questions.</span></h2>
+            <div className="about-faq-header reveal">
+              <h2 className="section-heading">Frequently asked<br /><span className="italic-orange">questions.</span></h2>
             </div>
 
             <div className="about-faq-list">
@@ -212,16 +213,16 @@ export default function AboutPage() {
                 const numStr = ["i", "ii", "iii", "iv", "v"][index];
                 const isOpen = openFaqIndex === index;
                 return (
-                  <div key={index} className="about-reveal">
+                  <div key={index} className="reveal">
                     <div className={`about-faq-item ${isOpen ? 'open' : ''}`}>
                       <button 
                         className="about-faq-question" 
                         aria-expanded={isOpen}
                         onClick={() => toggleFaq(index)}
                       >
-                        <span className="about-faq-num">{numStr}.</span>
-                        <span className="about-faq-q-text">{faq.q}</span>
-                        <span className="about-faq-toggle" aria-hidden="true"></span>
+                        <span className="faq-num">{numStr}.</span>
+                        <span className="faq-q-text">{faq.q}</span>
+                        <span className="faq-toggle" aria-hidden="true"></span>
                       </button>
                       <div className="about-faq-answer">
                         <div className="about-faq-answer-body">
@@ -237,21 +238,7 @@ export default function AboutPage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="about-final-cta">
-          <div className="about-final-cta-inner">
-            <h2 className="about-final-cta-title">
-              Ready to <span className="about-italic">start?</span>
-            </h2>
-            <p className="about-final-cta-body">
-              Pick whichever first step feels right — we&apos;ll take it from there.
-            </p>
-            <div className="about-final-cta-actions">
-              <Link href="/#book" className="about-btn-primary">Book a Tour</Link>
-              <Link href="/exercise-physiology" className="about-btn-secondary">Book an Assessment</Link>
-              <Link href="/join" className="about-btn-secondary">Find Out About Memberships</Link>
-            </div>
-          </div>
-        </section>
+        <ReadyToStart />
       </main>
 
       <Footer />

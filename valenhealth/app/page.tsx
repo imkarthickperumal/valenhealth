@@ -1,321 +1,275 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import HomeHeader from "../components/HomeHeader";
+import HomeFooter from "../components/HomeFooter";
 import Link from "next/link";
+import "./home.css";
+
 export default function Home() {
   return (
     <>
+      <HomeHeader />
 
+      {/* HERO */}
+      <section className="hp-hero">
+        <div className="hp-hero-bg-glow"></div>
+        <div className="hp-hero-wordmark">VALEN HEALTH VALEN</div>
+        <div className="hp-hero-inner">
+          <div className="hp-hero-card">
+            <div className="pre-headline">
+              <span className="rule"></span>
+              <span>Spearwood&apos;s Health Ecosystem</span>
+            </div>
+            <h1>Move with<br /><span className="black">purpose.</span></h1>
+            <p className="lede">Clinical exercise physiology and a 24/7 gym, working as one. Train freely. Recover precisely. Build a stronger you — under one roof.</p>
+            <div className="meta-row">
+              <div className="meta-item">
+                <div className="icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#ED6C15" strokeWidth="2"/><path d="M12 7v5l3 3" stroke="#ED6C15" strokeWidth="2" strokeLinecap="round"/></svg>
+                </div>
+                <span className="text">24/7 Gym</span>
+              </div>
+              <div className="meta-divider"></div>
+              <div className="meta-item">
+                <div className="icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#ED6C15" strokeWidth="2" strokeLinecap="round"/></svg>
+                </div>
+                <span className="text">Clinical EP</span>
+              </div>
+              <div className="meta-divider"></div>
+              <div className="meta-item">
+                <div className="icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 12 L9 18 L21 6" stroke="#ED6C15" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </div>
+                <span className="text">VALD Testing</span>
+              </div>
+            </div>
+            <div className="hp-hero-buttons">
+              <Link href="/contact#contact-form" className="btn btn-orange">Book a Tour →</Link>
+              <Link href="/contact" className="btn btn-black-outline">Book an EP Consultation</Link>
+            </div>
+          </div>
 
-<div className="ann">⬢ v8 · VALEN acronym · $17.88 · unified model · VALD performance</div>
-
-{/*  HEADER — BLACK  */}
-<Header />
-
-{/*  HERO  */}
-<section className="hero" id="home">
-  <div className="hero-inner">
-    <div>
-      <div className="kicker"><span className="dot"></span> V·A·L·E·N — Vitality And Longevity Exercise Network</div>
-      <h1>Clinical care. Daily training.<br /><span className="serif-i">Measurable progress.</span></h1>
-      <p className="hero-sub">Spearwood&apos;s 24/7 gym, Exercise Physiology clinic and performance lab — all under one roof.</p>
-      <div className="hero-ctas">
-        <Link className="btn btn-orange btn-xl" href="/join">Join Now · From $17.88/wk →</Link>
-        <Link className="btn btn-outline-white btn-xl" href="#book">Book a Free Tour</Link>
-      </div>
-      <div className="hero-reassure">
-        <span><span className="check">✓</span> 7-day free trial</span>
-        <span><span className="check">✓</span> No card required</span>
-        <span><span className="check">✓</span> No lock-in</span>
-      </div>
-    </div>
-    <div className="hero-right">
-      <div className="hero-photo">COMMUNITY · MEMBERS TRAINING · REAL PHOTO HERE</div>
-      <div className="quick-book">
-        <div className="qb-label">Quick Book</div>
-        <div className="qb-title">Get started in one click.</div>
-        <div className="qb-options">
-          <a className="qb-btn" href="#"><span>Free Trial</span><span className="arrow">→</span></a>
-          <a className="qb-btn" href="#"><span>EP Consult</span><span className="arrow">→</span></a>
-          <a className="qb-btn" href="#"><span>VALD Scan</span><span className="arrow">→</span></a>
-          <a className="qb-btn" href="#"><span>Tour the Gym</span><span className="arrow">→</span></a>
+          <aside className="hp-hero-side">
+            <div className="hp-hero-side-tag">
+              <span className="pulse"></span>
+              <span>Now Open · 24/7</span>
+            </div>
+            <div className="hp-hero-side-quote">
+              <p className="text">&ldquo;Fitness should be purposeful — a journey towards confidence, resilience, and self-connection.&rdquo;</p>
+              <p className="attr">— Our Philosophy</p>
+            </div>
+          </aside>
         </div>
-        <div className="qb-avail"><span className="green"></span> Next EP slot · <b>Thu 24 Apr 10:30 AM</b></div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div className="hp-hero-scroll">
+          <span>Scroll</span>
+          <span className="line"></span>
+        </div>
+      </section>
 
-{/*  ORANGE STATS BAR  */}
-<section className="stats stats-2col">
-  <div className="stat"><span className="stat-num">24/7</span><span className="stat-label">Gym Access</span></div>
-  <div className="stat"><span className="stat-num">3-in-1</span><span className="stat-label">Gym · Clinic · Lab</span></div>
-</section>
+      {/* STATS BAR */}
+      <section className="hp-stats-bar">
+        <div className="hp-stat"><div className="value">24/7</div><div className="label">Gym Access</div></div>
+        <div className="hp-stat"><div className="value">EP</div><div className="label">Exercise Physiology</div></div>
+        <div className="hp-stat"><div className="value">VALD</div><div className="label">Performance Testing</div></div>
+        <div className="hp-stat"><div className="value">100%</div><div className="label">Evidence-Based</div></div>
+      </section>
 
-{/*  TRUST STRIP  */}
-<section className="trust-strip">
-  <div className="trust-strip-inner">
-    <div className="trust-item"><span className="ico">✓</span> ESSA Accredited EPs</div>
-    <div className="trust-item"><span className="ico">✓</span> Medicare Provider</div>
-    <div className="trust-item"><span className="ico">✓</span> WorkCover WA Approved</div>
-    <div className="trust-item"><span className="ico">✓</span> NDIS Registered</div>
-    <div className="trust-item"><span className="ico">✓</span> DVA Accepted</div>
-  </div>
-</section>
+      {/* BELIEF */}
+      <section className="hp-belief">
+        <div className="hp-belief-grid">
+          <div className="hp-belief-image">
+            <img src="/images/whatwebelieve.jpg" alt="Our Philosophy" />
+          </div>
+          <div className="hp-belief-content">
+            <span className="eyebrow">— What We Believe</span>
+            <p className="hp-belief-attribution">At Valen Health, we believe</p>
+            <h2>movement is the most underprescribed medicine in healthcare.</h2>
+            <p className="sub">That&apos;s why we built Valen Health — to bridge the gap between clinic and community, and put movement back where it belongs: at the centre of how people heal, recover, and live longer, better lives.</p>
+            <div className="hp-belief-cta">
+              <Link href="/about" className="btn btn-black">Read our story</Link>
+              <span className="read-time">2 min read</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-{/*  SOCIAL PROOF  */}
-<section className="social-proof">
-  <div className="sp-line">
-    <span className="sp-stars">★ ★ ★ ★ ★</span>
-    <span><b>5.0</b> · 48 Google reviews</span>
-  </div>
-</section>
+      {/* THREE PATHS */}
+      <section className="hp-paths-section">
+        <div className="hp-paths-header">
+          <div className="hp-paths-eyebrow">
+            <span className="rule"></span>
+            <span className="eyebrow">Multiple Memberships</span>
+            <span className="rule"></span>
+          </div>
+          <h2>Whatever your goals.<br /><span className="accent">No matter your journey.</span></h2>
+          <p className="lede">Whether you&apos;re here to train, recover, or both — every pathway leads to the same outcome: a stronger, more capable, more confident you.</p>
+        </div>
 
-{/*  3 DOORS  */}
-<section className="light" id="gym">
-  <div className="section-inner">
-    <div className="section-head">
-      <span className="eyebrow">Where To Start</span>
-      <h2>Three doors. <em>One roof.</em></h2>
-      <p>Train daily, rehab an injury, or enhance performance. Pick the door that fits today — every Valen person ends up using all three.</p>
-    </div>
-    <div className="doors">
-      <div className="door">
-        <div className="door-ico">◉</div>
-        <h3>I want to <em>train.</em></h3>
-        <p>Full 24/7 gym access. Commercial-grade equipment. A community that shows up for you.</p>
-        <ul>
-          <li>24/7 PIN-code access</li>
-          <li>Every piece of gear · no hidden fees</li>
-          <li>EPs on-site when you want guidance</li>
-          <li>No lock-in · cancel anytime</li>
-        </ul>
-        <div className="price-tag">From $17.88/week · less than $3 a day</div>
-        <Link className="btn btn-orange btn-full" href="/join">Start Free Trial →</Link>
-      </div>
-      <div className="door featured">
-        <div className="badge">Most Popular</div>
-        <div className="door-ico">◆</div>
-        <h3>I want <em>both.</em></h3>
-        <p>Gym access plus Exercise Physiology support. Train daily with a clinical programme behind you.</p>
-        <ul>
-          <li>Everything in Access</li>
-          <li>Regular 1-on-1 EP consultations</li>
-          <li>VALD assessment included</li>
-          <li>Personalised programme · re-tested</li>
-          <li>GP progress reports</li>
-        </ul>
-        <div className="price-tag" style={{ color: "var(--orange)" }}>Standard membership</div>
-        <Link className="btn btn-orange btn-full" href="/join">Explore Standard →</Link>
-      </div>
-      <div className="door">
-        <div className="door-ico">✚</div>
-        <h3>I need <em>support.</em></h3>
-        <p>Evidence-based care for chronic conditions, injury rehab, and WorkCover recovery.</p>
-        <ul>
-          <li>Medicare CDM · 5 bulk-billed sessions</li>
-          <li>WorkCover WA · NDIS · DVA</li>
-          <li>VALD clinical assessment</li>
-          <li>GP progress reports</li>
-        </ul>
-        <div className="price-tag">From $135 · rebated with referral</div>
-        <Link className="btn btn-outline btn-full" href="/exercise-physiology">Book EP Consult →</Link>
-      </div>
-    </div>
-  </div>
-</section>
+        <div className="hp-feature-strip-wrap">
+          <div className="hp-feature-strip">
+            <div className="hp-feature-strip-grid">
+              <div className="hp-feature-strip-lead">
+                <span className="eyebrow">— Every Path Includes</span>
+                <h3>Science you can <span className="accent">measure.</span></h3>
+              </div>
+              <div className="hp-feature-stat"><div className="value">VALD</div><div className="label">Performance Testing</div></div>
+              <div className="hp-feature-stat"><div className="value">ESSA</div><div className="label">Accredited EPs</div></div>
+              <div className="hp-feature-stat"><div className="value">24/7</div><div className="label">Facility Access</div></div>
+            </div>
+          </div>
+        </div>
 
-{/*  WHY VALEN  */}
-<section className="white" id="about">
-  <div className="section-inner">
-    <div className="section-head">
-      <span className="eyebrow">Why Valen</span>
-      <h2>Not just a gym. <em>A health ecosystem.</em></h2>
-      <p>We built Valen to bridge the gap between clinic and community — a place that combines the rigour of health care with the warmth of a real gym.</p>
-    </div>
-    <div className="why-grid">
-      <div className="why-card">
-        <div className="why-ico">◉</div>
-        <h3>Open <em>all hours.</em></h3>
-        <p>PIN-code 24/7 access, CCTV-monitored. Train at 5 AM, 11 PM, or Christmas Day — whenever life lets you.</p>
-      </div>
-      <div className="why-card">
-        <div className="why-ico">✚</div>
-        <h3>Clinicians <em>+ VALD lab.</em></h3>
-        <p>Accredited Exercise Physiologists guided by VALD force-plate data. For rehab, athletic performance, and physique tracking — the same tech used by AFL and NRL clubs.</p>
-      </div>
-      <div className="why-card">
-        <div className="why-ico">♥</div>
-        <h3>A <em>community</em> worth showing up for.</h3>
-        <p>Our team knows your name. Our members respect each other. Whether you&apos;re chasing a PB or getting back on your feet — you&apos;ll find your people here.</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <div className="hp-paths-cards-wrap">
+          <div className="hp-paths-cards">
+            <div className="hp-path-card hp-path-card-light">
+              <div className="hp-path-icon hp-path-icon-light">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 7v10M21 7v10M6 9v6M18 9v6M3 12h18" stroke="#ED6C15" strokeWidth="2" strokeLinecap="round"/></svg>
+              </div>
+              <div className="path-no">Path 01</div>
+              <h3>The Gym</h3>
+              <p className="desc">24/7 access to commercial-grade equipment plus the option of VALD performance testing. Train freely — measure precisely.</p>
+              <div className="features">
+                <div>· 24/7 facility access</div>
+                <div>· Strength + cardio zones</div>
+                <div>· Functional training space</div>
+                <div>· VALD performance testing</div>
+                <div>· Inclusive community</div>
+              </div>
+              <div className="footer-row"><Link href="/gym">Explore the gym →</Link></div>
+            </div>
 
-{/*  HOW IT WORKS  */}
-<section className="light">
-  <div className="section-inner">
-    <div className="section-head">
-      <span className="eyebrow">How It Works</span>
-      <h2>Get started <em>in three steps.</em></h2>
-    </div>
-    <div className="how-steps">
-      <div className="how-step">
-        <div className="step-n">1</div>
-        <h3>Pick your path</h3>
-        <p>Gym, EP, or both. Pick online in 30 seconds — or walk in and we&apos;ll help you decide.</p>
-      </div>
-      <div className="how-step">
-        <div className="step-n">2</div>
-        <h3>Start moving</h3>
-        <p>Gym members get PIN-code access same day. EP patients book online via PracSuite — we handle the paperwork.</p>
-      </div>
-      <div className="how-step">
-        <div className="step-n">3</div>
-        <h3>See the progress</h3>
-        <p>VALD assessment at 6 and 12 weeks. Real numbers, real progress — never guesswork.</p>
-      </div>
-    </div>
-  </div>
-</section>
+            <div className="hp-path-card hp-path-card-cream">
+              <div className="hp-path-card-tag">Clinical Care</div>
+              <div className="hp-path-icon hp-path-icon-orange">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#000" strokeWidth="2" strokeLinecap="round"/></svg>
+              </div>
+              <div className="path-no">Path 02</div>
+              <h3>Exercise Physiology</h3>
+              <p className="desc">Clinical, university-qualified care for chronic conditions, injury rehab, and complex recovery. Movement prescribed — not guessed.</p>
+              <div className="features">
+                <div>· Accredited EP-led sessions</div>
+                <div>· VALD performance testing</div>
+                <div>· Medicare · NDIS · DVA · WorkCover</div>
+                <div>· Personalised programming</div>
+              </div>
+              <div className="footer-row"><Link href="/exercise-physiology">Find out more →</Link></div>
+            </div>
 
-{/*  COMMUNITY GRID  */}
-<section className="white">
-  <div className="section-inner">
-    <div className="section-head">
-      <span className="eyebrow">Our Community</span>
-      <h2>Step <em>inside.</em></h2>
-      <p>A look at training, recovery, and everything in between.</p>
-    </div>
-    <div className="community-grid">
-      <div className="c-img">Community · 01</div>
-      <div className="c-img">Training · 02</div>
-      <div className="c-img">EP Session · 03</div>
-      <div className="c-img">Member · 04</div>
-    </div>
-    <div className="community-cta"><a href="#">See more on Instagram →</a></div>
-  </div>
-</section>
+            <div className="hp-path-card hp-path-card-dark">
+              <div className="hp-path-icon hp-path-icon-dark">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="12" r="6" stroke="#ED6C15" strokeWidth="2"/><circle cx="15" cy="12" r="6" stroke="#ED6C15" strokeWidth="2"/></svg>
+              </div>
+              <div className="path-no">Path 03</div>
+              <h3>The Full Ecosystem</h3>
+              <p className="desc">Gym + clinic, working as one. Train freely, get clinically guided when it counts. The best of both — under one roof.</p>
+              <div className="features">
+                <div>· Everything in the gym</div>
+                <div>· Everything in the clinic</div>
+                <div>· Continuous EP support</div>
+                <div>· VALD progress tracking</div>
+              </div>
+              <div className="footer-row"><Link href="/gym">See memberships →</Link></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-{/*  TESTIMONIAL — BLACK  */}
-<section className="testimonial">
-  <div className="testimonial-inner">
-    <div className="stars">★ ★ ★ ★ ★</div>
-    <div className="rating-text">Rated 5.0 · 48 Google Reviews</div>
-    <p className="quote">&quot;Valen Health has completely transformed my approach to fitness and wellness. The Exercise Physiologists are knowledgeable and supportive, and they took the time to create a personalised plan that fit my lifestyle. It&apos;s more than a gym — it&apos;s a community.&quot;</p>
-    <div className="reviewer">John S.</div>
-    <div className="reviewer-role">Member since 2024 · Spearwood</div>
-  </div>
-</section>
+      {/* UNIFIER */}
+      <section className="hp-unifier">
+        <div className="hp-unifier-content">
+          <div className="hp-unifier-eyebrow">
+            <span className="rule"></span>
+            <span className="eyebrow">Our Promise</span>
+            <span className="rule"></span>
+          </div>
+          <h2>Not just a gym. Not just a clinic.</h2>
+          <h2 className="accent">We build a better you. A better future.</h2>
+          <div className="hp-unifier-divider"></div>
+          <div className="hp-unifier-tag">— All Under One Roof —</div>
+          <div className="hp-unifier-buttons">
+            <Link href="/contact#contact-form" className="btn btn-orange btn-orange-large">Book a Tour →</Link>
+            <Link href="/contact" className="btn btn-white-outline">Book EP Consultation</Link>
+          </div>
+        </div>
+      </section>
 
-{/*  PRICING  */}
-<section className="white" id="pricing">
-  <div className="section-inner">
-    <div className="section-head">
-      <span className="eyebrow">Simple Pricing</span>
-      <h2>Join in <em>one click.</em></h2>
-      <p>No joining fees. No lock-in. Cancel anytime. From just <b>$3 a day</b>.</p>
-    </div>
-    <div className="price-cards">
-      <div className="price-card">
-        <h3>Access</h3>
-        <p className="sub">Gym membership, done right.</p>
-        <div className="price-row"><span className="price">$17.88</span><span className="price-unit">/ week</span></div>
-        <p className="price-note">Direct debit · cancel anytime</p>
-        <ul>
-          <li>24/7 PIN-code gym access</li>
-          <li>All equipment included</li>
-          <li>No lock-in contract</li>
-          <li>Free parking · CCTV</li>
-        </ul>
-        <Link className="btn btn-orange btn-full" href="/join">JOIN NOW →</Link>
-      </div>
-      <div className="price-card featured">
-        <span className="tag">Most Popular</span>
-        <h3>Standard</h3>
-        <p className="sub">Gym + Exercise Physiology.</p>
-        <div className="price-row"><span className="price">Contact</span></div>
-        <p className="price-note">Current live pricing retained · new tier pre-launch</p>
-        <ul>
-          <li>Everything in Access</li>
-          <li>Regular EP consultations</li>
-          <li>Personalised programming</li>
-          <li>VALD assessment included</li>
-          <li>GP progress reports</li>
-        </ul>
-        <Link className="btn btn-orange btn-full" href="/join">Join Standard →</Link>
-      </div>
-      <div className="price-card">
-        <h3>VALD Scan</h3>
-        <p className="sub">Clinical · Performance · Physique.</p>
-        <div className="price-row"><span className="price">$149</span><span className="price-unit">/ once</span></div>
-        <p className="price-note">Included with Standard · bulk-billed with referral</p>
-        <ul>
-          <li>ForceDecks force-plate testing</li>
-          <li>For rehab, athletes, physique tracking</li>
-          <li>Full EP consultation (45 min)</li>
-          <li>Written report + programme</li>
-          <li>GP report (if referred)</li>
-        </ul>
-        <a className="btn btn-outline btn-full" href="#">Book Assessment →</a>
-      </div>
-    </div>
-    <div className="price-reassure">
-      <b>Medicare, WorkCover, NDIS, DVA accepted.</b> We handle the paperwork — you focus on the movement.
-    </div>
-  </div>
-</section>
+      {/* METHODOLOGY */}
+      <section className="hp-methodology">
+        <div className="hp-methodology-grid">
+          <div className="hp-methodology-left">
+            <div className="eyebrow-row">
+              <span className="rule"></span>
+              <span className="eyebrow">— Our Methodology</span>
+            </div>
+            <h2>Assessment +<br />Evidence +<br />Support =<br /><span className="last">lifelong results.</span></h2>
+            <p className="desc">Every client follows a clear, evidence-based pathway. Rigorous enough for clinical outcomes, personal enough for your unique journey.</p>
+          </div>
+          <div>
+            <div className="hp-methodology-step"><div className="num">01</div><div><h4>Assessment</h4><p>Movement screening, health history, goals. We don&apos;t guess — we assess.</p></div></div>
+            <div className="hp-methodology-step"><div className="num">02</div><div><h4>Prescription</h4><p>Built specifically for your body, your condition, your goals. No generic templates.</p></div></div>
+            <div className="hp-methodology-step"><div className="num">03</div><div><h4>Progress</h4><p>VALD performance testing means your progress is measured — not assumed.</p></div></div>
+            <div className="hp-methodology-step"><div className="num">04</div><div><h4>Sustained Results</h4><p>We don&apos;t stop when you feel better. We keep going until you thrive for life.</p></div></div>
+          </div>
+        </div>
+      </section>
 
-{/*  WORKCOVER CALLOUT — BLACK BLOCK  */}
-<section className="light wc-callout" id="exercise-physiology">
-  <div className="wc-callout-inner">
-    <div>
-      <span className="eyebrow">⚑ WorkCover WA &amp; Insurers</span>
-      <h2>From recovery to <em>resilience.</em></h2>
-      <p>Zero out-of-pocket for approved claims. VALD-measured reports employers, insurers and treating doctors trust. Locally owned, Spearwood-based — not a national chain.</p>
-      <ul className="wc-features">
-        <li>Zero out-of-pocket for approved WorkCover WA claims</li>
-        <li>Baseline, 6-week and 12-week progress reports</li>
-        <li>Gym-based functional rehab — mirrors real workplace demands</li>
-      </ul>
-      <div className="wc-ctas">
-        <a className="btn btn-orange" href="#">Refer a Patient →</a>
-        <a className="btn btn-outline-white" href="#">Download Referral Pack</a>
-      </div>
-    </div>
-    <div className="wc-insurers">
-      <div className="wc-insurers-label">Accepted Insurers</div>
-      <div className="wc-insurers-grid">
-        <div className="wc-ins">GIO</div>
-        <div className="wc-ins">ICWA</div>
-        <div className="wc-ins">QBE</div>
-        <div className="wc-ins">Allianz</div>
-        <div className="wc-ins">Wesfarmers</div>
-        <div className="wc-ins">+ More</div>
-      </div>
-    </div>
-  </div>
-</section>
+      {/* TESTIMONIAL */}
+      <section className="hp-testimonial">
+        <div className="hp-testimonial-bg">
+          <img src="/images/quote.jpg" alt="" />
+        </div>
+        <div className="hp-testimonial-content">
+          <div className="eyebrow">— Together We —</div>
+          <h2>Succeed</h2>
+          <div className="stars">★ ★ ★ ★ ★</div>
+          <div className="rated">Rated 5 out of 5</div>
+          <blockquote>&ldquo;Valen Health has completely transformed my approach to fitness and wellness. The Exercise Physiologists are incredibly knowledgeable and supportive, and they took the time to create a personalised plan that fit my lifestyle. It&apos;s more than a gym — it&apos;s a community.&rdquo;</blockquote>
+          <div className="attr">— John S.</div>
+        </div>
+      </section>
 
-{/*  FINAL CTA — ORANGE  */}
-<section className="final-cta" id="book">
-  <h2>Ready to move<br /><em>with purpose?</em></h2>
-  <p>Start today. First visit&apos;s on us.</p>
-  <div className="final-cta-ctas">
-    <Link className="btn btn-white btn-xl" href="/join">Claim Free Trial →</Link>
-    <a className="btn btn-ink btn-xl" href="#">Book EP Consult</a>
-  </div>
-  <div className="final-cta-reassure">
-    <span><span className="check">✓</span> No card required</span>
-    <span><span className="check">✓</span> No lock-in</span>
-    <span><span className="check">✓</span> Cancel anytime</span>
-  </div>
-</section>
+      {/* REFERRAL STRIP */}
+      <section className="hp-referral-strip">
+        <div className="hp-referral-strip-inner">
+          <div className="hp-referral-strip-msg">
+            <span className="dot"></span>
+            <span className="lead">Doctors refer to us. So do their patients.</span>
+            <span className="sub">Trusted by local GPs, surgeons &amp; insurers.</span>
+          </div>
+          <div className="hp-referral-strip-links">
+            <Link href="/contact">Refer a patient →</Link>
+            <span className="divider"></span>
+            <Link href="/contact" className="secondary">Download referral pack →</Link>
+          </div>
+        </div>
+      </section>
 
-{/*  FOOTER — BLACK  */}
-<Footer />
+      {/* FUNDING BAND */}
+      <section className="hp-funding-band">
+        <div className="hp-funding-band-inner">
+          <div className="hp-funding-band-eyebrow">— Accepted Funding &amp; Referral Pathways —</div>
+          <div className="hp-funding-band-list">
+            <span className="item">Medicare</span><span className="sep"></span>
+            <span className="item">NDIS</span><span className="sep"></span>
+            <span className="item">DVA</span><span className="sep"></span>
+            <span className="item">WorkCover WA</span><span className="sep"></span>
+            <span className="item">Private Health</span>
+          </div>
+        </div>
+      </section>
 
+      {/* FINAL CTA */}
+      <section className="hp-final-cta">
+        <div className="hp-final-cta-content">
+          <h2>Ready to move<span className="accent">with purpose?</span></h2>
+          <p className="lede">Book a tour of the facility, or book a clinical EP consultation. Whichever path you choose — we&apos;re with you.</p>
+          <div className="hp-final-cta-buttons">
+            <Link href="/contact#contact-form" className="btn btn-black">Book a Tour →</Link>
+            <Link href="/contact" className="btn btn-black-outline">Book EP Consultation</Link>
+          </div>
+        </div>
+      </section>
 
+      <HomeFooter />
     </>
   );
 }

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { League_Spartan, Open_Sans, Fraunces } from "next/font/google";
+import { League_Spartan, Open_Sans, Playfair_Display, Fraunces } from "next/font/google";
 import "./globals.css";
+import MetaPixel from "../components/MetaPixel";
+import WhatsAppWidget from "../components/WhatsAppWidget/WhatsAppWidget";
 
 const leagueSpartan = League_Spartan({
   variable: "--font-league-spartan",
@@ -11,7 +13,7 @@ const leagueSpartan = League_Spartan({
 const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600"],
 });
 
 const fraunces = Fraunces({
@@ -21,9 +23,17 @@ const fraunces = Fraunces({
   weight: ["300", "400"],
 });
 
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "500"],
+});
+
 export const metadata: Metadata = {
-  title: "Valen Health",
-  description: "Vitality And Longevity Exercise Network",
+  title: "Valen Health — Move with Purpose",
+  description:
+    "Spearwood's only science-backed gym. 24/7 gym + clinical Exercise Physiology under one roof.",
 };
 
 export default function RootLayout({
@@ -33,10 +43,14 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${leagueSpartan.variable} ${openSans.variable} ${fraunces.variable}`}
+      lang="en-AU"
+      className={`${leagueSpartan.variable} ${openSans.variable} ${fraunces.variable} ${playfairDisplay.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <MetaPixel />
+        {children}
+        <WhatsAppWidget />
+      </body>
     </html>
   );
 }
