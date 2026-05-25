@@ -23,6 +23,7 @@ export default function WhatsAppWidget() {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [isAwaitingContact, setIsAwaitingContact] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,6 +63,28 @@ export default function WhatsAppWidget() {
     setIsTyping(true);
 
     try {
+      if (isAwaitingContact) {
+        // Send email notification with contact info
+        await fetch("/api/webchat/notify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ contactInfo: userMessage.text, history: [...messages, userMessage] }),
+        });
+
+        setTimeout(() => {
+          const botMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            text: "✅ Thank you! We've notified our team and sent your details to admin@valenhealth.com.au. We will be in touch shortly.",
+            sender: "bot",
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          };
+          setMessages((prev) => [...prev, botMessage]);
+          setIsTyping(false);
+          setIsAwaitingContact(false);
+        }, 800);
+        return;
+      }
+
       const response = await fetch("/api/webchat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -71,11 +94,19 @@ export default function WhatsAppWidget() {
       const data = await response.json();
 
       if (data.reply) {
+        let finalReply = data.reply;
+        
+        // Check if the bot is telling the user that the team will reach out
+        if (finalReply.includes("A member of the Valen Health team will reach out")) {
+          finalReply += "\n\n👉 *Please reply with your Name and Email or Phone Number* so we know how to contact you.";
+          setIsAwaitingContact(true);
+        }
+
         // Simulate a slight delay to make it feel like real typing
         setTimeout(() => {
           const botMessage: Message = {
             id: (Date.now() + 1).toString(),
-            text: data.reply,
+            text: finalReply,
             sender: "bot",
             time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           };
