@@ -24,9 +24,11 @@ export default function WhatsAppWidget() {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isAwaitingContact, setIsAwaitingContact] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setMounted(true);
     // Show a subtle notification badge/tooltip after 4 seconds to grab attention
     const timer = setTimeout(() => {
       setShowNotification(true);
@@ -132,6 +134,8 @@ export default function WhatsAppWidget() {
     ));
   };
 
+  if (!mounted) return null;
+
   return (
     <div className="wa-widget-container">
       {/* Pop-up Chat Box */}
@@ -214,6 +218,7 @@ export default function WhatsAppWidget() {
           className={`wa-trigger-btn ${isOpen ? "active" : ""}`} 
           onClick={toggleWidget}
           aria-label="Chat with us on WhatsApp"
+          suppressHydrationWarning
         >
           {isOpen ? (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="wa-icon-close">
