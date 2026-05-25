@@ -57,6 +57,9 @@ export default function ExercisePhysiologyPage() {
             <p className="ep-hero-sub">
               Clinical, evidence-based exercise prescription delivered by accredited Exercise Physiologists. Built around your body, your history, and your goals.
             </p>
+            <div style={{ marginTop: '32px' }}>
+              <Link href="/contact?subject=ep#contact-form" className="btn btn-orange">Book Now →</Link>
+            </div>
           </div>
         </section>
 

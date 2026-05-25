@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { sendContactEmail, type ContactFormState } from "./actions";
@@ -12,6 +12,15 @@ const initialState: ContactFormState = { status: "idle", message: "" };
 export default function ContactPage() {
   const [state, formAction, isPending] = useActionState(sendContactEmail, initialState);
   const formRef = useRef<HTMLFormElement>(null);
+  const [subjectParam, setSubjectParam] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const sub = params.get("subject");
+    if (sub) {
+      setSubjectParam(sub);
+    }
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -116,6 +125,7 @@ export default function ContactPage() {
             )}
 
             <form ref={formRef} action={formAction} className="contact-form-grid reveal">
+              <input type="hidden" name="subject" value={subjectParam} />
               <div className="contact-form-row">
                 <div className="contact-form-field">
                   <label htmlFor="name">Your name</label>

@@ -18,6 +18,7 @@ export async function sendContactEmail(
   const phone = formData.get("phone") as string;
   const email = formData.get("email") as string;
   const message = formData.get("message") as string;
+  const subjectParam = formData.get("subject") as string;
 
   if (!name || !email || !message) {
     return { status: "error", message: "Please fill in all required fields." };
@@ -88,7 +89,7 @@ Remote IP: ${remoteIp}`;
       from: `"Valen Health Contact" <${process.env.SMTP_USER}>`,
       to: "tamilselvan.ask@gmail.com",
       replyTo: email,
-      subject: "New Website Lead",
+      subject: subjectParam === "ep" ? "Exercise Physiology Appointment" : "New Website Lead",
       text: textBody,
       html: htmlBody,
     });
