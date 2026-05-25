@@ -3,7 +3,6 @@ import { League_Spartan, Open_Sans, Playfair_Display, Fraunces } from "next/font
 import "./globals.css";
 import MetaPixel from "../components/MetaPixel";
 import WhatsAppWidget from "../components/WhatsAppWidget/WhatsAppWidget";
-
 const leagueSpartan = League_Spartan({
   variable: "--font-league-spartan",
   subsets: ["latin"],
