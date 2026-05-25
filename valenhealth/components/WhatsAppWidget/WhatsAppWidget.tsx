@@ -1,11 +1,29 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import "./WhatsAppWidget.css";
+
+type Message = {
+  id: string;
+  text: string;
+  sender: "user" | "bot";
+  time: string;
+};
 
 export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: "1",
+      sender: "bot",
+      text: "Hi there! 👋 Welcome to Valen Health. How can we help you today with your fitness, gym memberships, or recovery goals?\n\n1️⃣ Book a session\n2️⃣ Our services\n3️⃣ Pricing & plans\n4️⃣ Location & hours\n5️⃣ Talk to our team",
+      time: "Just now",
+    },
+  ]);
+  const [inputValue, setInputValue] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Show a subtle notification badge/tooltip after 4 seconds to grab attention
@@ -15,16 +33,72 @@ export default function WhatsAppWidget() {
     return () => clearTimeout(timer);
   }, []);
 
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isTyping]);
+
   const toggleWidget = () => {
     setIsOpen(!isOpen);
     setShowNotification(false);
   };
 
-  const handleStartChat = () => {
-    const phoneNumber = "919500790694";
-    const message = encodeURIComponent("Hi Valen Health, I'm visiting your website and would like to learn more about your services!");
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  const handleSendMessage = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      text: inputValue.trim(),
+      sender: "user",
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInputValue("");
+    setIsTyping(true);
+
+    try {
+      const response = await fetch("/api/webchat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage.text }),
+      });
+
+      const data = await response.json();
+
+      if (data.reply) {
+        // Simulate a slight delay to make it feel like real typing
+        setTimeout(() => {
+          const botMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            text: data.reply,
+            sender: "bot",
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          };
+          setMessages((prev) => [...prev, botMessage]);
+          setIsTyping(false);
+        }, 600);
+      } else {
+        setIsTyping(false);
+      }
+    } catch (error) {
+      console.error("Chat error:", error);
+      setIsTyping(false);
+    }
+  };
+
+  // Helper to format text with line breaks (like in WhatsApp)
+  const formatText = (text: string) => {
+    return text.split("\n").map((line, i) => (
+      <span key={i}>
+        {line}
+        <br />
+      </span>
+    ));
   };
 
   return (
@@ -40,7 +114,7 @@ export default function WhatsAppWidget() {
             </div>
             <div className="wa-brand-info">
               <h3>Valen Health</h3>
-              <p>Typically replies in minutes</p>
+              <p>Typically replies in seconds</p>
             </div>
           </div>
           <button className="wa-close-btn" onClick={toggleWidget} aria-label="Close Chat">
@@ -53,27 +127,47 @@ export default function WhatsAppWidget() {
 
         {/* Chat Box Body */}
         <div className="wa-chat-body">
-          <div className="wa-bubble-container">
-            <span className="wa-bubble-arrow"></span>
-            <div className="wa-chat-bubble">
-              <p className="wa-bubble-sender">Valen Health Support</p>
-              <p className="wa-bubble-text">
-                Hi there! 👋 Welcome to Valen Health. How can we help you today with your fitness, gym memberships, or recovery goals?
-              </p>
-              <span className="wa-bubble-time">Just now</span>
-            </div>
+          <div className="wa-messages-list">
+            {messages.map((msg) => (
+              <div key={msg.id} className={`wa-message-wrapper ${msg.sender}`}>
+                <div className="wa-chat-bubble">
+                  {msg.sender === "bot" && <p className="wa-bubble-sender">Valen Health Support</p>}
+                  <p className="wa-bubble-text">{formatText(msg.text)}</p>
+                  <span className="wa-bubble-time">{msg.time}</span>
+                </div>
+              </div>
+            ))}
+            {isTyping && (
+              <div className="wa-message-wrapper bot">
+                <div className="wa-chat-bubble wa-typing-bubble">
+                  <div className="wa-typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
           </div>
         </div>
 
         {/* Chat Box Footer / Action */}
-        <div className="wa-chat-footer">
-          <button className="wa-action-btn" onClick={handleStartChat}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: '8px' }}>
-              <path d="M12.031 2c-5.514 0-9.969 4.456-9.969 9.971 0 1.954.563 3.775 1.532 5.315l-1.594 4.714 4.887-1.562c1.472.852 3.185 1.344 5.01 1.344 5.515 0 9.969-4.455 9.969-9.971s-4.454-9.971-9.969-9.971zm.04 17.518c-1.708 0-3.292-.505-4.629-1.371l-.331-.215-2.885.922.938-2.772-.239-.379c-.947-1.506-1.45-3.261-1.45-5.112 0-5.074 4.129-9.199 9.208-9.199 5.083 0 9.208 4.125 9.208 9.199 0 5.078-4.125 9.207-9.208 9.207zm4.747-6.52c-.26-.13-1.539-.759-1.776-.846-.237-.087-.41-.13-.58.13-.172.26-.667.846-.818 1.02-.15.173-.3.195-.56.065-.26-.13-1.097-.404-2.09-1.289-.773-.69-1.294-1.542-1.445-1.802-.15-.26-.016-.4-.146-.53-.117-.117-.26-.304-.39-.456-.13-.152-.173-.26-.26-.434-.087-.174-.043-.326-.021-.456.021-.13.172-.412.26-.617.087-.205.173-.346.26-.52.087-.173.043-.324-.022-.455-.065-.13-.58-1.399-.795-1.92-.21-.504-.42-.416-.58-.423l-.496-.007c-.173 0-.455.065-.693.325-.239.26-.91.889-.91 2.167 0 1.279.931 2.513 1.06 2.686.13.174 1.83 2.793 4.433 3.918.619.268 1.102.428 1.478.548.623.198 1.19.171 1.637.104.499-.074 1.539-.629 1.756-1.236.216-.607.216-1.127.151-1.236-.065-.11-.237-.174-.497-.304z"/>
+        <form className="wa-chat-footer" onSubmit={handleSendMessage}>
+          <input
+            type="text"
+            className="wa-chat-input"
+            placeholder="Type a message..."
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <button type="submit" className="wa-send-btn" disabled={!inputValue.trim()}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
-            Start Chat on WhatsApp
           </button>
-        </div>
+        </form>
       </div>
 
       {/* Pulsing Floating WhatsApp Button */}

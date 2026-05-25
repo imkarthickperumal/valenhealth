@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
 }
 
 // ── Reply Logic ────────────────────────────────────────────────────
-function generateReply(incoming: string): string {
+export function generateReply(incoming: string): string {
   const text = incoming.toLowerCase().trim();
 
   // Greeting
