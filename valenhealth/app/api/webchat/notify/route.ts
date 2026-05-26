@@ -57,6 +57,15 @@ ${chatLog}
       html: htmlBody,
     });
 
+    // Also forward the notification to the admin WhatsApp number
+    try {
+      const { sendWhatsAppMessage } = await import("../../whatsapp/route");
+      const waMessage = `*New Lead from Webchat*\n\n*Contact Info:* ${contactInfo}\n\n*Transcript:*\n${chatLog}`;
+      await sendWhatsAppMessage("61489293000", waMessage);
+    } catch (e) {
+      console.error("Failed to send WhatsApp notification to admin:", e);
+    }
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Webchat notify error:", error);

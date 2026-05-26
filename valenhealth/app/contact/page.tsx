@@ -63,15 +63,10 @@ export default function ContactPage() {
         {/* DETAILS */}
         <section className="contact-details">
           <div className="contact-details-inner">
-            <a href="tel:0894186388" className="contact-detail-card reveal">
-              <div className="contact-detail-card-label">Home</div>
-              <div className="contact-detail-card-value">(08) 9418 6388</div>
+            <a href="tel:0894393363" className="contact-detail-card reveal">
+              <div className="contact-detail-card-label">Phone</div>
+              <div className="contact-detail-card-value">(08) 9439 3363</div>
               <div className="contact-detail-card-sub">Mon–Fri, business hours</div>
-            </a>
-            <a href="tel:0489293000" className="contact-detail-card reveal">
-              <div className="contact-detail-card-label">Mobile</div>
-              <div className="contact-detail-card-value">0489 293 000</div>
-              <div className="contact-detail-card-sub">Available any time</div>
             </a>
             <a href="mailto:admin@valenhealth.com.au" className="contact-detail-card reveal">
               <div className="contact-detail-card-label">Email</div>

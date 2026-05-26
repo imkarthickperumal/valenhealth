@@ -48,8 +48,7 @@ export default function HomeFooter() {
             <div>Mon–Fri · 9am–6pm</div>
           </div>
           <div className="home-footer-phones">
-            <div>(08) 9418 6388</div>
-            <div>0489 293 000</div>
+            <div>(08) 9439 3363</div>
           </div>
         </div>
       </div>

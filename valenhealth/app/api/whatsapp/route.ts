@@ -175,7 +175,7 @@ export function generateReply(incoming: string): string {
 }
 
 // ── Send a WhatsApp message via Meta Cloud API ─────────────────────
-async function sendWhatsAppMessage(to: string, text: string) {
+export async function sendWhatsAppMessage(to: string, text: string) {
   const url = `https://graph.facebook.com/v21.0/${PHONE_NUMBER_ID}/messages`;
 
   const payload = {
