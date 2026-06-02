@@ -1,9 +1,9 @@
 "use server";
 
-import nodemailer from "nodemailer";
 import { headers } from "next/headers";
 import { sendMetaCapiEvent } from "../../lib/meta-capi";
 import { buildContactEmailHtml } from "../../lib/email-templates";
+import { transporter } from "../../lib/mailer";
 
 export type ContactFormState = {
   status: "idle" | "success" | "error";
@@ -73,18 +73,6 @@ Remote IP: ${remoteIp}`;
   });
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      connectionTimeout: 8000,
-      timeout: 8000,
-    } as any);
-
     await transporter.sendMail({
       from: `"Valen Health Contact" <${process.env.SMTP_USER}>`,
       to: "tamilselvan.ask@gmail.com",

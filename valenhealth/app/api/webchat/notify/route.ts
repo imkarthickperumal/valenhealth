@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { transporter } from "../../../../lib/mailer";
 
 export async function POST(req: NextRequest) {
   try {
@@ -37,18 +37,6 @@ ${chatLog}
         </div>
       </div>
     `;
-
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      connectionTimeout: 8000,
-      timeout: 8000,
-    } as any);
 
     await transporter.sendMail({
       from: `"Valen Health Webchat" <${process.env.SMTP_USER}>`,

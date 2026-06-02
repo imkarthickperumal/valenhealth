@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 import { headers } from "next/headers";
 import { sendMetaCapiEvent } from "../../lib/meta-capi";
 import { buildReferralEmailHtml } from "../../lib/email-templates";
+import { transporter } from "../../lib/mailer";
 
 export type FormState = {
   status: "idle" | "success" | "error";
@@ -174,18 +175,6 @@ Remote IP: ${remoteIp}`;
 
   // ── Send via Nodemailer ──────────────────────────────────────────────────
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === "true",   // true for port 465
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      connectionTimeout: 8000, // 8 seconds
-      timeout: 8000,           // 8 seconds
-    } as any);
-
     await transporter.sendMail({
       from: `"Valen Health Referrals" <${process.env.SMTP_USER}>`,
       to: process.env.REFERRAL_TO_EMAIL,
