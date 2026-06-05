@@ -75,7 +75,7 @@ Remote IP: ${remoteIp}`;
   try {
     await transporter.sendMail({
       from: `"Valen Health Contact" <${process.env.SMTP_USER}>`,
-      to: "tamilselvan.ask@gmail.com",
+      to: "admin@valenhealth.com.au",
       replyTo: email,
       subject: subjectParam === "ep" ? "Exercise Physiology Appointment" : "New Website Lead",
       text: textBody,
