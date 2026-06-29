@@ -2,6 +2,19 @@ import HomeHeader from "../components/HomeHeader";
 import HomeFooter from "../components/HomeFooter";
 import Link from "next/link";
 import "./home.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Valen Health - Exercise Physiology Clinic & 24/7 Gym | Spearwood, Perth",
+  description: "Spearwood's EP clinic + 24/7 gym under one roof. Medicare bulk-billed exercise physiology, NDIS, DVA & private health. VALD performance testing. Book online.",
+  openGraph: {
+    title: "Valen Health - Exercise Physiology Clinic & 24/7 Gym | Spearwood",
+    description: "Spearwood's EP clinic + 24/7 gym under one roof. Medicare bulk-billed exercise physiology, NDIS, DVA & private health.",
+    url: "https://valenhealth.com.au",
+    siteName: "Valen Health",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (

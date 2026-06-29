@@ -6,6 +6,17 @@ import Footer from "../../components/Footer";
 import { sendReferralEmail, type FormState } from "./actions";
 import "./referral.css";
 import * as fpixel from "../../lib/fpixel";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "GP Referral - Exercise Physiology | Valen Health Spearwood",
+  description: "Refer your patient to Valen Health for clinical exercise physiology. Medicare EPC/CDM, DVA, WorkCover WA & NDIS accepted. VALD-equipped clinic in Spearwood.",
+  openGraph: {
+    title: "GP Referral - Exercise Physiology | Valen Health",
+    description: "Refer your patient to Valen Health for clinical EP. Medicare, DVA, WorkCover & NDIS accepted.",
+    url: "https://valenhealth.com.au/referral",
+  },
+};
 
 const initialState: FormState = { status: "idle", message: "" };
 

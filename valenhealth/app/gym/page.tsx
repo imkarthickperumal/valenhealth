@@ -7,6 +7,17 @@ import Footer from "../../components/Footer";
 import ReadyToStart from "../../components/ReadyToStart/ReadyToStart";
 import ClassSchedule from "../../components/ClassSchedule/ClassSchedule";
 import "./gym.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "24/7 Gym Spearwood - From $18/wk | Valen Health",
+  description: "24/7 gym access in Spearwood from $18/week. Full commercial equipment, no lock-in contracts. VALD ForceDecks & Dynamo performance testing available. Join online.",
+  openGraph: {
+    title: "24/7 Gym Spearwood - From $18/wk | Valen Health",
+    description: "24/7 gym access in Spearwood from $18/week. Full commercial equipment, no lock-in contracts.",
+    url: "https://valenhealth.com.au/gym",
+  },
+};
 
 export default function GymPage() {
   useEffect(() => {

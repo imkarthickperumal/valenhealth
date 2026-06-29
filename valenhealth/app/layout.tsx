@@ -31,9 +31,17 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Valen Health — Move with Purpose",
-  description:
-    "Spearwood's only science-backed gym. 24/7 gym + clinical Exercise Physiology under one roof.",
+  title: {
+    default: "Valen Health - Exercise Physiology Clinic & 24/7 Gym | Spearwood, Perth",
+    template: "%s | Valen Health",
+  },
+  description: "Spearwood's EP clinic + 24/7 gym under one roof. Medicare bulk-billed exercise physiology, NDIS, DVA & private health.",
+  metadataBase: new URL("https://valenhealth.com.au"),
+  openGraph: {
+    siteName: "Valen Health",
+    type: "website",
+    locale: "en_AU",
+  },
 };
 
 export default function RootLayout({
