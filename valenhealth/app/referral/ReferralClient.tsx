@@ -20,6 +20,12 @@ export default function ReferralClient() {
         content_name: "Referral Form",
         status: "success",
       });
+      // Google Ads conversion tracking
+      if (typeof window !== "undefined" && typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: "AW-18279882531/referral_form_submit", // Placeholder label
+        });
+      }
     }
   }, [state.status]);
 

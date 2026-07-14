@@ -33,6 +33,13 @@ export default function RegistrationForm() {
       status: "success",
     });
 
+    // Google Ads conversion tracking
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-18279882531/registration_form_submit", // Placeholder label
+      });
+    }
+
     setShowSuccess(true);
     reset();
     
