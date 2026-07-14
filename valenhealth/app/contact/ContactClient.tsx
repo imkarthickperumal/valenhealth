@@ -42,6 +42,12 @@ export default function ContactClient() {
         content_name: "Contact Form",
         status: "success",
       });
+      // Google Ads conversion tracking
+      if (typeof window !== "undefined" && typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: "AW-18279882531/contact_form_submit",
+        });
+      }
     }
   }, [state.status]);
 
