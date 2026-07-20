@@ -14,6 +14,7 @@ export default function Header() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
     { href: "/gym", label: "Gym" },
+    { href: "/blog", label: "Blog" },
     { href: "/exercise-physiology", label: "Exercise Physiology" },
     { href: "/contact", label: "Contact Us" },
   ];

@@ -20,6 +20,7 @@ export default function HomeHeader() {
         <Link href="/gym#memberships" onClick={closeMenu}>Memberships</Link>
         <Link href="/exercise-physiology" onClick={closeMenu}>Exercise Physiology</Link>
         <Link href="/gym" onClick={closeMenu}>Gym</Link>
+        <Link href="/blog" onClick={closeMenu}>Blog</Link>
         <Link href="/contact" onClick={closeMenu}>Contact Us</Link>
         <Link href="/contact#contact-form" className="mobile-cta" onClick={closeMenu}>Book a Tour</Link>
         <Link href="/gym#memberships" className="mobile-cta" onClick={closeMenu}>Join Now</Link>
