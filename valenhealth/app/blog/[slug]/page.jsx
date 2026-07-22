@@ -11,6 +11,7 @@ const blogData = {
     authorName: "Valen Health",
     authorRole: "Clinical Team",
     avatar: "VH",
+    image: "/images/blog/ep_physio_blog_image.png"
   },
   '5-new-friends-to-help-you-manage-diabetes': {
     title: "5 New Friends to Help You Manage Diabetes",
@@ -19,6 +20,7 @@ const blogData = {
     authorName: "VALEN HEALTH",
     authorRole: "Clinical Team",
     avatar: "VH",
+    image: "/images/blog/diabetes_blog_image.png"
   }
 };
 
@@ -85,8 +87,9 @@ export default async function BlogPost({ params }) {
         </div>
 
         {/* POST HERO */}
-        <section className="blog-post-hero">
-          <div className="blog-post-hero-inner">
+        <section className="blog-post-hero" style={{ backgroundImage: `url('${postInfo.image}')`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.7)', zIndex: 1 }}></div>
+          <div className="blog-post-hero-inner" style={{ position: 'relative', zIndex: 2 }}>
             <div className="blog-post-meta-row">
 
             </div>

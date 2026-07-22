@@ -14,7 +14,8 @@ const posts = [
     slug: '5-new-friends-to-help-you-manage-diabetes',
     excerpt: "A diabetes diagnosis can feel overwhelming, but the good news is that you don't have to manage it alone. Diabetes care works best when you have a team of health professionals supporting you, each bringing their own expertise to help you stay healthy, prevent complications, and feel your best.",
     authorName: "VALEN HEALTH",
-    avatar: "VH"
+    avatar: "VH",
+    image: "/images/blog/diabetes_blog_image.png"
   },
   {
     title: "Exercise Physiology vs Physiotherapy: What's the Difference and Which One Do You Need?",
@@ -22,7 +23,8 @@ const posts = [
     excerpt:
       "If you've ever been told to see an 'exercise physiologist' and wondered 'isn't that just a physio?' — you're not alone. Both help you feel better, but they do very different things.",
     authorName: "Valen Health",
-    avatar: "VH"
+    avatar: "VH",
+    image: "/images/blog/ep_physio_blog_image.png"
   },
 ];
 
@@ -33,8 +35,9 @@ export default function BlogIndex() {
       <main className="blog-page">
 
         {/* HERO */}
-        <section className="blog-hero">
-          <div className="blog-hero-inner">
+        <section className="blog-hero" style={{ backgroundImage: "url('/images/blog/blog_index_banner_v2.png')", backgroundSize: 'cover', backgroundPosition: 'center 75%', position: 'relative' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.6)', zIndex: 1 }}></div>
+          <div className="blog-hero-inner" style={{ position: 'relative', zIndex: 2 }}>
             <div className="blog-hero-eyebrow">Valen Health — Blog</div>
             <h1 className="blog-hero-title">
               Blog
@@ -50,7 +53,7 @@ export default function BlogIndex() {
           <div className="blog-grid">
             {posts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="blog-card">
-                <div className="blog-card-image">
+                <div className="blog-card-image" style={{ backgroundImage: `url(${post.image})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '200px' }}>
                 </div>
                 <div className="blog-card-body">
                   <h2 className="blog-card-title">{post.title}</h2>
