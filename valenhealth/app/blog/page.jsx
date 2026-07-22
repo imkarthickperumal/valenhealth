@@ -10,10 +10,19 @@ export const metadata = {
 
 const posts = [
   {
+    title: "5 New Friends to Help You Manage Diabetes",
+    slug: '5-new-friends-to-help-you-manage-diabetes',
+    excerpt: "A diabetes diagnosis can feel overwhelming, but the good news is that you don't have to manage it alone. Diabetes care works best when you have a team of health professionals supporting you, each bringing their own expertise to help you stay healthy, prevent complications, and feel your best.",
+    authorName: "VALEN HEALTH",
+    avatar: "VH"
+  },
+  {
     title: "Exercise Physiology vs Physiotherapy: What's the Difference and Which One Do You Need?",
     slug: 'exercise-physiology-vs-physiotherapy',
     excerpt:
       "If you've ever been told to see an 'exercise physiologist' and wondered 'isn't that just a physio?' — you're not alone. Both help you feel better, but they do very different things.",
+    authorName: "Valen Health",
+    avatar: "VH"
   },
 ];
 
@@ -47,9 +56,9 @@ export default function BlogIndex() {
                   <h2 className="blog-card-title">{post.title}</h2>
                   <p className="blog-card-excerpt">{post.excerpt}</p>
                   <div className="blog-card-meta">
-                    <div className="blog-card-meta-avatar">VH</div>
+                    <div className="blog-card-meta-avatar">{post.avatar}</div>
                     <div className="blog-card-meta-info">
-                      <span className="blog-card-meta-author">Valen Health</span>
+                      <span className="blog-card-meta-author">{post.authorName}</span>
                     </div>
                   </div>
                 </div>
