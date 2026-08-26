@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, FormEvent } from "react";
 import "./WhatsAppWidget.css";
+import { trackConversion } from "../../lib/gtag";
 
 type Message = {
   id: string;
@@ -45,6 +46,9 @@ export default function WhatsAppWidget() {
   }, [messages, isTyping]);
 
   const toggleWidget = () => {
+    if (!isOpen) {
+      trackConversion();
+    }
     setIsOpen(!isOpen);
     setShowNotification(false);
   };

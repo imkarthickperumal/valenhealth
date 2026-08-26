@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import { trackConversion } from "../../lib/gtag";
 import "./ReadyToStart.css";
 
 export default function ReadyToStart() {
@@ -34,8 +35,8 @@ export default function ReadyToStart() {
             Pick whichever first step feels right — we&apos;ll take it from there.
           </p>
           <div className="rts-actions">
-            <Link href="/contact#contact-form" className="btn-primary">Book a Tour</Link>
-            <a href="https://valenhealth.bookings.pracsuite.com/guest" target="_blank" rel="noopener noreferrer" className="btn-secondary">Book an Assessment</a>
+            <Link href="/contact#contact-form" className="btn-primary" onClick={() => trackConversion()}>Book a Tour</Link>
+            <a href="https://valenhealth.bookings.pracsuite.com/guest" target="_blank" rel="noopener noreferrer" className="btn-secondary" onClick={() => trackConversion()}>Book an Assessment</a>
             <Link href="/gym#memberships" className="btn-secondary">Find Out About Memberships</Link>
           </div>
         </div>

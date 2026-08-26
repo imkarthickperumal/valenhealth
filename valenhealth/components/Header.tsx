@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { trackConversion } from "../lib/gtag";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +37,10 @@ export default function Header() {
             {link.label}
           </Link>
         ))}
-        <Link href="/contact#contact-form" className="mobile-cta" onClick={closeMenu}>
+        <a href="tel:0489293000" className="mobile-cta" onClick={() => { trackConversion(); closeMenu(); }}>
+          Call 0489 293 000
+        </a>
+        <Link href="/contact#contact-form" className="mobile-cta" onClick={() => { trackConversion(); closeMenu(); }}>
           Book a Tour
         </Link>
         <Link href="/gym#memberships" className="mobile-cta" onClick={closeMenu}>
@@ -48,7 +52,10 @@ export default function Header() {
       </nav>
 
       <div className="header-actions">
-        <Link href="/contact#contact-form" className="sub-header-cta" onClick={closeMenu}>
+        <a href="tel:0489293000" className="sub-header-phone" onClick={() => trackConversion()} aria-label="Call Valen Health on 0489 293 000">
+          0489 293 000
+        </a>
+        <Link href="/contact#contact-form" className="sub-header-cta" onClick={() => { trackConversion(); closeMenu(); }}>
           Book a Tour
         </Link>
         <Link href="/gym#memberships" className="sub-header-cta" onClick={closeMenu}>

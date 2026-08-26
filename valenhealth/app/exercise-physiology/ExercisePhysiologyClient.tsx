@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ReadyToStart from "../../components/ReadyToStart/ReadyToStart";
 import ClassSchedule from "../../components/ClassSchedule/ClassSchedule";
+import { trackConversion } from "../../lib/gtag";
 
 export default function ExercisePhysiologyClient() {
   // Force recompile
@@ -57,7 +58,7 @@ export default function ExercisePhysiologyClient() {
               Clinical, evidence-based exercise prescription delivered by accredited Exercise Physiologists. Built around your body, your history, and your goals.
             </p>
             <div style={{ marginTop: '32px' }}>
-              <Link href="/contact?subject=ep#contact-form" className="btn btn-orange">Book Now →</Link>
+              <Link href="/contact?subject=ep#contact-form" className="btn btn-orange" onClick={() => trackConversion()}>Book Now →</Link>
             </div>
           </div>
         </section>

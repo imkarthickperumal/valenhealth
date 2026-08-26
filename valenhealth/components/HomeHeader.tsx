@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { trackConversion } from "../lib/gtag";
 
 export default function HomeHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,13 +23,15 @@ export default function HomeHeader() {
         <Link href="/gym" onClick={closeMenu}>Gym</Link>
         <Link href="/blog" onClick={closeMenu}>Blog</Link>
         <Link href="/contact" onClick={closeMenu}>Contact Us</Link>
-        <Link href="/contact#contact-form" className="mobile-cta" onClick={closeMenu}>Book a Tour</Link>
+        <a href="tel:0489293000" className="mobile-cta" onClick={() => { trackConversion(); closeMenu(); }}>Call 0489 293 000</a>
+        <Link href="/contact#contact-form" className="mobile-cta" onClick={() => { trackConversion(); closeMenu(); }}>Book a Tour</Link>
         <Link href="/gym#memberships" className="mobile-cta" onClick={closeMenu}>Join Now</Link>
         <Link href="/referral" className="mobile-cta" onClick={closeMenu}>Referral</Link>
       </nav>
 
       <div className="header-actions">
-        <Link href="/contact#contact-form" className="home-header-cta" onClick={closeMenu}>Book a Tour</Link>
+        <a href="tel:0489293000" className="home-header-phone" onClick={() => trackConversion()} aria-label="Call Valen Health on 0489 293 000">0489 293 000</a>
+        <Link href="/contact#contact-form" className="home-header-cta" onClick={() => { trackConversion(); closeMenu(); }}>Book a Tour</Link>
         <Link href="/gym#memberships" className="home-header-cta" onClick={closeMenu}>Join Now</Link>
         <Link href="/referral" className="home-header-cta" onClick={closeMenu}>Referral</Link>
       </div>

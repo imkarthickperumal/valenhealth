@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { sendReferralEmail, type FormState } from "./actions";
 import * as fpixel from "../../lib/fpixel";
+import { trackConversion } from "../../lib/gtag";
 
 const initialState: FormState = { status: "idle", message: "" };
 
@@ -21,11 +22,7 @@ export default function ReferralClient() {
         status: "success",
       });
       // Google Ads conversion tracking
-      if (typeof window !== "undefined" && typeof window.gtag === "function") {
-        window.gtag("event", "conversion", {
-          send_to: "AW-18279882531/referral_form_submit", // Placeholder label
-        });
-      }
+      trackConversion();
     }
   }, [state.status]);
 

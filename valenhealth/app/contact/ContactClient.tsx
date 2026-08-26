@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { sendContactEmail, type ContactFormState } from "./actions";
 import * as fpixel from "../../lib/fpixel";
+import { trackConversion } from "../../lib/gtag";
 
 const initialState: ContactFormState = { status: "idle", message: "" };
 
@@ -43,11 +44,7 @@ export default function ContactClient() {
         status: "success",
       });
       // Google Ads conversion tracking
-      if (typeof window !== "undefined" && typeof window.gtag === "function") {
-        window.gtag("event", "conversion", {
-          send_to: "AW-18279882531/contact_form_submit",
-        });
-      }
+      trackConversion();
     }
   }, [state.status]);
 
@@ -68,7 +65,7 @@ export default function ContactClient() {
         {/* DETAILS */}
         <section className="contact-details">
           <div className="contact-details-inner">
-            <a href="tel:0894393363" className="contact-detail-card reveal">
+            <a href="tel:0894393363" className="contact-detail-card reveal" onClick={() => trackConversion()}>
               <div className="contact-detail-card-label">Phone</div>
               <div className="contact-detail-card-value">(08) 9439 3363</div>
               <div className="contact-detail-card-sub">Mon–Fri, business hours</div>
@@ -90,7 +87,7 @@ export default function ContactClient() {
               <div className="contact-visit-banner-eyebrow">Drop in</div>
               <div className="contact-visit-banner-title">Pop down for a tour and a chat — or get booked in.</div>
             </div>
-            <a href="#contact-form" className="contact-visit-banner-cta">Book a Tour</a>
+            <a href="#contact-form" className="contact-visit-banner-cta" onClick={() => trackConversion()}>Book a Tour</a>
           </div>
         </section>
 

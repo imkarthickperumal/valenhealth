@@ -1,5 +1,7 @@
 import HomeHeader from "../components/HomeHeader";
 import HomeFooter from "../components/HomeFooter";
+import ConversionLink from "../components/ConversionLink";
+import ConversionNextLink from "../components/ConversionNextLink";
 import Link from "next/link";
 import "./home.css";
 import { Metadata } from "next";
@@ -56,8 +58,8 @@ export default function Home() {
               </div>
             </div>
             <div className="hp-hero-buttons">
-              <Link href="/contact#contact-form" className="btn btn-orange">Book a Tour →</Link>
-              <a href="https://valenhealth.bookings.pracsuite.com/guest" target="_blank" rel="noopener noreferrer" className="btn btn-black-outline">Book an EP Consultation</a>
+              <ConversionNextLink href="/contact#contact-form" className="btn btn-orange">Book a Tour →</ConversionNextLink>
+              <ConversionLink href="https://valenhealth.bookings.pracsuite.com/guest" target="_blank" rel="noopener noreferrer" className="btn btn-black-outline">Book an EP Consultation</ConversionLink>
             </div>
           </div>
 
@@ -199,8 +201,8 @@ export default function Home() {
           <div className="hp-unifier-divider"></div>
           <div className="hp-unifier-tag">— All Under One Roof —</div>
           <div className="hp-unifier-buttons">
-            <Link href="/contact#contact-form" className="btn btn-orange btn-orange-large">Book a Tour →</Link>
-            <a href="https://valenhealth.bookings.pracsuite.com/guest" target="_blank" rel="noopener noreferrer" className="btn btn-white-outline">Book EP Consultation</a>
+            <ConversionNextLink href="/contact#contact-form" className="btn btn-orange btn-orange-large">Book a Tour →</ConversionNextLink>
+            <ConversionLink href="https://valenhealth.bookings.pracsuite.com/guest" target="_blank" rel="noopener noreferrer" className="btn btn-white-outline">Book EP Consultation</ConversionLink>
           </div>
         </div>
       </section>
@@ -276,8 +278,8 @@ export default function Home() {
           <h2>Ready to move<span className="accent">with purpose?</span></h2>
           <p className="lede">Book a tour of the facility, or book a clinical EP consultation. Whichever path you choose — we&apos;re with you.</p>
           <div className="hp-final-cta-buttons">
-            <Link href="/contact#contact-form" className="btn btn-black">Book a Tour →</Link>
-            <a href="https://valenhealth.bookings.pracsuite.com/guest" target="_blank" rel="noopener noreferrer" className="btn btn-black-outline">Book EP Consultation</a>
+            <ConversionNextLink href="/contact#contact-form" className="btn btn-black">Book a Tour →</ConversionNextLink>
+            <ConversionLink href="https://valenhealth.bookings.pracsuite.com/guest" target="_blank" rel="noopener noreferrer" className="btn btn-black-outline">Book EP Consultation</ConversionLink>
           </div>
         </div>
       </section>

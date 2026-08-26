@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./RegistrationForm.css";
 import * as fpixel from "../../lib/fpixel";
+import { trackConversion } from "../../lib/gtag";
 
 type FormValues = {
   fullName: string;
@@ -34,11 +35,7 @@ export default function RegistrationForm() {
     });
 
     // Google Ads conversion tracking
-    if (typeof window !== "undefined" && typeof window.gtag === "function") {
-      window.gtag("event", "conversion", {
-        send_to: "AW-18279882531/registration_form_submit", // Placeholder label
-      });
-    }
+    trackConversion();
 
     setShowSuccess(true);
     reset();
