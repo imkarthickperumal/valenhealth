@@ -2,5 +2,6 @@
 
 interface Window {
   gtag: (...args: any[]) => void;
+  trackConversion?: () => void;
   dataLayer: any[];
 }

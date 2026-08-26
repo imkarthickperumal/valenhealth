@@ -68,6 +68,15 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'G-5NJG3GH762');
             gtag('config', 'AW-18279882531');
+            window.trackConversion = function() {
+              if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', 'conversion', {
+                  'send_to': 'AW-18279882531/jn-TCMGDncccEKO-w4xE',
+                  'value': 1.0,
+                  'currency': 'AUD'
+                });
+              }
+            };
           `}
         </Script>
         {children}

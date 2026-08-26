@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import GoogleReviews from "./GoogleReviews/GoogleReviews";
+import { trackConversion } from "../lib/gtag";
 
 export default function HomeFooter() {
   return (
@@ -48,7 +51,7 @@ export default function HomeFooter() {
             <div>Mon–Fri · 9am–6pm</div>
           </div>
           <div className="home-footer-phones">
-            <div>(08) 9439 3363</div>
+            <div><a href="tel:0489293000" onClick={() => trackConversion()} style={{ color: "inherit", textDecoration: "none" }}>0489 293 000</a></div>
           </div>
         </div>
       </div>

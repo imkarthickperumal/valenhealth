@@ -77,6 +77,9 @@ export default function WhatsAppWidget() {
           body: JSON.stringify({ contactInfo: userMessage.text, history: [...messages, userMessage] }),
         });
 
+        // Track conversion on webchat lead submission
+        trackConversion();
+
         setTimeout(() => {
           const botMessage: Message = {
             id: (Date.now() + 1).toString(),

@@ -65,9 +65,9 @@ export default function ContactClient() {
         {/* DETAILS */}
         <section className="contact-details">
           <div className="contact-details-inner">
-            <a href="tel:0894393363" className="contact-detail-card reveal" onClick={() => trackConversion()}>
+            <a href="tel:0489293000" className="contact-detail-card reveal" onClick={() => trackConversion()}>
               <div className="contact-detail-card-label">Phone</div>
-              <div className="contact-detail-card-value">(08) 9439 3363</div>
+              <div className="contact-detail-card-value">0489 293 000</div>
               <div className="contact-detail-card-sub">Mon–Fri, business hours</div>
             </a>
             <a href="mailto:admin@valenhealth.com.au" className="contact-detail-card reveal">
