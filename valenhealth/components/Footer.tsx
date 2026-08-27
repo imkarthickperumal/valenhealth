@@ -12,7 +12,7 @@ export default function Footer() {
           </div>
           <div className="sub-footer-meta">Unit 4, 235 Rockingham Road, Spearwood WA 6163</div>
           <div className="sub-footer-meta">
-            Phone: <a href="tel:0489293000" style={{ color: "inherit", textDecoration: "none" }}>0489 293 000</a> | <a href="tel:0894186388" style={{ color: "inherit", textDecoration: "none" }}>(08) 9418 6388</a>
+            Phone: <a href="tel:0489293000" style={{ color: "inherit", textDecoration: "none" }}>0489 293 000</a> | <a href="tel:0894393363" style={{ color: "inherit", textDecoration: "none" }}>(08) 9439 3363</a>
           </div>
           <div className="sub-footer-meta">© Valen Health · Vitality And Longevity Exercise Network</div>
         </div>

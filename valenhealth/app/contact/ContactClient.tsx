@@ -70,9 +70,9 @@ export default function ContactClient() {
               <div className="contact-detail-card-value">0489 293 000</div>
               <div className="contact-detail-card-sub">Mon–Fri, business hours</div>
             </a>
-            <a href="tel:0894186388" className="contact-detail-card reveal" onClick={() => trackConversion()}>
+            <a href="tel:0894393363" className="contact-detail-card reveal" onClick={() => trackConversion()}>
               <div className="contact-detail-card-label">Landline</div>
-              <div className="contact-detail-card-value">(08) 9418 6388</div>
+              <div className="contact-detail-card-value">(08) 9439 3363</div>
               <div className="contact-detail-card-sub">Mon–Fri, business hours</div>
             </a>
             <a href="mailto:admin@valenhealth.com.au" className="contact-detail-card reveal">

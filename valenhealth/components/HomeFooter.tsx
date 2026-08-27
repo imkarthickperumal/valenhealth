@@ -52,7 +52,7 @@ export default function HomeFooter() {
           </div>
           <div className="home-footer-phones">
             <div><a href="tel:0489293000" onClick={() => trackConversion()} style={{ color: "inherit", textDecoration: "none" }}>0489 293 000</a></div>
-            <div><a href="tel:0894186388" onClick={() => trackConversion()} style={{ color: "inherit", textDecoration: "none" }}>(08) 9418 6388</a></div>
+            <div><a href="tel:0894393363" onClick={() => trackConversion()} style={{ color: "inherit", textDecoration: "none" }}>(08) 9439 3363</a></div>
           </div>
         </div>
       </div>
