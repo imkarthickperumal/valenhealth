@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ReadyToStart from "../../components/ReadyToStart/ReadyToStart";
 import ClassSchedule from "../../components/ClassSchedule/ClassSchedule";
-import { trackConversion } from "../../lib/gtag";
+import { fireConversion } from "../../lib/gtag";
+
+const PRACSUITE_BOOKING_URL = "https://valenhealth.bookings.pracsuite.com/guest";
 
 export default function ExercisePhysiologyClient() {
   // Force recompile
@@ -58,7 +59,13 @@ export default function ExercisePhysiologyClient() {
               Clinical, evidence-based exercise prescription delivered by accredited Exercise Physiologists. Built around your body, your history, and your goals.
             </p>
             <div style={{ marginTop: '32px' }}>
-              <Link href="/contact?subject=ep#contact-form" className="btn btn-orange" onClick={() => trackConversion()}>Book Now →</Link>
+              <a
+                href={PRACSUITE_BOOKING_URL}
+                className="btn btn-orange"
+                onClick={(e) => { e.preventDefault(); fireConversion(PRACSUITE_BOOKING_URL); }}
+              >
+                Book Now →
+              </a>
             </div>
           </div>
         </section>
