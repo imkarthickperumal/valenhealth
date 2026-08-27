@@ -46,7 +46,7 @@
 .contact-details { background: var(--cream); padding: 80px 48px 100px; }
 .contact-details-inner {
   max-width: 1280px; margin: 0 auto; display: grid;
-  grid-template-columns: repeat(2,1fr); gap: 32px;
+  grid-template-columns: repeat(2, 1fr); gap: 32px;
 }
 .contact-detail-card {
   padding: 40px 36px; border: 1px solid rgba(0,0,0,0.12); background: var(--cream);
