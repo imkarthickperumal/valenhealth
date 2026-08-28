@@ -49,7 +49,7 @@ export default function ExercisePhysiologyClient() {
 
       <main className="ep-page">
         {/* HERO */}
-        <section className="ep-hero">
+        <section  className="ep-hero">
           <div className="ep-hero-inner">
             <div className="ep-hero-eyebrow">Our Service</div>
             <h1 className="ep-hero-title ep-hero-title--soft">
@@ -70,29 +70,41 @@ export default function ExercisePhysiologyClient() {
           </div>
         </section>
 
-        {/* 1. WHAT IS AN EP */}
-        <section className="ep-what">
-          <div className="ep-what-inner">
-            <div className="ep-what-content">
-              <div className="ep-reveal">
-                <h2 className="ep-section-heading">What is <span className="ep-italic-orange">an</span> <span className="ep-ep-accent">EP?</span></h2>
-              </div>
-              <div className="ep-reveal">
-                <div className="ep-what-body">
-                  <p>An <strong>Accredited Exercise Physiologist (AEP)</strong> is a university-qualified allied health professional who specialises in clinical exercise prescription for injury, chronic disease, and performance.</p>
-                  <p>In simple terms: where a personal trainer helps you train, and a physiotherapist treats your acute injury, an EP is the bridge that takes you from rehab to long-term capacity using exercise as medicine.</p>
-                </div>
-              </div>
-            </div>
-            <div className="ep-what-image ep-reveal">
-              <img src="/images/ep-specialist.jpg" alt="Accredited Exercise Physiologist" />
-              <div className="ep-image-tag">Accredited Exercise Physiologist</div>
-            </div>
-          </div>
-        </section>
+    {/* 1. WHAT IS AN EP */}
+<section id="what-is-ep" className="ep-what">
+  <div className="ep-what-inner">
+    <div className="ep-what-gallery ep-reveal">
+      <div className="ep-what-gallery-item" style={{ backgroundImage: "url(/images/ep-specialist.jpg)" }} />
+      <div className="ep-what-gallery-item" style={{ backgroundImage: "url(/images/ep-specialist.jpg)" }} />
+      <div className="ep-what-gallery-item" style={{ backgroundImage: "url(/images/ep-specialist.jpg)" }} />
+    </div>
+
+    <div className="ep-what-content">
+      <div className="ep-reveal">
+        <h2 className="ep-section-heading">What is <span className="ep-italic-orange">an</span> <span className="ep-ep-accent">EP?</span></h2>
+      </div>
+      <div className="ep-reveal">
+        <div className="ep-what-body">
+          <p>An <strong>Accredited Exercise Physiologist (AEP)</strong> is a university-qualified allied health professional who specialises in clinical exercise prescription for injury, chronic disease, and performance.</p>
+          <p>In simple terms: where a personal trainer helps you train, and a physiotherapist treats your acute injury, an EP is the bridge that takes you from rehab to long-term capacity using exercise as medicine.</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="ep-what-staff ep-reveal">
+      <div className="ep-what-staff-photo ep-what-staff-photo--front">
+        <img src="/images/ep-specialist.jpg" alt="Accredited Exercise Physiologist" />
+      </div>
+      <div className="ep-what-staff-photo ep-what-staff-photo--back">
+        <img src="/images/ep-specialist.jpg" alt="Accredited Exercise Physiologist" />
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* 2. BENEFITS */}
-        <section className="ep-benefits">
+        <section  className="ep-benefits">
+          
           <div className="ep-benefits-inner">
             <div className="ep-benefits-header ep-reveal">
               <h2 className="ep-section-heading">Benefits of <span className="ep-italic-orange">an</span> <span className="ep-ep-accent">EP.</span></h2>
@@ -135,7 +147,7 @@ export default function ExercisePhysiologyClient() {
         </section>
 
         {/* 3. FUNDING */}
-        <section className="ep-funding">
+        <section id="funding"  className="ep-funding">
           <div className="ep-funding-inner">
             <div className="ep-funding-header ep-reveal">
               <h2 className="ep-section-heading">Funding <span className="ep-italic-orange">options.</span></h2>
@@ -168,7 +180,7 @@ export default function ExercisePhysiologyClient() {
         </section>
 
         {/* 4. WHAT EP TREATS */}
-        <section className="ep-treats">
+        <section  id="treats" className="ep-treats">
           <div className="ep-treats-inner">
             <aside className="ep-treats-aside ep-reveal">
               <h2 className="ep-section-heading">What we <span className="ep-italic-orange">treat.</span></h2>

@@ -50,7 +50,8 @@ export default function BlogIndex() {
 
         {/* POSTS */}
         <section className="blog-list-section">
-          <div className="blog-grid">
+          <h1>Comeing Soon....</h1>
+          {/* <div className="blog-grid">
             {posts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="blog-card">
                 <div className="blog-card-image" style={{ backgroundImage: `url(${post.image})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '200px' }}>
@@ -67,7 +68,7 @@ export default function BlogIndex() {
                 </div>
               </Link>
             ))}
-          </div>
+          </div> */}
         </section>
 
       </main>

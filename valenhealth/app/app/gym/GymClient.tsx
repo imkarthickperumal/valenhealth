@@ -128,10 +128,12 @@ export default function GymClient() {
         </section>
 
         {/* CLASS SCHEDULE */}
-        <ClassSchedule />
+        <div id="classes">
+  <ClassSchedule />
+</div>
 
         {/* HEALTH ECOSYSTEM */}
-        <section className="gym-ecosystem">
+        <section  className="gym-ecosystem">
           <div className="gym-ecosystem-inner">
             <div className="gym-ecosystem-header reveal">
               <h2 className="section-heading">A complete health <span className="italic-orange">ecosystem.</span></h2>
@@ -141,7 +143,7 @@ export default function GymClient() {
         </section>
 
         {/* AMENITIES */}
-        <section className="gym-amenities">
+        <section id="amenities" className="gym-amenities">
           <div className="gym-amenities-inner">
             <div className="gym-amenities-header reveal">
               <h2 className="section-heading"><span className="italic-orange-cap">Amenities.</span></h2>
