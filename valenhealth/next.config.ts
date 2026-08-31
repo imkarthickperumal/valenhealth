@@ -1,11 +1,20 @@
-// import type { NextConfig } from "next";
+import type { NextConfig } from "next";
 
-// const nextConfig: NextConfig = {
-//   output: 'standalone',
-// };
+const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/membership",
+        destination: "/gym#memberships",
+        permanent: true,
+      },
+      {
+        source: "/memberships",
+        destination: "/gym#memberships",
+        permanent: true,
+      },
+    ];
+  },
+};
 
-// export default nextConfig;
-const nextConfig = {
-  // remove output: 'export'
-}
-module.exports = nextConfig
+export default nextConfig;
