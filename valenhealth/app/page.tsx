@@ -31,15 +31,16 @@ export default function Home() {
         <div className="hp-hero-bg-glow"></div>
         <div className="hp-hero-wordmark">VALEN HEALTH VALEN</div>
         <div className="hp-hero-inner">
+          {/* 1. LEFT CARD: HERO */}
           <div className="hp-hero-card">
             <div className="pre-headline">
               <span className="rule"></span>
               <span>Spearwood&apos;s Health Ecosystem</span>
             </div>
             <h1>
-              Move with
+              MOVE WITH
               <br />
-              <span className="black">purpose.</span>
+              <span className="black">PURPOSE.</span>
             </h1>
             <p className="lede">
               Clinical exercise physiology and a 24/7 gym, working as one. Train
@@ -114,23 +115,45 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="hp-hero-side">
-            <div className="hp-hero-side-tag">
-              <span className="pulse"></span>
-              <span>Now Open · 24/7</span>
-            </div>
-            <div className="hp-hero-side-quote">
-              <p className="text">
-                &ldquo;Fitness should be purposeful — a journey towards
-                confidence, resilience, and self-connection.&rdquo;
+          {/* 2. MIDDLE COLUMN: VIDEO */}
+          <div className="hp-hero-video-card">
+            <video
+              className="hp-hero-video"
+              src="/video/heropagevideo.MP4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+            />
+          </div>
+
+          {/* 3. RIGHT CARD: WHAT WE BELIEVE */}
+          <div className="hp-hero-belief-card">
+            <div>
+              <div className="hp-hero-belief-eyebrow">
+                <span className="rule"></span>
+                <span>What We Believe</span>
+              </div>
+              <p className="hp-hero-belief-attribution">
+                At Valen Health, we believe
               </p>
-              <p className="attr">— Our Philosophy</p>
+              <h2>
+                movement is the most underprescribed medicine in healthcare.
+              </h2>
+              <p className="sub">
+                That&apos;s why we built Valen Health — to bridge the gap
+                between clinic and community, and put movement back where it
+                belongs: at the centre of how people heal, recover, and live
+                longer, better lives.
+              </p>
             </div>
-          </aside>
-        </div>
-        <div className="hp-hero-scroll">
-          <span>Scroll</span>
-          <span className="line"></span>
+            <div className="hp-hero-belief-cta">
+              <Link href="/about" className="btn btn-black">
+                Read our story
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -151,34 +174,6 @@ export default function Home() {
         <div className="hp-stat">
           <div className="value">100%</div>
           <div className="label">Evidence-Based</div>
-        </div>
-      </section>
-
-      {/* BELIEF */}
-      <section className="hp-belief">
-        <div className="hp-belief-grid">
-          <div className="hp-belief-image">
-            <img src="/images/whatwebelieve.jpg" alt="Our Philosophy" />
-          </div>
-          <div className="hp-belief-content">
-            <span className="eyebrow">— What We Believe</span>
-            <p className="hp-belief-attribution">At Valen Health, we believe</p>
-            <h2>
-              movement is the most underprescribed medicine in healthcare.
-            </h2>
-            <p className="sub">
-              That&apos;s why we built Valen Health — to bridge the gap between
-              clinic and community, and put movement back where it belongs: at
-              the centre of how people heal, recover, and live longer, better
-              lives.
-            </p>
-            <div className="hp-belief-cta">
-              <Link href="/about" className="btn btn-black">
-                Read our story
-              </Link>
-              <span className="read-time">2 min read</span>
-            </div>
-          </div>
         </div>
       </section>
 

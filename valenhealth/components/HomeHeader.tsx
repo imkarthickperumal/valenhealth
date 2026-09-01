@@ -16,8 +16,6 @@ export default function HomeHeader() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
-    { href: "/memberships", label: "Memberships" },
-
     {
       href: "/gym",
       label: "Gym",
@@ -28,17 +26,16 @@ export default function HomeHeader() {
         { href: "/gym#vald", label: "VALD Technology" },
       ],
     },
-    { href: "/blog", label: "Blog" },
     {
       href: "/exercise-physiology",
       label: "Exercise Physiology",
       subLinks: [
-        { href: "/gym#memberships", label: "Memberships" },
         { href: "/exercise-physiology#what-is-ep", label: "What is an EP?" },
         { href: "/exercise-physiology#funding", label: "Funding Options" },
         { href: "/exercise-physiology#treats", label: "What We Treat" },
       ],
     },
+    { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact Us" },
   ];
   const handleDropdownEnter = (label: string) => {
