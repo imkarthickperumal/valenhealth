@@ -17,10 +17,28 @@ const blogData = {
     title: "5 New Friends to Help You Manage Diabetes",
     metaTitle: "5 New Friends to Help You Manage Diabetes | Valen Health",
     metaDesc: "A diabetes diagnosis can feel overwhelming, but the good news is that you don't have to manage it alone.",
-    authorName: "VALEN HEALTH",
-    authorRole: "Clinical Team",
-    avatar: "VH",
+    authorName: "Kayle van Schalkwyk",
+    authorRole: "Exercise Physiologist",
+    avatar: "KV",
     image: "/images/blog/diabetes_blog_image.png"
+  },
+  'exercising-with-asthma': {
+    title: "Exercising With Asthma",
+    metaTitle: "Exercising With Asthma | Valen Health",
+    metaDesc: "Having asthma doesn't mean you have to avoid exercise — it means understanding your body, knowing your triggers, and being prepared.",
+    authorName: "Kayle van Schalkwyk",
+    authorRole: "Exercise Physiologist",
+    avatar: "KV",
+    image: "/images/GYM/GYM_A738792.jpg"
+  },
+  'back-pain-australias-most-expensive-health-problem': {
+    title: "Back Pain:\nAustralia's Most Expensive Health Problem",
+    metaTitle: "Back Pain: Australia's Most Expensive Health Problem | Valen Health",
+    metaDesc: "Back pain is the number one cause of disability in Australia and globally. Here's what the research actually shows about recovery, movement and better care.",
+    authorName: "Aaron Dean",
+    authorRole: "Exercise Physiologist",
+    avatar: "AD",
+    image: "/images/GYM/GYM_A738801.jpg"
   }
 };
 
@@ -28,6 +46,8 @@ export function generateStaticParams() {
   return [
     { slug: 'exercise-physiology-vs-physiotherapy' },
     { slug: '5-new-friends-to-help-you-manage-diabetes' },
+    { slug: 'exercising-with-asthma' },
+    { slug: 'back-pain-australias-most-expensive-health-problem' },
   ];
 }
 
@@ -430,6 +450,107 @@ export default async function BlogPost({ params }) {
                     <p className="blog-bottom-line-text" style={{ textTransform: 'none', lineHeight: '1.3', marginBottom: '24px' }}>
                       If you've recently been diagnosed with diabetes or it's been a while since you've seen one of these professionals, now is a great time to book in.<br /><br />
                       <span className="accent" style={{ fontSize: '1.2em' }}>Your future self will thank you.</span>
+                    </p>
+                    <Link href="/contact" className="btn btn-orange">
+                      Book in with the Valen Health team today
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {slug === 'exercising-with-asthma' && (
+              <>
+                <p>I have severe asthma, but I've learned that having asthma doesn't mean I have to avoid exercise, it means I need to understand my body, know my triggers, and be prepared.</p>
+                <p>When I'm experiencing a flare-up, I'm much more mindful about when, where and how I exercise.</p>
+                <p>One of my biggest personal triggers is cold evening and night air, so during a flare I avoid exercising outdoors later in the day and opt for daytime exercise where possible. I also find icy-cold drinks can aggravate my symptoms, so I choose room-temperature water instead.</p>
+                <p>I also make sure I complete a slow and thorough warm-up before moving into anything more strenuous. Rather than jumping straight into higher-intensity exercise, I gradually increase the intensity and give my breathing and airways time to adjust.</p>
+
+                <div className="blog-callout">
+                  <p>I always have my reliever puffer with me when I exercise. Where possible, I also carry a spacer, as it can help more of the medication reach my lungs and makes correct inhaler technique easier.</p>
+                </div>
+
+                <p>I also pay attention to how I'm feeling. If my asthma symptoms are worsening or I'm struggling to breathe normally, that isn't something I try to "push through".</p>
+
+                <h2>Why I Still Exercise</h2>
+                <p>It can be tempting to avoid exercise when you have asthma, particularly if you've experienced breathlessness or asthma symptoms during activity. But when my asthma is appropriately managed, regular exercise is actually an important part of looking after my overall health and fitness.</p>
+                <p>Exercise doesn't cure asthma or replace asthma medication, but regular physical activity can improve cardiovascular fitness and exercise capacity. As I become fitter, my body can perform the same activities more efficiently, meaning everyday tasks and exercise can feel less demanding.</p>
+                <p>Regular exercise can also help support muscular strength, healthy body composition, mental wellbeing and confidence with physical activity. All of which are valuable for people living with a chronic respiratory condition.</p>
+
+                <div className="blog-highlight">
+                  <p>For me, the goal isn't to avoid anything that makes me breathe harder. It's to exercise safely, understand the difference between normal exercise-related breathlessness and my asthma symptoms, and adapt when my asthma isn't well controlled.</p>
+                </div>
+
+                <p>Having severe asthma has taught me that exercise doesn't have to be all-or-nothing. With good asthma management, awareness of my personal triggers and the right precautions, I can still stay active — I just sometimes need to adapt what exercise looks like for me that day.</p>
+                <p style={{ fontSize: '14px', fontStyle: 'italic', color: 'var(--grey-soft)' }}>This is my personal experience with asthma and isn't a substitute for an individual asthma action plan or medical advice.</p>
+
+                <div className="blog-bottom-line">
+                  <div className="blog-bottom-line-inner">
+                    <p className="blog-bottom-line-text" style={{ textTransform: 'none', lineHeight: '1.3', marginBottom: '24px' }}>
+                      Living with asthma doesn't mean sitting on the sidelines — <span className="accent">it means training smart.</span>
+                    </p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '18px', color: 'rgba(251,241,230,0.8)', marginBottom: '32px' }}>
+                      Talk to one of our exercise physiologists about a program built around your condition.
+                    </p>
+                    <Link href="/contact" className="btn btn-orange">
+                      Book in with the Valen Health team today
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {slug === 'back-pain-australias-most-expensive-health-problem' && (
+              <>
+                <p>Back pain is not just a minor inconvenience. It is the number one cause of disability in Australia and globally — and much of the care people receive is not only ineffective, but may actively make things worse.</p>
+
+                <h2>The Scale of the Problem</h2>
+                <p>Approximately 4 million Australians — 1 in 6 — are living with back problems right now. Globally, low back pain (LBP) affected 619 million people in 2020, a number projected to reach 843 million by 2050. It has been the world's leading cause of disability since 1990.</p>
+                <p>The financial burden is enormous. In 2020–21, AUD $3.4 billion was spent treating back problems in Australia. Emergency department and hospital presentations for LBP cost an estimated AUD $392.9 million per year. Add lost productivity, early retirement, welfare payments, and reduced GDP, and the true annual cost runs to many billions more.</p>
+
+                <h2>Why So Much Treatment Fails</h2>
+                <p>Here is something the research makes very clear: a significant portion of standard back pain care is not just ineffective — it may be harmful.</p>
+                <p>The fear-avoidance model, one of the most replicated frameworks in pain science, describes how people who interpret pain as a sign of danger develop kinesiophobia — a fear of movement. This drives avoidance, muscle guarding, deconditioning, and, ultimately, greater pain and disability. Pain-related fear is specifically implicated in the transition from acute to chronic LBP.</p>
+
+                <div className="blog-highlight">
+                  <p>A 2025 qualitative survey published in The Journal of Pain found that phrases implying the spine is unstable, fragile, or in need of protection are harmful messages that amplify catastrophising and fear of movement in people with chronic pain. Well-intentioned advice — like being told to "brace your core to protect your spine" — can inadvertently reinforce the belief that movement is dangerous, increase muscular guarding, and worsen pain through central sensitisation mechanisms.</p>
+                </div>
+
+                <p>Routine imaging compounds the problem. X-rays and MRI scans for non-specific LBP frequently reveal incidental findings unrelated to pain, increase patient anxiety, and do not improve outcomes. Australian guidelines recommend imaging only when serious pathology — fracture, malignancy, infection, or cauda equina syndrome — is clinically suspected.</p>
+
+                <h2>What the Research Supports</h2>
+
+                <h2>1. Movement — With the Right Message</h2>
+                <p>One of the most robust findings across international systematic reviews is that staying active produces better outcomes than rest. However, the framing of movement matters enormously. The goal is to build confidence in the body's capacity to move — not to teach people that movement is safe only when the spine is stabilised or protected.</p>
+                <p>Cognitive Functional Therapy (CFT), developed by Professor Peter O'Sullivan at Curtin University in Western Australia, directly targets unhelpful spine-protection beliefs. It normalises movement, reduces the perceived threat of pain, and addresses the behavioural and psychological drivers of chronicity. RCTs have shown CFT outperforms combined exercise and pain education programs for non-specific chronic LBP.</p>
+
+                <h2>2. Exercise — Type Matters Less Than You Think</h2>
+                <p>A 2021 Cochrane systematic review of 249 RCTs involving 24,486 participants found that exercise overall produces clinically important reductions in pain and disability for chronic LBP compared to no treatment. A 2025 meta-analysis found Pilates, walking, yoga, and tai chi all achieved significant pain reduction. Walking, notably, showed zero heterogeneity across studies — its benefits are highly reproducible.</p>
+                <p>Critically, the same evidence base shows that core stabilisation exercises are not superior to other exercise types (Gomes-Neto et al. 2017; Cochrane review by Saragiotto et al. 2016). And when core exercises are taught under a "protect the spine" frame, there is a real risk of reinforcing exactly the fear-avoidance patterns that perpetuate chronic pain. The best exercise is the one that builds confidence, is enjoyable, and will be sustained.</p>
+
+                <h2>3. Pain Neuroscience Education</h2>
+                <p>Understanding why pain occurs — and that it does not necessarily mean damage — directly reduces fear and catastrophising. A 2025 systematic review and meta-analysis confirmed that Pain Neuroscience Education (PNE) significantly reduces kinesiophobia, catastrophising, pain intensity, and disability in chronic LBP. Teaching people that pain is a protective alarm system — not a reliable indicator of tissue damage — changes behaviour, reduces guarding, and improves outcomes.</p>
+
+                <h2>4. Psychological and Biopsychosocial Approaches</h2>
+                <p>For patients with elevated fear-avoidance, anxiety, or catastrophising, psychological approaches including CBT, mindfulness-based stress reduction, and graded exposure to movement are recommended alongside physical interventions. A Cochrane review by Kamper et al. (2015) demonstrated that multidisciplinary biopsychosocial rehabilitation produced greater improvements in pain and function than physical treatment alone.</p>
+
+                <h2>5. Medication: Last Resort, Not First Response</h2>
+                <p>Australian and international guidelines consistently recommend that medication should not be the first line of management for non-specific LBP. When used, it should be at the lowest effective dose for the shortest duration, always combined with active approaches.</p>
+
+                <div className="blog-aep-statement">
+                  <p>
+                    The research on back pain tells a clear story: how we talk about pain matters as much as what we prescribe for it. Treatment that frames the spine as fragile or in need of constant protection may do more harm than good.
+                    <strong>The evidence-based path forward builds confidence, normalises movement, and addresses the psychological and social factors that drive chronicity.</strong>
+                  </p>
+                </div>
+
+                <div className="blog-bottom-line">
+                  <div className="blog-bottom-line-inner">
+                    <p className="blog-bottom-line-text" style={{ textTransform: 'none', lineHeight: '1.3', marginBottom: '24px' }}>
+                      Your spine isn't fragile — <span className="accent">it's built to move.</span>
+                    </p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '18px', color: 'rgba(251,241,230,0.8)', marginBottom: '32px' }}>
+                      If back pain is holding you back, our exercise physiologists can build you an evidence-based path forward.
                     </p>
                     <Link href="/contact" className="btn btn-orange">
                       Book in with the Valen Health team today
