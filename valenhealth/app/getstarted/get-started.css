@@ -1,0 +1,1921 @@
+/* =============================================
+   GET STARTED — Assessment Landing Page
+   ============================================= */
+
+html:has(.gs-page),
+body:has(.gs-page) {
+  background-color: #000000 !important;
+}
+
+.gs-page {
+  background-color: #000000;
+  color: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ===== LANDING HEADER ===== */
+.gs-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #000000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+}
+
+.gs-header-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.gs-header-logo-mark {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+.gs-header-logo-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.gs-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gs-header-phone {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+  padding: 12px 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.gs-header-phone:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.gs-header-cta {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: var(--orange);
+  border-radius: 4px;
+  padding: 12px 24px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.gs-header-cta:hover {
+  background: #ff7d26;
+  transform: translateY(-1px);
+}
+
+/* ===== HERO SECTION ===== */
+.gs-hero {
+  position: relative;
+  background-color: #000000;
+  padding: 60px 48px 64px;
+  overflow: hidden;
+}
+
+.gs-hero::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(237, 108, 21, 0.14) 0%,
+    rgba(237, 108, 21, 0.04) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.gs-hero-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.gs-hero-eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gs-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.8vw, 62px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+
+.gs-hero-body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(251, 241, 230, 0.8);
+  max-width: 580px;
+  margin-bottom: 36px;
+}
+
+.gs-hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.gs-btn {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  border-radius: 6px;
+  padding: 16px 28px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.gs-btn-primary {
+  background: var(--orange);
+  color: #ffffff !important;
+}
+
+.gs-btn-primary:hover {
+  background: #ff7d26;
+  transform: translateY(-2px);
+}
+
+.gs-btn-outline {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.gs-btn-outline:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.gs-hero-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gs-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.gs-check-mark {
+  color: var(--orange);
+  font-weight: 800;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+
+.gs-check-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(251, 241, 230, 0.75);
+}
+
+/* ===== ASSESSMENT FORM CARD ===== */
+.gs-form-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 36px 32px;
+  position: sticky;
+  top: 96px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(237, 108, 21, 0.08);
+}
+
+.gs-form-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.gs-form-card-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--black);
+  line-height: 1.15;
+}
+
+.gs-form-step {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777;
+  white-space: nowrap;
+  margin-top: 4px;
+}
+
+.gs-form-sub {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #444;
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.gs-progress-track {
+  height: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.gs-progress-fill {
+  height: 100%;
+  background: var(--orange);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.gs-form-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--black);
+  margin-bottom: 14px;
+}
+
+.gs-option-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.gs-option-btn {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--black);
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 14px 12px;
+  text-align: left;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.gs-option-btn:hover {
+  border-color: var(--orange);
+  background: #fff9f4;
+}
+
+.gs-option-btn.selected {
+  border-color: var(--orange) !important;
+  background: var(--orange) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 12px rgba(237, 108, 21, 0.25);
+}
+
+.gs-continue-btn {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #ffffff !important;
+  background: var(--orange);
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 12px;
+}
+
+.gs-continue-btn:hover:not(:disabled) {
+  background: #ff7d26;
+  transform: translateY(-1px);
+}
+
+.gs-continue-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.gs-form-step2-actions,
+.gs-form-step3-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+.gs-back-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: #666666;
+  cursor: pointer;
+  padding: 6px 0;
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s ease;
+}
+
+.gs-back-btn:hover {
+  color: var(--orange);
+}
+
+/* Form Input Fields in Step 3 */
+.gs-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.gs-input-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--black);
+}
+
+.gs-input-field {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--black);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gs-input-field:focus {
+  border-color: var(--orange);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(237, 108, 21, 0.15);
+}
+
+.gs-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 16px 0 16px;
+  cursor: pointer;
+}
+
+.gs-checkbox-input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--orange);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.gs-checkbox-text {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.55;
+  color: #555555;
+}
+
+.gs-checkbox-text a {
+  color: var(--orange);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.gs-form-error {
+  background: #fee2e2;
+  border: 1px solid #ef4444;
+  color: #b91c1c;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  margin-bottom: 14px;
+}
+
+/* Success Confirmation Screen */
+.gs-form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 8px 12px;
+}
+
+.gs-success-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 20px rgba(237, 108, 21, 0.3);
+}
+
+.gs-success-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.gs-success-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444444;
+  margin-bottom: 18px;
+}
+
+.gs-success-contact {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 22px;
+}
+
+.gs-success-contact a {
+  color: var(--orange);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.gs-success-reset-btn {
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gs-success-reset-btn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* ===== TRUST BAR ===== */
+.gs-trust-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 32px 48px;
+  background: #000000;
+}
+
+.gs-trust-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.gs-trust-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.gs-trust-stars {
+  color: var(--orange);
+  font-size: 16px;
+  letter-spacing: 3px;
+  line-height: 1;
+}
+
+.gs-trust-rating-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(251, 241, 230, 0.7);
+}
+
+.gs-trust-rating-text strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.gs-trust-meta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(251, 241, 230, 0.65);
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.gs-trust-meta .gs-trust-phone,
+.gs-trust-meta a {
+  color: var(--orange);
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.gs-trust-meta a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+.gs-trust-badges {
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 36px;
+}
+
+.gs-trust-badge {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s ease;
+}
+
+.gs-trust-badge:hover {
+  color: var(--orange);
+}
+
+/* ===== SECTION WRAPPER & HEADINGS ===== */
+.gs-statement,
+.gs-reasons,
+.gs-why,
+.gs-treat,
+.gs-process,
+.gs-fees,
+.gs-clinicians,
+.gs-feedback,
+.gs-faq,
+.gs-notes {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 56px 48px;
+  background-color: #000000;
+}
+
+.gs-statement-eyebrow,
+.gs-why-eyebrow,
+.gs-treat-eyebrow,
+.gs-process-eyebrow,
+.gs-fees-eyebrow,
+.gs-clinicians-eyebrow,
+.gs-feedback-eyebrow,
+.gs-faq-eyebrow,
+.gs-notes-eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gs-statement-title,
+.gs-why-title,
+.gs-treat-title,
+.gs-process-title,
+.gs-fees-title,
+.gs-clinicians-title,
+.gs-feedback-title,
+.gs-faq-title,
+.gs-notes-title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 18px;
+}
+
+.gs-statement-body,
+.gs-why-body,
+.gs-process-body,
+.gs-fees-body,
+.gs-notes-intro {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(251, 241, 230, 0.75);
+  max-width: 740px;
+  margin-bottom: 28px;
+}
+
+/* ===== REASONS SECTION ===== */
+.gs-reasons-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.gs-reason-row {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: baseline;
+}
+
+.gs-reason-row:last-of-type {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gs-reason-num {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--orange);
+}
+
+.gs-reason-text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(251, 241, 230, 0.75);
+  max-width: 900px;
+}
+
+.gs-reason-text strong {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.gs-reasons-cta-wrap {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 28px;
+}
+
+.gs-reasons-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: var(--orange);
+  border-radius: 6px;
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.gs-reasons-cta:hover {
+  background: #ff7d26;
+  transform: translateY(-2px);
+}
+
+/* ===== WHY VALEN GRID ===== */
+.gs-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.gs-why-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.gs-why-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.gs-why-card-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.gs-why-card-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(251, 241, 230, 0.65);
+}
+
+/* ===== WHAT WE TREAT GRID ===== */
+.gs-treat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.gs-treat-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.gs-treat-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.gs-treat-card-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
+
+.gs-treat-card-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(251, 241, 230, 0.65);
+}
+
+/* ===== OUR PROCESS GRID ===== */
+.gs-process-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.gs-process-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gs-process-step {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+
+.gs-process-card-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.gs-process-card-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(251, 241, 230, 0.65);
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.gs-process-highlight {
+  border-left: 3px solid var(--orange);
+  padding-left: 14px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.5;
+}
+
+/* ===== AFTERWARDS CARD ===== */
+.gs-afterwards-card {
+  background: rgba(237, 108, 21, 0.04);
+  border: 1.5px solid var(--orange);
+  border-radius: 12px;
+  padding: 36px 40px;
+  margin-top: 32px;
+}
+
+.gs-afterwards-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 18px;
+}
+
+.gs-afterwards-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(251, 241, 230, 0.75);
+  margin-bottom: 24px;
+  max-width: 900px;
+}
+
+.gs-afterwards-cta {
+  margin-top: 24px;
+  display: inline-flex;
+}
+
+/* ===== FEES GRID ===== */
+.gs-fees-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+  align-items: stretch;
+}
+
+.gs-fee-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+}
+
+.gs-fee-card:hover {
+  border-color: rgba(237, 108, 21, 0.6);
+  transform: translateY(-2px);
+}
+
+.gs-fee-card.highlighted {
+  background: rgba(237, 108, 21, 0.08);
+  border: 1.5px solid var(--orange);
+  box-shadow: 0 0 24px rgba(237, 108, 21, 0.2);
+  transform: translateY(-2px);
+}
+
+.gs-fee-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(251, 241, 230, 0.6);
+  margin-bottom: 14px;
+}
+
+.gs-fee-card.highlighted .gs-fee-label {
+  color: var(--orange);
+}
+
+.gs-fee-price {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.gs-fee-unit {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(251, 241, 230, 0.6);
+}
+
+.gs-fee-card-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(251, 241, 230, 0.65);
+}
+
+.gs-fees-footnote {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(251, 241, 230, 0.6);
+}
+
+/* ===== OUR CLINICIANS ===== */
+.gs-clinicians-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.gs-clinician-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 32px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.gs-clinician-photo {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange);
+  line-height: 1.3;
+}
+
+.gs-clinician-name {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+
+.gs-clinician-role {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+
+.gs-clinician-bio {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(251, 241, 230, 0.65);
+}
+
+/* ===== PATIENT FEEDBACK ===== */
+.gs-feedback-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+  align-items: stretch;
+}
+
+.gs-feedback-slot {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1.5px dashed rgba(237, 108, 21, 0.4);
+  border-radius: 12px;
+  padding: 28px 24px;
+}
+
+.gs-feedback-slot-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+
+.gs-feedback-slot-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(251, 241, 230, 0.7);
+}
+
+.gs-feedback-preview {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1.5px dashed rgba(237, 108, 21, 0.4);
+  border-radius: 12px;
+  padding: 36px 40px;
+}
+
+.gs-feedback-preview-stars {
+  color: var(--orange);
+  font-size: 16px;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+
+.gs-feedback-preview-quote {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--cream);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.gs-feedback-preview-attr {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(251, 241, 230, 0.7);
+}
+
+/* ===== FAQ SECTION ===== */
+.gs-faq {
+  max-width: 960px;
+  background-color: #000000;
+}
+
+.gs-faq-list {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.gs-faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.gs-faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 4px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.gs-faq-q-text {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.gs-faq-toggle {
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--orange);
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.gs-faq-item.open .gs-faq-toggle {
+  transform: rotate(135deg);
+}
+
+.gs-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.gs-faq-item.open .gs-faq-answer {
+  max-height: 400px;
+}
+
+.gs-faq-answer-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(251, 241, 230, 0.7);
+  padding: 0 4px 24px;
+}
+
+/* ===== BUILD NOTES ===== */
+.gs-notes {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #000000;
+}
+
+.gs-notes-h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin: 48px 0 18px;
+}
+
+.gs-notes-h3:first-of-type {
+  margin-top: 0;
+}
+
+.gs-notes-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(251, 241, 230, 0.7);
+  max-width: 900px;
+  margin-bottom: 24px;
+}
+
+.gs-notes-body strong {
+  color: var(--cream);
+}
+
+.gs-code {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 0.9em;
+  background: rgba(237, 108, 21, 0.12);
+  color: var(--orange);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.gs-notes-table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.gs-notes-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.gs-notes-table thead tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.gs-notes-table th {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.gs-notes-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gs-notes-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.gs-notes-table td {
+  padding: 16px 20px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(251, 241, 230, 0.75);
+  vertical-align: top;
+}
+
+.gs-notes-table td:first-child {
+  font-weight: 700;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+.gs-notes-list {
+  list-style: none;
+  counter-reset: notes-counter;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.gs-notes-list li {
+  counter-increment: notes-counter;
+  position: relative;
+  padding-left: 32px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(251, 241, 230, 0.75);
+}
+
+.gs-notes-list li::before {
+  content: counter(notes-counter) ".";
+  position: absolute;
+  left: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--orange);
+}
+
+.gs-notes-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.gs-notes-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 24px 22px;
+}
+
+.gs-notes-card-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.gs-notes-card-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(251, 241, 230, 0.65);
+}
+
+/* ===== FINAL CTA ===== */
+.gs-final-cta {
+  padding: 100px 48px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #000000;
+}
+
+.gs-final-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+
+.gs-final-cta-sub {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(251, 241, 230, 0.75);
+  max-width: 580px;
+  margin: 0 auto 36px;
+}
+
+.gs-final-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ===== FOOTER ===== */
+.gs-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000000;
+}
+
+.gs-footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 48px 60px;
+}
+
+.gs-footer-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.gs-footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.gs-footer-logo-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.gs-footer-logo-mark {
+  height: 54px;
+  width: auto;
+  display: block;
+}
+
+.gs-footer-logo-text {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.gs-footer-address {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.85;
+  color: rgba(251, 241, 230, 0.65);
+}
+
+.gs-footer-address a {
+  color: var(--orange);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.gs-footer-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.gs-footer-links a {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: rgba(251, 241, 230, 0.8);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.gs-footer-links a:hover {
+  color: var(--orange);
+}
+
+.gs-footer-accent {
+  height: 4px;
+  background: var(--orange);
+}
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+@media (max-width: 1080px) {
+  .gs-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .gs-form-card {
+    position: static;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .gs-why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gs-fees-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gs-treat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .gs-header {
+    padding: 12px 18px;
+  }
+
+  .gs-header-logo {
+    gap: 10px;
+  }
+
+  .gs-header-logo-mark {
+    height: 28px;
+  }
+
+  .gs-header-logo-text {
+    font-size: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  .gs-header-phone {
+    display: none;
+  }
+
+  .gs-header-cta {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+
+  .gs-hero {
+    padding: 40px 18px 48px;
+  }
+
+  .gs-hero-title {
+    font-size: clamp(28px, 7.5vw, 38px);
+    margin-bottom: 16px;
+  }
+
+  .gs-hero-body {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .gs-btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  .gs-hero-ctas {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .gs-form-card {
+    padding: 24px 18px;
+    border-radius: 12px;
+  }
+
+  .gs-form-card-title {
+    font-size: 20px;
+  }
+
+  .gs-form-sub {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .gs-progress-track {
+    margin-bottom: 20px;
+  }
+
+  .gs-form-label {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .gs-option-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .gs-option-btn {
+    padding: 12px 14px;
+    font-size: 13.5px;
+  }
+
+  .gs-continue-btn {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .gs-trust-bar {
+    padding: 24px 18px;
+  }
+
+  .gs-trust-top {
+    font-size: 13.5px;
+    gap: 8px;
+  }
+
+  .gs-trust-stars {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .gs-trust-meta {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .gs-trust-badges {
+    justify-content: flex-start;
+    gap: 10px 20px;
+    padding-top: 18px;
+  }
+
+  .gs-trust-badge {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .gs-statement,
+  .gs-reasons,
+  .gs-why,
+  .gs-treat,
+  .gs-process,
+  .gs-fees,
+  .gs-clinicians,
+  .gs-feedback,
+  .gs-faq,
+  .gs-notes {
+    padding: 38px 18px;
+  }
+
+  .gs-statement-title,
+  .gs-why-title,
+  .gs-treat-title,
+  .gs-process-title,
+  .gs-fees-title,
+  .gs-clinicians-title,
+  .gs-feedback-title,
+  .gs-faq-title,
+  .gs-notes-title {
+    font-size: clamp(24px, 6.5vw, 34px);
+    margin-bottom: 14px;
+  }
+
+  .gs-statement-body,
+  .gs-why-body,
+  .gs-process-body,
+  .gs-fees-body,
+  .gs-notes-intro {
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+
+  .gs-reason-row {
+    grid-template-columns: 26px 1fr;
+    gap: 10px;
+    padding: 12px 0;
+  }
+
+  .gs-reason-num {
+    font-size: 14px;
+  }
+
+  .gs-reason-text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .gs-reasons-cta-wrap {
+    width: 100%;
+  }
+
+  .gs-reasons-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 14px;
+  }
+
+  .gs-why-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gs-why-card {
+    padding: 24px 18px;
+  }
+
+  .gs-treat-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gs-treat-card {
+    padding: 24px 18px;
+  }
+
+  .gs-process-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gs-process-card {
+    padding: 24px 18px;
+  }
+
+  .gs-afterwards-card {
+    padding: 24px 18px;
+    margin-top: 20px;
+  }
+
+  .gs-afterwards-title {
+    font-size: 19px;
+  }
+
+  .gs-afterwards-cta {
+    width: 100%;
+  }
+
+  .gs-afterwards-cta .gs-btn {
+    width: 100%;
+  }
+
+  .gs-fees-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .gs-fee-card {
+    padding: 22px 18px;
+  }
+
+  .gs-fee-price {
+    font-size: 30px;
+  }
+
+  .gs-clinicians-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .gs-clinician-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px 18px;
+    gap: 16px;
+  }
+
+  .gs-clinician-photo {
+    width: 100%;
+    max-width: 140px;
+    height: 140px;
+  }
+
+  .gs-feedback-slots {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .gs-feedback-slot {
+    padding: 20px 18px;
+  }
+
+  .gs-feedback-preview {
+    padding: 22px 18px;
+  }
+
+  .gs-feedback-preview-quote {
+    font-size: 15.5px;
+  }
+
+  .gs-faq-item {
+    padding: 16px 0;
+  }
+
+  .gs-faq-q-text {
+    font-size: 15px;
+  }
+
+  .gs-notes-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .gs-notes-card {
+    padding: 18px 16px;
+  }
+
+  .gs-notes-table {
+    font-size: 12.5px;
+    min-width: 460px;
+  }
+
+  .gs-notes-table th,
+  .gs-notes-table td {
+    padding: 10px 12px;
+  }
+
+  .gs-final-cta {
+    padding: 48px 18px;
+  }
+
+  .gs-final-cta-title {
+    font-size: clamp(26px, 7vw, 36px);
+  }
+
+  .gs-final-cta-sub {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .gs-final-cta-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .gs-final-cta-actions .gs-btn {
+    width: 100%;
+  }
+
+  .gs-footer-inner {
+    padding: 38px 18px 36px;
+  }
+
+  .gs-footer-logo-mark {
+    height: 38px;
+  }
+
+  .gs-footer-logo-text {
+    font-size: 20px;
+  }
+
+  .gs-footer-address {
+    font-size: 13.5px;
+  }
+
+  .gs-footer-top {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .gs-footer-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gs-header {
+    padding: 10px 14px;
+  }
+
+  .gs-header-logo-text {
+    font-size: 14.5px;
+  }
+
+  .gs-header-cta {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .gs-hero {
+    padding: 32px 14px 40px;
+  }
+
+  .gs-form-card {
+    padding: 20px 14px;
+  }
+
+  .gs-form-card-header {
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .gs-form-card-title {
+    font-size: 18px;
+  }
+
+  .gs-statement,
+  .gs-reasons,
+  .gs-why,
+  .gs-treat,
+  .gs-process,
+  .gs-fees,
+  .gs-clinicians,
+  .gs-feedback,
+  .gs-faq,
+  .gs-notes {
+    padding: 32px 14px;
+  }
+
+  .gs-footer-inner {
+    padding: 32px 14px 28px;
+  }
+}
+

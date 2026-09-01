@@ -303,3 +303,36 @@ export function buildReferralEmailHtml(data: {
     `📎 Check for any file attachment in this email.`
   );
 }
+
+// ── ASSESSMENT REQUEST EMAIL ───────────────────────────────────────
+export function buildAssessmentEmailHtml(data: {
+  concern: string;
+  funding: string;
+  firstName: string;
+  phone: string;
+  email: string;
+  date: string;
+  time: string;
+  userAgent: string;
+  remoteIp: string;
+}): string {
+  const content = `
+    ${section("Patient Assessment Request", [
+      ["First Name", data.firstName],
+      ["Mobile Phone", data.phone],
+      ["Email", data.email],
+      ["Primary Concern", data.concern],
+      ["Funding / Payment", data.funding],
+    ])}
+
+    ${metadataSection({
+      date: data.date,
+      time: data.time,
+      pageUrl: "https://valenhealth.com.au/getstarted",
+      userAgent: data.userAgent,
+      remoteIp: data.remoteIp,
+    })}`;
+
+  return emailWrapper("New Assessment Request", content);
+}
+
