@@ -30,6 +30,8 @@ export default function HomeFooter() {
             <li><Link href="/exercise-physiology">Exercise Physiology</Link></li>
             <li><Link href="/gym">The Gym</Link></li>
             <li><Link href="/gym#vald">VALD Testing</Link></li>
+            <li><Link href="/terms">Terms of Use</Link></li>
+            <li><Link href="/privacy">Privacy Policy</Link></li>
           </ul>
         </div>
 

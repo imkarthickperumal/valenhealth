@@ -1,0 +1,292 @@
+/* =============================================
+   PRIVACY POLICY PAGE STYLES — Valen Health Design System
+   ============================================= */
+
+.privacy-page {
+  background: var(--cream);
+  padding-top: 92px;
+}
+
+/* HERO */
+.privacy-hero {
+  background: var(--black);
+  padding: 100px 48px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.privacy-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(237, 108, 21, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.privacy-hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.privacy-hero-eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: var(--orange);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.privacy-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.privacy-hero-updated {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(251, 241, 230, 0.6);
+  margin-top: 20px;
+}
+
+/* BODY */
+.privacy-body-wrap {
+  padding: 72px 48px 120px;
+}
+
+.privacy-body {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid var(--cream-border);
+  border-radius: 10px;
+  padding: 56px 64px;
+}
+
+.privacy-intro {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  color: #2a2a2a;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 2px solid var(--cream-border);
+}
+
+.privacy-intro strong {
+  color: var(--black);
+}
+
+.privacy-section {
+  margin-bottom: 44px;
+}
+
+.privacy-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.privacy-section-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--cream-border);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.privacy-section-num {
+  color: var(--orange);
+}
+
+.privacy-section p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: #2a2a2a;
+  margin-bottom: 16px;
+}
+
+.privacy-section p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-section a {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.privacy-section a:hover {
+  text-decoration: underline;
+}
+
+/* SUBHEADING — e.g. "Health information" within a numbered section */
+.privacy-subheading {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 24px 0 8px;
+}
+
+.privacy-subheading:first-child {
+  margin-top: 0;
+}
+
+/* LISTS */
+.privacy-section ul {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.privacy-section ul:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-section li {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: #2a2a2a;
+  padding-left: 20px;
+  position: relative;
+}
+
+.privacy-section li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+/* CALLOUT */
+.privacy-callout {
+  background: rgba(237, 108, 21, 0.06);
+  border-left: 4px solid var(--orange);
+  padding: 18px 22px;
+  margin: 20px 0;
+}
+
+.privacy-callout p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: #2a2a2a;
+  line-height: 1.7;
+  margin: 0 !important;
+}
+
+/* PROVIDER TABLE */
+.privacy-table-wrap {
+  overflow-x: auto;
+  margin: 8px 0 16px;
+  border: 1px solid var(--cream-border);
+}
+
+.privacy-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+}
+
+.privacy-table thead tr {
+  background: var(--black);
+}
+
+.privacy-table th {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 18px;
+  text-align: left;
+  color: var(--cream);
+}
+
+.privacy-table tbody tr {
+  border-bottom: 1px solid var(--cream-border);
+}
+
+.privacy-table tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.privacy-table td {
+  padding: 12px 18px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #2a2a2a;
+  line-height: 1.5;
+}
+
+.privacy-table td:first-child {
+  font-weight: 700;
+  color: var(--black);
+}
+
+/* CONTACT CARD */
+.privacy-contact-card {
+  background: rgba(0, 0, 0, 0.03);
+  border-left: 4px solid var(--black);
+  padding: 24px 28px;
+  margin-top: 12px;
+}
+
+.privacy-contact-card p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: #2a2a2a;
+  line-height: 1.8;
+  margin: 0 !important;
+}
+
+.privacy-contact-card strong {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .privacy-page {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .privacy-hero {
+    padding: 80px 24px 60px;
+  }
+
+  .privacy-body-wrap {
+    padding: 48px 24px 80px;
+  }
+
+  .privacy-body {
+    padding: 36px 28px;
+  }
+}

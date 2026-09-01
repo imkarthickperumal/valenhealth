@@ -1,0 +1,198 @@
+/* =============================================
+   TERMS OF USE PAGE STYLES — Valen Health Design System
+   ============================================= */
+
+.terms-page {
+  background: var(--cream);
+  padding-top: 92px;
+}
+
+/* HERO */
+.terms-hero {
+  background: var(--black);
+  padding: 100px 48px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.terms-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(237, 108, 21, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.terms-hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.terms-hero-eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: var(--orange);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.terms-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.terms-hero-updated {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(251, 241, 230, 0.6);
+  margin-top: 20px;
+}
+
+/* BODY */
+.terms-body-wrap {
+  padding: 72px 48px 120px;
+}
+
+.terms-body {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid var(--cream-border);
+  border-radius: 10px;
+  padding: 56px 64px;
+}
+
+.terms-intro {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  color: #2a2a2a;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 2px solid var(--cream-border);
+}
+
+.terms-intro strong {
+  color: var(--black);
+}
+
+.terms-section {
+  margin-bottom: 44px;
+}
+
+.terms-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.terms-section-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--cream-border);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.terms-section-num {
+  color: var(--orange);
+}
+
+.terms-section p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: #2a2a2a;
+  margin-bottom: 16px;
+}
+
+.terms-section p:last-child {
+  margin-bottom: 0;
+}
+
+.terms-section a {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.terms-section a:hover {
+  text-decoration: underline;
+}
+
+/* CALLOUT — emergency / important notices */
+.terms-callout {
+  background: rgba(237, 108, 21, 0.06);
+  border-left: 4px solid var(--orange);
+  padding: 18px 22px;
+  margin: 20px 0;
+}
+
+.terms-callout p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: #2a2a2a;
+  line-height: 1.7;
+  margin: 0 !important;
+  font-style: italic;
+}
+
+/* CONTACT CARD */
+.terms-contact-card {
+  background: rgba(0, 0, 0, 0.03);
+  border-left: 4px solid var(--black);
+  padding: 24px 28px;
+  margin-top: 12px;
+}
+
+.terms-contact-card p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: #2a2a2a;
+  line-height: 1.8;
+  margin: 0 !important;
+}
+
+.terms-contact-card strong {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .terms-page {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .terms-hero {
+    padding: 80px 24px 60px;
+  }
+
+  .terms-body-wrap {
+    padding: 48px 24px 80px;
+  }
+
+  .terms-body {
+    padding: 36px 28px;
+  }
+}

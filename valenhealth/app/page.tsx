@@ -409,27 +409,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIAL */}
-      <section className="hp-testimonial">
-        <div className="hp-testimonial-bg">
-          <img src="/images/quote.jpg" alt="" />
-        </div>
-        <div className="hp-testimonial-content">
-          <div className="eyebrow">— Together We —</div>
-          <h2>Succeed</h2>
-          <div className="stars">★ ★ ★ ★ ★</div>
-          <div className="rated">Rated 5 out of 5</div>
-          <blockquote>
-            &ldquo;Valen Health has completely transformed my approach to
-            fitness and wellness. The Exercise Physiologists are incredibly
-            knowledgeable and supportive, and they took the time to create a
-            personalised plan that fit my lifestyle. It&apos;s more than a gym —
-            it&apos;s a community.&rdquo;
-          </blockquote>
-          <div className="attr">— John S.</div>
-        </div>
-      </section>
-
       {/* REFERRAL STRIP */}
       <section className="hp-referral-strip">
         <div className="hp-referral-strip-inner">
