@@ -157,18 +157,59 @@ const CLINICIANS = [
     name: "Aaron Dean",
     role: "Clinical Lead · AEP",
     bio: "ESSA-accredited Exercise Physiologist leading clinical delivery at Valen.",
+    image: "/images/EP/RSH2.jpeg",
   },
   {
     name: "Kaylee van Schalkwyk",
     role: "Exercise Physiologist · AEP",
     bio: "ESSA-accredited Exercise Physiologist working across rehabilitation and chronic conditions.",
+    image: "/images/EP/RSH1.jpg",
   },
 ];
 
-const REVIEW_SLOTS = [
-  "Paste a real Google review here — verbatim, with the reviewer's first name and last initial. Pick one about pain or getting back to something specific.",
-  "Second real Google review. Ideally a different condition to the first so the page covers more ground.",
-  "Third real Google review, plus the live star rating and total review count pulled from the Google Business Profile.",
+const REVIEWS = [
+  {
+    name: "Harish Kumar",
+    rating: 5,
+    text: "Been training at Valen for a while now and really enjoying it. The gym is clean, well set up and has a good vibe — not overcrowded or intimidating. Joel (the EP) has been great. He actually listens, explains things properly and tailors the program to you.",
+    date: "2 months ago",
+    initials: "HK",
+  },
+  {
+    name: "Luke Michal",
+    rating: 5,
+    text: "Valen Health is more than just a gym—it's a complete exercise physiology and rehabilitation center. One of the standout aspects of Valen Health is that it works in partnership with LifeReady Physio, located next door. A welcoming and supportive community!",
+    date: "A year ago",
+    initials: "LM",
+  },
+  {
+    name: "Sally Frezza",
+    rating: 5,
+    text: "Valen Health is a fantastic new gym with a welcoming atmosphere and highly knowledgeable staff who go above and beyond to support your fitness or recovery journey. Specialising in exercise physiology, they provided me expert guidance tailored to my needs.",
+    date: "A year ago",
+    initials: "SF",
+  },
+  {
+    name: "Gagandeep Kaur",
+    rating: 5,
+    text: "This gym has such a positive and welcoming vibe. The staff are polite and helpful, and the space is always kept clean and organised. It's a great environment to train in and I always feel comfortable coming here.",
+    date: "7 months ago",
+    initials: "GK",
+  },
+  {
+    name: "Lovedeep Singh",
+    rating: 5,
+    text: "I really like the facility. The staff are amazing and really helpful. I think a lot more people should get onto this because the exercise physios actually understand health from a science perspective.",
+    date: "A year ago",
+    initials: "LS",
+  },
+  {
+    name: "Siddhant Mathankar",
+    rating: 5,
+    text: "Great local gym and really knowledgeable staff. If you're in the area couldn't recommend anywhere better.",
+    date: "A year ago",
+    initials: "SM",
+  },
 ];
 
 const FAQS = [
@@ -896,12 +937,14 @@ export default function GetStartedClient() {
         <div className="gs-clinicians-grid">
           {CLINICIANS.map((clinician) => (
             <div className="gs-clinician-card" key={clinician.name}>
-              <div className="gs-clinician-photo">
-                Add
-                <br />
-                Photo
+              <div className="gs-clinician-photo-wrap">
+                <img
+                  src={clinician.image}
+                  alt={clinician.name}
+                  className="gs-clinician-img"
+                />
               </div>
-              <div>
+              <div className="gs-clinician-info">
                 <h3 className="gs-clinician-name">{clinician.name}</h3>
                 <div className="gs-clinician-role">{clinician.role}</div>
                 <p className="gs-clinician-bio">{clinician.bio}</p>
@@ -911,26 +954,49 @@ export default function GetStartedClient() {
         </div>
       </section>
 
-      {/* PATIENT FEEDBACK */}
+      {/* PATIENT FEEDBACK / REVIEWS */}
       <section className="gs-feedback">
         <div className="gs-feedback-eyebrow">Patient Feedback</div>
-        <h2 className="gs-feedback-title">What our patients say.</h2>
-        <div className="gs-feedback-slots">
-          {REVIEW_SLOTS.map((text, index) => (
-            <div className="gs-feedback-slot" key={index}>
-              <div className="gs-feedback-slot-label">{`Review Slot ${index + 1}`}</div>
-              <p className="gs-feedback-slot-text">{text}</p>
+        <h2 className="gs-feedback-title">Loved by our patients.</h2>
+        <div className="gs-reviews-grid">
+          {REVIEWS.map((review) => (
+            <div className="gs-review-card" key={review.name}>
+              <div className="gs-review-header">
+                <div className="gs-review-stars">★★★★★</div>
+                <div className="gs-review-google-badge">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path
+                      fill="#4285F4"
+                      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.08H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.92l2.85-2.22-.19-.6z"
+                    />
+                    <path
+                      fill="#EA4335"
+                      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1.5 12 1.5 7.7 1.5 3.99 3.97 2.18 7.08l3.66 2.84c.87-2.6 3.3-4.54 6.16-4.54z"
+                    />
+                  </svg>
+                  <span>Google Review</span>
+                </div>
+              </div>
+              <p className="gs-review-text">&ldquo;{review.text}&rdquo;</p>
+              <div className="gs-review-author">
+                <div className="gs-review-avatar">{review.initials}</div>
+                <div className="gs-review-author-info">
+                  <span className="gs-review-author-name">{review.name}</span>
+                  <span className="gs-review-date">
+                    {review.date} · Verified Patient
+                  </span>
+                </div>
+              </div>
             </div>
           ))}
-        </div>
-        <div className="gs-feedback-preview">
-          <div className="gs-feedback-preview-stars">★★★★★</div>
-          <p className="gs-feedback-preview-quote">
-            This is the layout each review will use once the real quotes are in.
-          </p>
-          <div className="gs-feedback-preview-attr">
-            First name L. · Condition
-          </div>
         </div>
       </section>
 
@@ -963,92 +1029,6 @@ export default function GetStartedClient() {
               </div>
             );
           })}
-        </div>
-      </section>
-
-      {/* BUILD NOTES — REMOVE BEFORE LAUNCH */}
-      <section className="gs-notes">
-        <div className="gs-notes-eyebrow">
-          Build Notes — Remove Before Launch
-        </div>
-
-        <h3 className="gs-notes-h3">1. Four Variants, One Template</h3>
-        <p className="gs-notes-body">
-          Each Google ad group needs its own URL so the headline echoes what the
-          person searched. Everything below the hero stays identical — only the
-          H1, sub-headline and eyebrow change.
-        </p>
-        <div className="gs-notes-table-wrap">
-          <table className="gs-notes-table">
-            <thead>
-              <tr>
-                <th>Ad Group</th>
-                <th>URL</th>
-                <th>H1</th>
-                <th>Sub-Headline</th>
-              </tr>
-            </thead>
-            <tbody>
-              {VARIANTS.map((variant) => (
-                <tr key={variant.url}>
-                  <td>{variant.adGroup}</td>
-                  <td>
-                    <code className="gs-code">{variant.url}</code>
-                  </td>
-                  <td>{variant.h1}</td>
-                  <td>{variant.sub}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="gs-notes-body">
-          <strong>Important:</strong> the first three must not mention GP
-          referrals anywhere — that&apos;s a deliberate strategy call. Referral
-          and Medicare language stays on{" "}
-          <code className="gs-code">/medicare-exercise-physiology</code> only.
-        </p>
-
-        <h3 className="gs-notes-h3">2. Wiring The Form</h3>
-        <ol className="gs-notes-list">
-          {FORM_WIRING_STEPS.map((step, index) => (
-            <li key={index}>{step}</li>
-          ))}
-        </ol>
-
-        <h3 className="gs-notes-h3">3. Still Needed From Valen</h3>
-        <div className="gs-notes-cards">
-          {STILL_NEEDED.map((item) => (
-            <div className="gs-notes-card" key={item.title}>
-              <h4 className="gs-notes-card-title">{item.title}</h4>
-              <p className="gs-notes-card-body">{item.body}</p>
-            </div>
-          ))}
-        </div>
-
-        <h3 className="gs-notes-h3">4. Why The Page Is Built This Way</h3>
-        <p className="gs-notes-body">
-          Checked against Life Ready, Better Rehab, Physio Inq, O2 Active,
-          Revolv Health, Dynamic HEP and Allsports. Every decision below is a
-          gap one of them left open.
-        </p>
-        <div className="gs-notes-table-wrap">
-          <table className="gs-notes-table">
-            <thead>
-              <tr>
-                <th>Decision</th>
-                <th>Reason</th>
-              </tr>
-            </thead>
-            <tbody>
-              {BUILD_DECISIONS.map((row) => (
-                <tr key={row.decision}>
-                  <td>{row.decision}</td>
-                  <td>{row.reason}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
       </section>
 

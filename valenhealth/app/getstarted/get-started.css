@@ -1041,27 +1041,36 @@ body:has(.gs-page) {
   border-radius: 12px;
   padding: 32px 28px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.gs-clinician-photo {
+.gs-clinician-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.gs-clinician-photo-wrap {
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  border: 1.5px dashed var(--orange);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-family: var(--font-display);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--orange);
-  line-height: 1.3;
+  overflow: hidden;
+  border: 2.5px solid var(--orange);
+  box-shadow: 0 4px 14px rgba(237, 108, 21, 0.25);
+}
+
+.gs-clinician-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.gs-clinician-info {
+  flex: 1;
 }
 
 .gs-clinician-name {
@@ -1089,67 +1098,103 @@ body:has(.gs-page) {
   color: rgba(251, 241, 230, 0.65);
 }
 
-/* ===== PATIENT FEEDBACK ===== */
-.gs-feedback-slots {
+/* ===== PATIENT FEEDBACK / REVIEWS ===== */
+.gs-reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-bottom: 24px;
   align-items: stretch;
 }
 
-.gs-feedback-slot {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1.5px dashed rgba(237, 108, 21, 0.4);
+.gs-review-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 28px 24px;
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.gs-feedback-slot-label {
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.gs-review-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.gs-review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.gs-review-stars {
   color: var(--orange);
-  margin-bottom: 14px;
+  font-size: 15px;
+  letter-spacing: 2px;
 }
 
-.gs-feedback-slot-text {
+.gs-review-google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.65;
-  color: rgba(251, 241, 230, 0.7);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(251, 241, 230, 0.6);
 }
 
-.gs-feedback-preview {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1.5px dashed rgba(237, 108, 21, 0.4);
-  border-radius: 12px;
-  padding: 36px 40px;
+.gs-review-text {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: rgba(251, 241, 230, 0.85);
+  margin-bottom: 24px;
+  flex: 1;
 }
 
-.gs-feedback-preview-stars {
-  color: var(--orange);
-  font-size: 16px;
-  letter-spacing: 3px;
-  margin-bottom: 16px;
+.gs-review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.gs-feedback-preview-quote {
-  font-family: var(--font-serif), Georgia, serif;
-  font-style: italic;
-  font-size: 19px;
-  color: var(--cream);
-  line-height: 1.5;
-  margin-bottom: 16px;
-}
-
-.gs-feedback-preview-attr {
+.gs-review-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-display);
   font-size: 13px;
-  font-weight: 700;
-  color: rgba(251, 241, 230, 0.7);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.gs-review-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gs-review-author-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+}
+
+.gs-review-date {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  color: rgba(251, 241, 230, 0.5);
 }
 
 /* ===== FAQ SECTION ===== */
@@ -1515,6 +1560,11 @@ body:has(.gs-page) {
   .gs-treat-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .gs-reviews-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1764,33 +1814,24 @@ body:has(.gs-page) {
   }
 
   .gs-clinician-card {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     padding: 22px 18px;
+    gap: 18px;
+  }
+
+  .gs-clinician-photo-wrap {
+    width: 76px;
+    height: 76px;
+  }
+
+  .gs-reviews-grid {
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  .gs-clinician-photo {
-    width: 100%;
-    max-width: 140px;
-    height: 140px;
-  }
-
-  .gs-feedback-slots {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .gs-feedback-slot {
-    padding: 20px 18px;
-  }
-
-  .gs-feedback-preview {
+  .gs-review-card {
     padding: 22px 18px;
-  }
-
-  .gs-feedback-preview-quote {
-    font-size: 15.5px;
   }
 
   .gs-faq-item {
