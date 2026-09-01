@@ -86,15 +86,15 @@ export default function ExercisePhysiologyClient() {
             <div className="ep-what-gallery ep-reveal">
               <div
                 className="ep-what-gallery-item"
-                style={{ backgroundImage: "url(/images/ep-specialist.jpg)" }}
+                style={{ backgroundImage: "url(/images/EP/LS1.jpg)" }}
               />
               <div
                 className="ep-what-gallery-item"
-                style={{ backgroundImage: "url(/images/ep-specialist.jpg)" }}
+                style={{ backgroundImage: "url(/images/EP/LS2.jpg)" }}
               />
               <div
                 className="ep-what-gallery-item"
-                style={{ backgroundImage: "url(/images/ep-specialist.jpg)" }}
+                style={{ backgroundImage: "url(/images/EP/LS3.jpg)" }}
               />
             </div>
 
@@ -126,13 +126,13 @@ export default function ExercisePhysiologyClient() {
             <div className="ep-what-staff ep-reveal">
               <div className="ep-what-staff-photo ep-what-staff-photo--front">
                 <img
-                  src="/images/ep-specialist.jpg"
+                  src="/images/EP/RSH1.jpg"
                   alt="Accredited Exercise Physiologist"
                 />
               </div>
               <div className="ep-what-staff-photo ep-what-staff-photo--back">
                 <img
-                  src="/images/ep-specialist.jpg"
+                  src="/images/EP/RSH2.jpg"
                   alt="Accredited Exercise Physiologist"
                 />
               </div>
