@@ -132,7 +132,7 @@ export default function ExercisePhysiologyClient() {
               </div>
               <div className="ep-what-staff-photo ep-what-staff-photo--back">
                 <img
-                  src="/images/EP/RSH2.jpg"
+                  src="/images/EP/RSH2.jpeg"
                   alt="Accredited Exercise Physiologist"
                 />
               </div>
