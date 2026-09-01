@@ -2,6 +2,7 @@ import HomeHeader from "../components/HomeHeader";
 import HomeFooter from "../components/HomeFooter";
 import ConversionLink from "../components/ConversionLink";
 import ConversionNextLink from "../components/ConversionNextLink";
+import HeroVideo from "../components/HeroVideo";
 import Link from "next/link";
 import "./home.css";
 import { Metadata } from "next";
@@ -115,18 +116,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 2. MIDDLE COLUMN: VIDEO */}
-          <div className="hp-hero-video-card">
-            <video
-              className="hp-hero-video"
-              src="/video/heropagevideo.MP4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-            />
-          </div>
+          {/* 2. MIDDLE COLUMN: VIDEO WITH SOUND CONTROLS */}
+          <HeroVideo />
 
           {/* 3. RIGHT CARD: WHAT WE BELIEVE */}
           <div className="hp-hero-belief-card">
