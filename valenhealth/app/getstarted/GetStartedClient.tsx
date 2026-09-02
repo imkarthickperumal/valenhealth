@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { trackCallConversion, trackFormLeadConversion } from "../../lib/gtag";
+import {
+  trackConversion,
+  trackCallConversion,
+  trackFormLeadConversion,
+} from "../../lib/gtag";
 import { sendAssessmentEmail } from "./actions";
 import "./get-started.css";
 
@@ -373,6 +377,11 @@ export default function GetStartedClient() {
   const [selectedFee, setSelectedFee] = useState<string>("Initial Assessment");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
+  const handlePhoneClick = () => {
+    trackConversion();
+    trackCallConversion();
+  };
+
   const handleStep1Continue = () => {
     if (!selectedConcern) return;
     setCurrentStep(2);
@@ -437,7 +446,7 @@ export default function GetStartedClient() {
           <a
             href="tel:0489293000"
             className="gs-header-phone"
-            onClick={() => trackCallConversion()}
+            onClick={handlePhoneClick}
           >
             0489 293 000
           </a>
@@ -479,7 +488,7 @@ export default function GetStartedClient() {
               <a
                 href="tel:0489293000"
                 className="gs-btn gs-btn-outline"
-                onClick={() => trackCallConversion()}
+                onClick={handlePhoneClick}
               >
                 Call 0489 293 000
               </a>
@@ -507,10 +516,7 @@ export default function GetStartedClient() {
                 </p>
                 <div className="gs-success-contact">
                   Need immediate assistance?{" "}
-                  <a
-                    href="tel:0489293000"
-                    onClick={() => trackCallConversion()}
-                  >
+                  <a href="tel:0489293000" onClick={handlePhoneClick}>
                     Call 0489 293 000
                   </a>
                 </div>
@@ -748,7 +754,7 @@ export default function GetStartedClient() {
             <a
               href="tel:0489293000"
               className="gs-trust-phone"
-              onClick={() => trackCallConversion()}
+              onClick={handlePhoneClick}
             >
               0489 293 000
             </a>{" "}
@@ -1050,7 +1056,7 @@ export default function GetStartedClient() {
           <a
             href="tel:0489293000"
             className="gs-btn gs-btn-outline"
-            onClick={() => trackCallConversion()}
+            onClick={handlePhoneClick}
           >
             Call 0489 293 000
           </a>
@@ -1075,7 +1081,7 @@ export default function GetStartedClient() {
                 <br />
                 EP appointments Mon–Fri 9am–6pm · Gym open 24/7
                 <br />
-                <a href="tel:0489293000" onClick={() => trackCallConversion()}>
+                <a href="tel:0489293000" onClick={handlePhoneClick}>
                   0489 293 000
                 </a>
               </div>

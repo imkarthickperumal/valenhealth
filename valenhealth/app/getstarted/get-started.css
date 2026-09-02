@@ -1031,42 +1031,49 @@ body:has(.gs-page) {
 .gs-clinicians-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 28px;
   align-items: stretch;
 }
 
 .gs-clinician-card {
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 32px 28px;
   display: flex;
-  align-items: center;
-  gap: 24px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  align-items: flex-start;
+  gap: 28px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .gs-clinician-card:hover {
   border-color: var(--orange);
   transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 .gs-clinician-photo-wrap {
-  flex-shrink: 0;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
+  flex: 0 0 145px;
+  width: 145px;
+  height: 170px;
+  border-radius: 12px;
   overflow: hidden;
-  border: 2.5px solid var(--orange);
-  box-shadow: 0 4px 14px rgba(237, 108, 21, 0.25);
+  border: 2px solid var(--orange);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(237, 108, 21, 0.18);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .gs-clinician-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 20%;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.gs-clinician-card:hover .gs-clinician-img {
+  transform: scale(1.04);
 }
 
 .gs-clinician-info {
@@ -1815,14 +1822,16 @@ body:has(.gs-page) {
 
   .gs-clinician-card {
     flex-direction: row;
-    align-items: center;
-    padding: 22px 18px;
-    gap: 18px;
+    align-items: flex-start;
+    padding: 24px 20px;
+    gap: 20px;
   }
 
   .gs-clinician-photo-wrap {
-    width: 76px;
-    height: 76px;
+    flex: 0 0 115px;
+    width: 115px;
+    height: 135px;
+    border-radius: 10px;
   }
 
   .gs-reviews-grid {
