@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import {
   trackConversion,
   trackCallConversion,
@@ -450,11 +451,7 @@ export default function GetStartedClient() {
           >
             0489 293 000
           </a>
-          <a
-            href="#assessment-form"
-            className="gs-header-cta"
-            onClick={() => trackFormLeadConversion()}
-          >
+          <a href="#assessment-form" className="gs-header-cta">
             Book Assessment
           </a>
         </div>
@@ -478,11 +475,7 @@ export default function GetStartedClient() {
               progressed at your pace.
             </p>
             <div className="gs-hero-ctas">
-              <a
-                href="#assessment-form"
-                className="gs-btn gs-btn-primary"
-                onClick={() => trackFormLeadConversion()}
-              >
+              <a href="#assessment-form" className="gs-btn gs-btn-primary">
                 Book Your Assessment
               </a>
               <a
@@ -746,7 +739,7 @@ export default function GetStartedClient() {
           <div className="gs-trust-top">
             <span className="gs-trust-stars">★★★★★</span>
             <span className="gs-trust-rating-text">
-              <strong>[5.0]</strong> from <strong>[30+]</strong> Google reviews
+              <strong>5.0</strong> from <strong>30+</strong> Google reviews
             </span>
           </div>
           <div className="gs-trust-meta">
@@ -799,11 +792,7 @@ export default function GetStartedClient() {
         </div>
 
         <div className="gs-reasons-cta-wrap">
-          <a
-            href="#assessment-form"
-            className="gs-reasons-cta"
-            onClick={() => trackFormLeadConversion()}
-          >
+          <a href="#assessment-form" className="gs-reasons-cta">
             Book Your Assessment
           </a>
         </div>
@@ -893,7 +882,6 @@ export default function GetStartedClient() {
         <a
           href="#assessment-form"
           className="gs-btn gs-btn-primary gs-afterwards-cta"
-          onClick={() => trackFormLeadConversion()}
         >
           Book Your Assessment
         </a>
@@ -944,9 +932,11 @@ export default function GetStartedClient() {
           {CLINICIANS.map((clinician) => (
             <div className="gs-clinician-card" key={clinician.name}>
               <div className="gs-clinician-photo-wrap">
-                <img
+                <Image
                   src={clinician.image}
                   alt={clinician.name}
+                  width={290}
+                  height={340}
                   className="gs-clinician-img"
                 />
               </div>
@@ -1046,11 +1036,7 @@ export default function GetStartedClient() {
           move you forward.
         </p>
         <div className="gs-final-cta-actions">
-          <a
-            href="#assessment-form"
-            className="gs-btn gs-btn-primary"
-            onClick={() => trackFormLeadConversion()}
-          >
+          <a href="#assessment-form" className="gs-btn gs-btn-primary">
             Book Your Assessment
           </a>
           <a
