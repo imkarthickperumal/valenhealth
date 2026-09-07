@@ -254,6 +254,7 @@ export default function GetStartedClient() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [agreeConsent, setAgreeConsent] = useState(false);
+  const [honeypot, setHoneypot] = useState(""); // spam protection — must remain blank
   const [formStatus, setFormStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
@@ -397,6 +398,7 @@ export default function GetStartedClient() {
       { name: "valen_referrer_url", value: referrer },
       { name: "valen_ad_platform", value: adPlatform },
       { name: "valen_lead_source_detail", value: "Website form" },
+      { name: "hs_lead_status", value: "NEW" },
     ].filter((f) => f.value !== "" && f.value != null);
 
     const contextObj: Record<string, string> = {
@@ -426,8 +428,14 @@ export default function GetStartedClient() {
 
   const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!firstName.trim() || !phone.trim()) {
-      setFormErrorMessage("Please fill in your first name and mobile number.");
+
+    // Honeypot: bots fill hidden fields, humans don't
+    if (honeypot) return;
+
+    if (!firstName.trim() || !phone.trim() || !email.trim()) {
+      setFormErrorMessage(
+        "Please fill in your first name, mobile number and email.",
+      );
       return;
     }
 
@@ -763,24 +771,30 @@ export default function GetStartedClient() {
 
                     <div className="gs-input-group">
                       <label className="gs-input-label" htmlFor="gs-email">
-                        Email{" "}
-                        <span
-                          style={{
-                            fontWeight: "normal",
-                            color: "rgba(0, 0, 0, 0.45)",
-                            fontSize: "12px",
-                          }}
-                        >
-                          (optional)
-                        </span>
+                        Email
                       </label>
                       <input
                         id="gs-email"
                         type="email"
+                        required
                         className="gs-input-field"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="you@example.com (optional)"
+                        placeholder="you@example.com"
+                      />
+                    </div>
+
+                    {/* Honeypot — hidden from real users, bots fill it */}
+                    <div style={{ display: "none" }} aria-hidden="true">
+                      <label htmlFor="gs-hp-name">Name</label>
+                      <input
+                        id="gs-hp-name"
+                        type="text"
+                        name="name"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
                       />
                     </div>
 
@@ -816,7 +830,8 @@ export default function GetStartedClient() {
                         formStatus === "loading" ||
                         !agreeConsent ||
                         !firstName.trim() ||
-                        !phone.trim()
+                        !phone.trim() ||
+                        !email.trim()
                       }
                     >
                       {formStatus === "loading"
