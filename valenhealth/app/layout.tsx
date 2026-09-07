@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { League_Spartan, Open_Sans, Playfair_Display, Fraunces } from "next/font/google";
+import {
+  League_Spartan,
+  Open_Sans,
+  Playfair_Display,
+  Fraunces,
+} from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import MetaPixel from "../components/MetaPixel";
@@ -32,10 +37,12 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "Valen Health - Exercise Physiology Clinic & 24/7 Gym | Spearwood, Perth",
+    default:
+      "Valen Health - Exercise Physiology Clinic & 24/7 Gym | Spearwood, Perth",
     template: "%s | Valen Health",
   },
-  description: "Spearwood's EP clinic + 24/7 gym under one roof. Medicare bulk-billed exercise physiology, NDIS, DVA & private health.",
+  description:
+    "Spearwood's EP clinic + 24/7 gym under one roof. Medicare bulk-billed exercise physiology, NDIS, DVA & private health.",
   metadataBase: new URL("https://valenhealth.com.au"),
   openGraph: {
     siteName: "Valen Health",
@@ -55,6 +62,30 @@ export default function RootLayout({
       className={`${leagueSpartan.variable} ${openSans.variable} ${fraunces.variable} ${playfairDisplay.variable}`}
     >
       <body>
+        {/* Attribution Cookie Tracker */}
+        <Script id="vh-attribution" strategy="beforeInteractive">
+          {`
+            (function () {
+              var MAXAGE = 90 * 24 * 60 * 60;
+              function setCookie(n, v) {
+                document.cookie = n + '=' + encodeURIComponent(v) + ';path=/;max-age=' + MAXAGE + ';SameSite=Lax';
+              }
+              function getCookie(n) {
+                var m = document.cookie.match('(^|;)\\\\s*' + n + '\\\\s*=\\\\s*([^;]+)');
+                return m ? decodeURIComponent(m[2]) : '';
+              }
+              var qs = new URLSearchParams(window.location.search);
+              ['gclid','fbclid','utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function (p) {
+                if (qs.get(p)) setCookie('vh_' + p, qs.get(p));
+              });
+              if (!getCookie('vh_landing_page')) {
+                setCookie('vh_landing_page', window.location.href);
+                setCookie('vh_referrer', document.referrer || 'direct');
+              }
+              window.vhGet = getCookie;
+            })();
+          `}
+        </Script>
         <MetaPixel />
         {/* Google Analytics */}
         <Script
@@ -81,6 +112,16 @@ export default function RootLayout({
         </Script>
         {children}
         <WhatsAppWidget />
+        {/* Start of HubSpot Embed Code */}
+        <Script
+          type="text/javascript"
+          id="hs-script-loader"
+          async
+          defer
+          src="https://js-ap1.hs-scripts.com/443661932.js"
+          strategy="afterInteractive"
+        />
+        {/* End of HubSpot Embed Code */}
       </body>
     </html>
   );

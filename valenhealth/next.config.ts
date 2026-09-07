@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    qualities: [75, 100],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    qualities: [65, 75, 100],
   },
   async redirects() {
     return [

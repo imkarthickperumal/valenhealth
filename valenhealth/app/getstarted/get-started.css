@@ -1746,3 +1746,11 @@ body:has(.gs-page) {
     padding: 32px 14px 24px;
   }
 }
+
+/* Suppress floating chat & WhatsApp widgets on getstarted landing page */
+.wa-widget-container,
+.wa-trigger-wrapper,
+.wa-tooltip,
+.wa-chat-box {
+  display: none !important;
+}

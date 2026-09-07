@@ -3,7 +3,7 @@ import GetStartedClient from "./GetStartedClient";
 import "./get-started.css";
 
 export const metadata: Metadata = {
-  title: "Book Your Assessment | Valen Health",
+  title: "Book Your Assessment",
   description:
     "We don't guess — we assess. Objective VALD force plate testing and a graded, supervised exercise program matched to your diagnosis.",
   openGraph: {

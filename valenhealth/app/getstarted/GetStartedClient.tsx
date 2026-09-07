@@ -42,12 +42,38 @@ const HERO_CHECKLIST = [
 
 // Fixed whitelist — only ever prints a name from this list, never anything from the URL directly.
 const SUBURB_WHITELIST = [
-  "Spearwood", "Hamilton Hill", "Coogee", "North Coogee", "Munster", "Beeliar",
-  "Yangebup", "Bibra Lake", "Cockburn Central", "Jandakot", "Success", "Atwell",
-  "Hammond Park", "Kardinya", "Melville", "Fremantle", "South Fremantle",
-  "East Fremantle", "White Gum Valley", "Samson", "Coolbellup", "O'Connor",
-  "Bicton", "Palmyra", "Willagee", "Winthrop", "Leeming", "Bull Creek",
-  "Murdoch", "Aubin Grove", "Wandi", "Banjup",
+  "Spearwood",
+  "Hamilton Hill",
+  "Coogee",
+  "North Coogee",
+  "Munster",
+  "Beeliar",
+  "Yangebup",
+  "Bibra Lake",
+  "Cockburn Central",
+  "Jandakot",
+  "Success",
+  "Atwell",
+  "Hammond Park",
+  "Kardinya",
+  "Melville",
+  "Fremantle",
+  "South Fremantle",
+  "East Fremantle",
+  "White Gum Valley",
+  "Samson",
+  "Coolbellup",
+  "O'Connor",
+  "Bicton",
+  "Palmyra",
+  "Willagee",
+  "Winthrop",
+  "Leeming",
+  "Bull Creek",
+  "Murdoch",
+  "Aubin Grove",
+  "Wandi",
+  "Banjup",
 ];
 
 const FUNDING_ROWS = [
@@ -166,15 +192,21 @@ const THREE_REASONS = [
 
 const REVIEWS = [
   {
+    name: "Lesley M.",
+    rating: 5,
+    text: "As a 76 year old feeling weak and depressed I mentioned to my doctor about gaining some strength back in my body… Feeling hesitant I booked in… there is no drama, no thumping music, I was given a program which suited me, there is no pressure. Slowly I am now looking at my time here as my time, it's my gym… if you are feeling too old to do this you aren't, come along, you can do it.",
+    source: "Google review",
+  },
+  {
     name: "Harish K.",
     rating: 5,
     text: "Been training at Valen for a while now and really enjoying it. The gym is clean, well set up and has a good vibe — not overcrowded or intimidating.",
     source: "Google review",
   },
   {
-    name: "Sally F.",
+    name: "Rejil A.",
     rating: 5,
-    text: "Valen Health is a fantastic new gym with a welcoming atmosphere and highly knowledgeable staff who go above and beyond to support your fitness or recovery journey.",
+    text: "Aaron the exercise physiologist wrote me a program that was catered specifically to my exact needs. I couldn't recommend him more.",
     source: "Google review",
   },
 ];
@@ -202,7 +234,7 @@ const FAQS = [
   },
   {
     q: "How long before I notice something?",
-    a: "Most people feel a difference within a few weeks. We re-run the same measurements at six weeks so you can see it, rather than just hoping.",
+    a: "Most people feel a difference within a few weeks. Book a re-test when you're ready and we run the same measurements again, so you can see it rather than just hoping.",
   },
   {
     q: "What happens when the program finishes?",
@@ -256,12 +288,161 @@ export default function GetStartedClient() {
     setCurrentStep(3);
   };
 
+  function mapServiceInterest(concern: string | null): string {
+    switch (concern) {
+      case "Back or neck pain":
+      case "Knee, hip or shoulder":
+      case "Arthritis or joint pain":
+        return "Injury or pain";
+      case "Bone health":
+      case "Diabetes or weight":
+      case "Heart or lungs":
+        return "Chronic condition";
+      case "After an operation":
+        return "Post-surgery rehabilitation";
+      case "Getting stronger safely":
+      case "Staying well as I age":
+        return "Getting stronger / staying active";
+      default:
+        return "Not sure yet";
+    }
+  }
+
+  function mapFundingPathway(funding: string | null): string {
+    switch (funding) {
+      case "Private":
+      case "Private health fund":
+        return "Private";
+      case "Medicare care plan":
+        return "Medicare CDM/EPC";
+      case "WorkCover":
+        return "WorkCover";
+      case "NDIS":
+        return "NDIS";
+      case "DVA":
+        return "DVA";
+      default:
+        return "Not yet known";
+    }
+  }
+
+  function getAttributionValue(name: string): string {
+    if (typeof window !== "undefined") {
+      const win = window as any;
+      if (typeof win.vhGet === "function") {
+        const val = win.vhGet(name);
+        if (val) return val;
+      }
+    }
+    if (typeof document !== "undefined") {
+      const m = document.cookie.match(
+        new RegExp("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)"),
+      );
+      if (m && m[2]) return decodeURIComponent(m[2]);
+    }
+    if (typeof window !== "undefined" && name.startsWith("vh_")) {
+      const param = name.replace("vh_", "");
+      const qs = new URLSearchParams(window.location.search);
+      const val = qs.get(param);
+      if (val) return val;
+      if (name === "vh_landing_page") return window.location.href;
+      if (name === "vh_referrer") return document.referrer || "direct";
+    }
+    return "";
+  }
+
+  async function postToHubSpot(data: {
+    firstName: string;
+    phone: string;
+    email: string;
+    concern: string | null;
+    funding: string | null;
+  }) {
+    const gclid = getAttributionValue("vh_gclid");
+    const fbclid = getAttributionValue("vh_fbclid");
+    const utmSource = getAttributionValue("vh_utm_source");
+    const utmMedium = getAttributionValue("vh_utm_medium");
+    const utmCampaign = getAttributionValue("vh_utm_campaign");
+    const utmTerm = getAttributionValue("vh_utm_term");
+    const utmContent = getAttributionValue("vh_utm_content");
+    const landingPage = getAttributionValue("vh_landing_page");
+    const referrer = getAttributionValue("vh_referrer");
+
+    const adPlatform = gclid
+      ? "Google Ads"
+      : fbclid
+        ? "Meta"
+        : "Organic / direct";
+
+    const fields = [
+      { name: "firstname", value: data.firstName },
+      { name: "lastname", value: "" },
+      { name: "email", value: data.email || "" },
+      { name: "phone", value: data.phone },
+      {
+        name: "valen_service_interest",
+        value: mapServiceInterest(data.concern),
+      },
+      { name: "valen_funding_pathway", value: mapFundingPathway(data.funding) },
+      { name: "valen_preferred_contact_time", value: "" },
+      { name: "message", value: "" },
+      { name: "valen_gclid", value: gclid },
+      { name: "valen_fbclid", value: fbclid },
+      { name: "valen_utm_source", value: utmSource },
+      { name: "valen_utm_medium", value: utmMedium },
+      { name: "valen_utm_campaign", value: utmCampaign },
+      { name: "valen_utm_term", value: utmTerm },
+      { name: "valen_utm_content", value: utmContent },
+      { name: "valen_landing_page", value: landingPage },
+      { name: "valen_referrer_url", value: referrer },
+      { name: "valen_ad_platform", value: adPlatform },
+      { name: "valen_lead_source_detail", value: "Website form" },
+    ].filter((f) => f.value !== "" && f.value != null);
+
+    const contextObj: Record<string, string> = {
+      pageUri: typeof window !== "undefined" ? window.location.href : "",
+      pageName: typeof document !== "undefined" ? document.title : "",
+    };
+
+    if (typeof document !== "undefined") {
+      const m = document.cookie.match(/(^|;\s*)hubspotutk\s*=\s*([^;]+)/);
+      if (m && m[2]) {
+        contextObj.hutk = decodeURIComponent(m[2]);
+      }
+    }
+
+    const endpoint =
+      "https://api.hsforms.com/submissions/v3/integration/submit/443661932/0972e88a-2491-4874-8bbc-49c498fdef29";
+
+    return fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fields,
+        context: contextObj,
+      }),
+    });
+  }
+
   const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!firstName.trim() || !phone.trim() || !email.trim()) {
-      setFormErrorMessage("Please fill in your name, mobile, and email.");
+    if (!firstName.trim() || !phone.trim()) {
+      setFormErrorMessage("Please fill in your first name and mobile number.");
       return;
     }
+
+    const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
+    const isAusPhone =
+      /^(?:\+?61|0)4\d{8}$/.test(cleanPhone) ||
+      /^(?:\+?61|0)[2378]\d{8}$/.test(cleanPhone);
+
+    if (!isAusPhone) {
+      setFormErrorMessage(
+        "Please enter a valid Australian mobile number (e.g. 0400 000 000).",
+      );
+      return;
+    }
+
     if (!agreeConsent) {
       setFormErrorMessage("Please check the consent box to proceed.");
       return;
@@ -271,17 +452,35 @@ export default function GetStartedClient() {
     setFormErrorMessage("");
 
     try {
-      const res = await sendAssessmentEmail({
-        concern: selectedConcern || "Back or neck pain",
-        funding: selectedFunding || "Private",
-        firstName: firstName.trim(),
-        phone: phone.trim(),
-        email: email.trim(),
-      });
+      const [, res] = await Promise.all([
+        postToHubSpot({
+          firstName: firstName.trim(),
+          phone: phone.trim(),
+          email: email.trim(),
+          concern: selectedConcern,
+          funding: selectedFunding,
+        }).catch((err) => {
+          console.error("HubSpot submission error:", err);
+          return null;
+        }),
+        sendAssessmentEmail({
+          concern: selectedConcern || "Back or neck pain",
+          funding: selectedFunding || "Private",
+          firstName: firstName.trim(),
+          phone: phone.trim(),
+          email: email.trim(),
+        }),
+      ]);
 
       if (res.status === "success") {
         trackFormLeadConversion();
         setFormStatus("success");
+        setTimeout(() => {
+          const formEl = document.getElementById("assessment-form");
+          if (formEl) {
+            formEl.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }, 50);
       } else {
         setFormStatus("error");
         setFormErrorMessage(res.message);
@@ -370,10 +569,9 @@ export default function GetStartedClient() {
             </h1>
             <p className="gs-hero-body">
               An ache that won&apos;t go. A condition you&apos;re managing. Or
-              simply wanting to get stronger. You see an Exercise
-              Physiologist, get a program built around you, and train in our
-              24/7 gym — same room, whenever suits, with someone who knows
-              your history.
+              simply wanting to get stronger. You see an Exercise Physiologist,
+              get a program built around you, and train in our 24/7 gym — same
+              room, whenever suits, with someone who knows your history.
             </p>
             <div className="gs-hero-ctas">
               <a href="#assessment-form" className="gs-btn gs-btn-primary">
@@ -402,11 +600,13 @@ export default function GetStartedClient() {
             {formStatus === "success" ? (
               <div className="gs-form-success">
                 <div className="gs-success-icon">✓</div>
-                <h3 className="gs-success-title">Assessment Requested!</h3>
+                <h3 className="gs-success-title">
+                  Got it. We&apos;ll call you back the same working day.
+                </h3>
                 <p className="gs-success-body">
                   Thank you, <strong>{firstName}</strong>. We have received your
-                  assessment request for <em>{selectedConcern}</em> and will
-                  review it and get in touch with you the same working day.
+                  assessment request for <em>{selectedConcern}</em> and our team
+                  will review it and call you today.
                 </p>
                 <div className="gs-success-contact">
                   Need immediate assistance?{" "}
@@ -563,16 +763,24 @@ export default function GetStartedClient() {
 
                     <div className="gs-input-group">
                       <label className="gs-input-label" htmlFor="gs-email">
-                        Email
+                        Email{" "}
+                        <span
+                          style={{
+                            fontWeight: "normal",
+                            color: "rgba(0, 0, 0, 0.45)",
+                            fontSize: "12px",
+                          }}
+                        >
+                          (optional)
+                        </span>
                       </label>
                       <input
                         id="gs-email"
                         type="email"
-                        required
                         className="gs-input-field"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="you@example.com"
+                        placeholder="you@example.com (optional)"
                       />
                     </div>
 
@@ -607,9 +815,8 @@ export default function GetStartedClient() {
                       disabled={
                         formStatus === "loading" ||
                         !agreeConsent ||
-                        !firstName ||
-                        !phone ||
-                        !email
+                        !firstName.trim() ||
+                        !phone.trim()
                       }
                     >
                       {formStatus === "loading"
@@ -661,9 +868,8 @@ export default function GetStartedClient() {
             </h2>
             <p className="gs-funding-body">
               HICAPS is at the front desk, so your rebate comes off there and
-              then and you only pay the difference. No forms to post, no
-              waiting weeks to get money back. NDIS and DVA are handled here
-              too.
+              then and you only pay the difference. No forms to post, no waiting
+              weeks to get money back. NDIS and DVA are handled here too.
             </p>
           </div>
           <div className="gs-funding-rows">
@@ -681,7 +887,9 @@ export default function GetStartedClient() {
       {/* FOUR STEPS */}
       <section className="gs-section gs-section--cream">
         <div className="gs-section-inner">
-          <h2 className="gs-h2 gs-ink">Four steps. That&apos;s the whole thing.</h2>
+          <h2 className="gs-h2 gs-ink">
+            Four steps. That&apos;s the whole thing.
+          </h2>
           <p className="gs-lead gs-ink-soft">
             No jargon, no mystery. Here&apos;s exactly how it goes.
           </p>
@@ -710,8 +918,8 @@ export default function GetStartedClient() {
             weak, so they don&apos;t guess with a million-dollar player.
             We&apos;ve taken the same gear and pointed it at ordinary people
             with sore backs and dodgy knees. You stand on a plate for a few
-            seconds. That&apos;s the whole test — no needles, no scans,
-            nothing uncomfortable.
+            seconds. That&apos;s the whole test — no needles, no scans, nothing
+            uncomfortable.
           </p>
           <div className="gs-vald-columns">
             {VALD_COLUMNS.map((col) => (
@@ -736,9 +944,8 @@ export default function GetStartedClient() {
               </div>
               <p className="gs-mockup-caption">
                 <strong>What you see.</strong> Your own numbers on your phone,
-                with the gap spelled out in plain English —
-                &ldquo;your left max force is 1.7 kg more than your
-                right.&rdquo;
+                with the gap spelled out in plain English — &ldquo;your left max
+                force is 1.7 kg more than your right.&rdquo;
               </p>
             </div>
 
@@ -749,14 +956,16 @@ export default function GetStartedClient() {
                   alt="Exercise Physiologist dashboard showing every test side by side with trend lines"
                   width={2396}
                   height={1560}
+                  quality={65}
+                  sizes="(max-width: 900px) 100vw, 1200px"
                   className="gs-stats-image"
                 />
               </div>
               <p className="gs-mockup-caption">
                 <strong>What your Exercise Physiologist sees.</strong> Every
-                test side by side — strength, balance, both sides of your
-                body — with the trend line for each one. This is what your
-                program gets built from, and what changes when you re-test.
+                test side by side — strength, balance, both sides of your body —
+                with the trend line for each one. This is what your program gets
+                built from, and what changes when you re-test.
               </p>
             </div>
           </div>
@@ -769,8 +978,8 @@ export default function GetStartedClient() {
           <div className="gs-eyebrow">Who You&apos;ll Actually See</div>
           <h2 className="gs-h2 gs-ink">The same people, every session.</h2>
           <p className="gs-lead gs-ink-soft">
-            Not a rotating roster. You get one Exercise Physiologist who
-            learns your history and stays with you.
+            Not a rotating roster. You get one Exercise Physiologist who learns
+            your history and stays with you.
           </p>
           <div className="gs-clinicians-grid">
             {CLINICIANS.map((clinician) => (
@@ -815,10 +1024,10 @@ export default function GetStartedClient() {
               You&apos;ll never stand there wondering what to do next.
             </h2>
             <p className="gs-lead gs-ink-soft">
-              Every exercise has a short video showing exactly what to do —
-              and where it&apos;s on one of our machines, that&apos;s the
-              machine you&apos;ll be standing at. Sets, reps and weights are
-              written down. You tick them off as you go.
+              Every exercise has a short video showing exactly what to do — and
+              where it&apos;s on one of our machines, that&apos;s the machine
+              you&apos;ll be standing at. Sets, reps and weights are written
+              down. You tick them off as you go.
             </p>
             <div className="gs-hero-checklist gs-checklist-light">
               {SCHEDULE_CHECKLIST.map((item) => (
@@ -840,13 +1049,15 @@ export default function GetStartedClient() {
           <div className="gs-clinic-top">
             <div>
               <div className="gs-eyebrow">The Clinic Is The Gym</div>
-              <h2 className="gs-h2">You don&apos;t have to go anywhere else.</h2>
+              <h2 className="gs-h2">
+                You don&apos;t have to go anywhere else.
+              </h2>
               <p className="gs-lead gs-lead-dark">
-                Most clinics assess you, hand you a sheet of exercises and
-                send you off to find a gym on your own. We are the gym. Full
-                strength floor, open 24/7, and the people who wrote your
-                program are on the same floor. When your program finishes,
-                you join the gym and keep going — same room, same faces.
+                Most clinics assess you, hand you a sheet of exercises and send
+                you off to find a gym on your own. We are the gym. Full strength
+                floor, open 24/7, and the people who wrote your program are on
+                the same floor. When your program finishes, you join the gym and
+                keep going — same room, same faces.
               </p>
             </div>
             <div className="gs-clinic-open">
@@ -863,19 +1074,20 @@ export default function GetStartedClient() {
               alt="The Valen Health gym floor"
               width={1400}
               height={933}
+              quality={65}
               className="gs-gym-photo"
-              sizes="(max-width: 900px) 100vw, 1184px"
+              sizes="(max-width: 900px) 100vw, 1920px"
             />
           </div>
           <p className="gs-gym-caption">
             The floor you&apos;ll be training on. Same room as the clinic.
           </p>
           <p className="gs-gym-location">
-            <strong>Spearwood, Rockingham Road.</strong> People come to us
-            from Hamilton Hill, Coogee, Munster, Beeliar, Yangebup, Bibra
-            Lake, Cockburn, Jandakot, Success, Atwell, Hammond Park, Kardinya,
-            Melville, Fremantle and everywhere in between. Free parking out
-            the front.
+            <strong>Spearwood, Rockingham Road.</strong> People come to us from
+            Hamilton Hill, Coogee, Munster, Beeliar, Yangebup, Bibra Lake,
+            Cockburn, Jandakot, Success, Atwell, Hammond Park, Kardinya,
+            Melville, Fremantle and everywhere in between. Free parking out the
+            front.
           </p>
         </div>
       </section>
@@ -910,10 +1122,15 @@ export default function GetStartedClient() {
       <section className="gs-section gs-section--cream">
         <div className="gs-section-inner">
           <h2 className="gs-h2 gs-ink">What people say afterwards.</h2>
-          <p className="gs-lead gs-ink-soft">Thirty-plus reviews, all five stars.</p>
+          <p className="gs-lead gs-ink-soft">
+            Thirty-four reviews on Google, all five stars.
+          </p>
           <div className="gs-reviews-grid gs-reviews-grid-light">
             {REVIEWS.map((review) => (
-              <div className="gs-review-card gs-review-card-light" key={review.name}>
+              <div
+                className="gs-review-card gs-review-card-light"
+                key={review.name}
+              >
                 <div className="gs-review-stars">★★★★★</div>
                 <p className="gs-review-text gs-review-text-dark">
                   &ldquo;{review.text}&rdquo;
@@ -922,23 +1139,13 @@ export default function GetStartedClient() {
                   <span className="gs-review-author-name-light">
                     {review.name}
                   </span>
-                  <span className="gs-review-date-light"> · {review.source}</span>
+                  <span className="gs-review-date-light">
+                    {" "}
+                    · {review.source}
+                  </span>
                 </div>
               </div>
             ))}
-            <div className="gs-review-card gs-review-card-placeholder">
-              <div className="gs-review-stars">★★★★★</div>
-              <p className="gs-review-placeholder-text">
-                Reserved for a review from an EP patient whose pain or
-                condition improved — ask a recently discharged client this
-                week.
-              </p>
-              <div className="gs-review-footer">
-                <span className="gs-review-author-name-light">
-                  First name, suburb
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
