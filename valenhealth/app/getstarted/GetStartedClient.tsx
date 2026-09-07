@@ -377,7 +377,7 @@ export default function GetStartedClient() {
 
     const fields = [
       { name: "firstname", value: data.firstName },
-      { name: "lastname", value: "" },
+      { name: "lastname", value: "-" },
       { name: "email", value: data.email || "" },
       { name: "phone", value: data.phone },
       {
@@ -416,7 +416,7 @@ export default function GetStartedClient() {
     const endpoint =
       "https://api.hsforms.com/submissions/v3/integration/submit/443661932/0972e88a-2491-4874-8bbc-49c498fdef29";
 
-    return fetch(endpoint, {
+    const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -424,6 +424,13 @@ export default function GetStartedClient() {
         context: contextObj,
       }),
     });
+
+    if (!res.ok) {
+      const body = await res.text().catch(() => "");
+      console.error("HubSpot submission rejected:", res.status, body);
+    }
+
+    return res;
   }
 
   const handleFinalSubmit = async (e: React.FormEvent) => {
