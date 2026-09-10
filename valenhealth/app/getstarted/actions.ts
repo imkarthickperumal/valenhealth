@@ -17,9 +17,23 @@ export async function sendAssessmentEmail(
     firstName: string;
     phone: string;
     email?: string;
+    eventId?: string;
+    honeypot?: string;
+    formRenderedAt?: number;
   }
 ): Promise<AssessmentFormState> {
-  const { concern, funding, firstName, phone, email } = data;
+  const { concern, funding, firstName, phone, email, eventId, honeypot, formRenderedAt } = data;
+
+  // Bots that skip the client and call this action directly still hit these checks:
+  // a filled hidden field, or a submit within 2s of the form rendering.
+  const submittedTooFast =
+    typeof formRenderedAt === "number" && Date.now() - formRenderedAt < 2000;
+  if (honeypot || submittedTooFast) {
+    return {
+      status: "success",
+      message: "Thank you! We have received your assessment request and will respond the same working day.",
+    };
+  }
 
   if (!firstName || !phone || !concern || !funding) {
     return { status: "error", message: "Please fill in all required fields." };
@@ -108,6 +122,7 @@ Remote IP: ${remoteIp}`;
       await sendMetaCapiEvent({
         eventName: "Lead",
         eventUrl: "https://valenhealth.com.au/getstarted",
+        eventId,
         userData: {
           email: email?.trim() || undefined,
           phone: phone || undefined,

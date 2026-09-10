@@ -8,8 +8,15 @@ export const pageview = () => {
 };
 
 // https://developers.facebook.com/docs/meta-pixel/reference
-export const event = (name: string, options = {}) => {
+// eventId lets this browser-side event be deduplicated against a matching
+// server-side Conversions API call for the same action.
+// https://developers.facebook.com/docs/meta-pixel/implementation/conversions-api#dedup
+export const event = (name: string, options = {}, eventId?: string) => {
   if (typeof window !== "undefined" && (window as any).fbq) {
-    (window as any).fbq("track", name, options);
+    if (eventId) {
+      (window as any).fbq("track", name, options, { eventID: eventId });
+    } else {
+      (window as any).fbq("track", name, options);
+    }
   }
 };

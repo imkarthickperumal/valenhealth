@@ -7,6 +7,7 @@ import {
   trackCallConversion,
   trackFormLeadConversion,
 } from "../../lib/gtag";
+import * as fpixel from "../../lib/fpixel";
 import { sendAssessmentEmail } from "./actions";
 import "./get-started.css";
 
@@ -261,6 +262,7 @@ export default function GetStartedClient() {
   const [formErrorMessage, setFormErrorMessage] = useState("");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const eyebrowSuffixRef = useRef<HTMLSpanElement>(null);
+  const formRenderedAtRef = useRef<number>(Date.now());
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -436,8 +438,9 @@ export default function GetStartedClient() {
   const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Honeypot: bots fill hidden fields, humans don't
-    if (honeypot) return;
+    // Honeypot (bots fill hidden fields, humans don't) and a minimum time
+    // since the form rendered (bots submit near-instantly) — skip silently.
+    if (honeypot || Date.now() - formRenderedAtRef.current < 2000) return;
 
     if (!firstName.trim() || !phone.trim() || !email.trim()) {
       setFormErrorMessage(
@@ -466,6 +469,13 @@ export default function GetStartedClient() {
     setFormStatus("loading");
     setFormErrorMessage("");
 
+    // Shared between the browser pixel and server-side Conversions API call
+    // so Meta dedupes them into a single Lead instead of double-counting.
+    const leadEventId =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
     try {
       const [, res] = await Promise.all([
         postToHubSpot({
@@ -484,11 +494,15 @@ export default function GetStartedClient() {
           firstName: firstName.trim(),
           phone: phone.trim(),
           email: email.trim(),
+          eventId: leadEventId,
+          honeypot,
+          formRenderedAt: formRenderedAtRef.current,
         }),
       ]);
 
       if (res.status === "success") {
         trackFormLeadConversion();
+        fpixel.event("Lead", {}, leadEventId);
         setFormStatus("success");
         setTimeout(() => {
           const formEl = document.getElementById("assessment-form");
