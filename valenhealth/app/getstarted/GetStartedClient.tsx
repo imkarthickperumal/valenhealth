@@ -8,7 +8,7 @@ import {
   trackFormLeadConversion,
 } from "../../lib/gtag";
 import * as fpixel from "../../lib/fpixel";
-import { sendAssessmentEmail } from "./actions";
+import { submitAssessmentRequest } from "./actions";
 import "./get-started.css";
 
 const CONCERNS = [
@@ -291,44 +291,6 @@ export default function GetStartedClient() {
     setCurrentStep(3);
   };
 
-  function mapServiceInterest(concern: string | null): string {
-    switch (concern) {
-      case "Back or neck pain":
-      case "Knee, hip or shoulder":
-      case "Arthritis or joint pain":
-        return "Injury or pain";
-      case "Bone health":
-      case "Diabetes or weight":
-      case "Heart or lungs":
-        return "Chronic condition";
-      case "After an operation":
-        return "Post-surgery rehabilitation";
-      case "Getting stronger safely":
-      case "Staying well as I age":
-        return "Getting stronger / staying active";
-      default:
-        return "Not sure yet";
-    }
-  }
-
-  function mapFundingPathway(funding: string | null): string {
-    switch (funding) {
-      case "Private":
-      case "Private health fund":
-        return "Private";
-      case "Medicare care plan":
-        return "Medicare CDM/EPC";
-      case "WorkCover":
-        return "WorkCover";
-      case "NDIS":
-        return "NDIS";
-      case "DVA":
-        return "DVA";
-      default:
-        return "Not yet known";
-    }
-  }
-
   function getAttributionValue(name: string): string {
     if (typeof window !== "undefined") {
       const win = window as any;
@@ -352,87 +314,6 @@ export default function GetStartedClient() {
       if (name === "vh_referrer") return document.referrer || "direct";
     }
     return "";
-  }
-
-  async function postToHubSpot(data: {
-    firstName: string;
-    phone: string;
-    email: string;
-    concern: string | null;
-    funding: string | null;
-  }) {
-    const gclid = getAttributionValue("vh_gclid");
-    const fbclid = getAttributionValue("vh_fbclid");
-    const utmSource = getAttributionValue("vh_utm_source");
-    const utmMedium = getAttributionValue("vh_utm_medium");
-    const utmCampaign = getAttributionValue("vh_utm_campaign");
-    const utmTerm = getAttributionValue("vh_utm_term");
-    const utmContent = getAttributionValue("vh_utm_content");
-    const landingPage = getAttributionValue("vh_landing_page");
-    const referrer = getAttributionValue("vh_referrer");
-
-    const adPlatform = gclid
-      ? "Google Ads"
-      : fbclid
-        ? "Meta"
-        : "Organic / direct";
-
-    const fields = [
-      { name: "firstname", value: data.firstName },
-      { name: "lastname", value: "-" },
-      { name: "email", value: data.email || "" },
-      { name: "phone", value: data.phone },
-      {
-        name: "valen_service_interest",
-        value: mapServiceInterest(data.concern),
-      },
-      { name: "valen_funding_pathway", value: mapFundingPathway(data.funding) },
-      { name: "valen_preferred_contact_time", value: "" },
-      { name: "message", value: "" },
-      { name: "valen_gclid", value: gclid },
-      { name: "valen_fbclid", value: fbclid },
-      { name: "valen_utm_source", value: utmSource },
-      { name: "valen_utm_medium", value: utmMedium },
-      { name: "valen_utm_campaign", value: utmCampaign },
-      { name: "valen_utm_term", value: utmTerm },
-      { name: "valen_utm_content", value: utmContent },
-      { name: "valen_landing_page", value: landingPage },
-      { name: "valen_referrer_url", value: referrer },
-      { name: "valen_ad_platform", value: adPlatform },
-      { name: "valen_lead_source_detail", value: "Website form" },
-      { name: "hs_lead_status", value: "NEW" },
-    ].filter((f) => f.value !== "" && f.value != null);
-
-    const contextObj: Record<string, string> = {
-      pageUri: typeof window !== "undefined" ? window.location.href : "",
-      pageName: typeof document !== "undefined" ? document.title : "",
-    };
-
-    if (typeof document !== "undefined") {
-      const m = document.cookie.match(/(^|;\s*)hubspotutk\s*=\s*([^;]+)/);
-      if (m && m[2]) {
-        contextObj.hutk = decodeURIComponent(m[2]);
-      }
-    }
-
-    const endpoint =
-      "https://api.hsforms.com/submissions/v3/integration/submit/443661932/0972e88a-2491-4874-8bbc-49c498fdef29";
-
-    const res = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        fields,
-        context: contextObj,
-      }),
-    });
-
-    if (!res.ok) {
-      const body = await res.text().catch(() => "");
-      console.error("HubSpot submission rejected:", res.status, body);
-    }
-
-    return res;
   }
 
   const handleFinalSubmit = async (e: React.FormEvent) => {
@@ -476,31 +357,49 @@ export default function GetStartedClient() {
         ? crypto.randomUUID()
         : `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
-    try {
-      const [, res] = await Promise.all([
-        postToHubSpot({
-          firstName: firstName.trim(),
-          phone: phone.trim(),
-          email: email.trim(),
-          concern: selectedConcern,
-          funding: selectedFunding,
-        }).catch((err) => {
-          console.error("HubSpot submission error:", err);
-          return null;
-        }),
-        sendAssessmentEmail({
-          concern: selectedConcern || "Back or neck pain",
-          funding: selectedFunding || "Private",
-          firstName: firstName.trim(),
-          phone: phone.trim(),
-          email: email.trim(),
-          eventId: leadEventId,
-          honeypot,
-          formRenderedAt: formRenderedAtRef.current,
-        }),
-      ]);
+    const gclid = getAttributionValue("vh_gclid");
+    const fbclid = getAttributionValue("vh_fbclid");
+    const utmSource = getAttributionValue("vh_utm_source");
+    const utmMedium = getAttributionValue("vh_utm_medium");
+    const utmCampaign = getAttributionValue("vh_utm_campaign");
+    const utmTerm = getAttributionValue("vh_utm_term");
+    const utmContent = getAttributionValue("vh_utm_content");
+    const landingPage = getAttributionValue("vh_landing_page");
+    const referrer = getAttributionValue("vh_referrer");
+    let hutk = "";
+    if (typeof document !== "undefined") {
+      const m = document.cookie.match(/(^|;\s*)hubspotutk\s*=\s*([^;]+)/);
+      if (m && m[2]) hutk = decodeURIComponent(m[2]);
+    }
 
-      if (res.status === "success") {
+    try {
+      const result = await submitAssessmentRequest({
+        concern: selectedConcern || "Back or neck pain",
+        funding: selectedFunding || "Private",
+        firstName: firstName.trim(),
+        phone: phone.trim(),
+        email: email.trim(),
+        eventId: leadEventId,
+        honeypot,
+        formRenderedAt: formRenderedAtRef.current,
+        gclid,
+        fbclid,
+        utmSource,
+        utmMedium,
+        utmCampaign,
+        utmTerm,
+        utmContent,
+        landingPage,
+        referrer,
+        hutk,
+        pageUri: typeof window !== "undefined" ? window.location.href : undefined,
+        pageName: typeof document !== "undefined" ? document.title : undefined,
+      });
+
+      // The thank-you (and its conversion) reflects whether HubSpot actually
+      // accepted the lead — the internal notification email is best-effort
+      // and never decides what the visitor sees.
+      if (result.status === "success") {
         trackFormLeadConversion();
         fpixel.event("Lead", {}, leadEventId);
         setFormStatus("success");
@@ -512,12 +411,12 @@ export default function GetStartedClient() {
         }, 50);
       } else {
         setFormStatus("error");
-        setFormErrorMessage(res.message);
+        setFormErrorMessage(result.message);
       }
     } catch (err) {
       setFormStatus("error");
       setFormErrorMessage(
-        "Could not submit your request. Please call 0489 293 000.",
+        "Sorry, something went wrong sending your request. Please try again, or call us on 0489 293 000 and we'll book you in.",
       );
     }
   };
