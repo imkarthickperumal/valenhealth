@@ -6,6 +6,10 @@ export const CONVERSION_LABELS = {
   BOOKING: process.env.NEXT_PUBLIC_GOOGLE_ADS_BOOKING_LABEL || GOOGLE_ADS_CONVERSION_LABEL,
   CALL: process.env.NEXT_PUBLIC_GOOGLE_ADS_CALL_LABEL || GOOGLE_ADS_CONVERSION_LABEL,
   FORM_LEAD: process.env.NEXT_PUBLIC_GOOGLE_ADS_FORM_LABEL || GOOGLE_ADS_CONVERSION_LABEL,
+  // "Get Started form - Assessment request" — separate from FORM_LEAD so
+  // form leads can be told apart from phone calls in Google Ads.
+  GET_STARTED_ASSESSMENT:
+    process.env.NEXT_PUBLIC_GOOGLE_ADS_GET_STARTED_LABEL || "0PxaCLDQnvccEKO-w4xE",
 };
 
 // https://support.google.com/google-ads/answer/6331304
@@ -20,12 +24,6 @@ export const trackConversion = (customLabel?: string) => {
       });
     } else if (typeof (window as any).trackConversion === "function" && !customLabel) {
       (window as any).trackConversion();
-    } else if (Array.isArray((window as any).dataLayer)) {
-      (window as any).dataLayer.push("event", "conversion", {
-        send_to: `${GOOGLE_ADS_CONVERSION_ID}/${label}`,
-        value: 1.0,
-        currency: "AUD",
-      });
     }
   }
 };
@@ -33,6 +31,8 @@ export const trackConversion = (customLabel?: string) => {
 export const trackBookingConversion = () => trackConversion(CONVERSION_LABELS.BOOKING);
 export const trackCallConversion = () => trackConversion(CONVERSION_LABELS.CALL);
 export const trackFormLeadConversion = () => trackConversion(CONVERSION_LABELS.FORM_LEAD);
+export const trackGetStartedAssessmentConversion = () =>
+  trackConversion(CONVERSION_LABELS.GET_STARTED_ASSESSMENT);
 
 // For outbound links that navigate the current tab away from the site:
 // fire the conversion, then navigate once the beacon has sent (or after a

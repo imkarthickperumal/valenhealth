@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import { sendContactEmail, type ContactFormState } from "./actions";
 import * as fpixel from "../../lib/fpixel";
 import { trackConversion } from "../../lib/gtag";
+import { collectAttribution, type AttributionData } from "../../lib/attribution";
 
 const initialState: ContactFormState = { status: "idle", message: "" };
 
@@ -13,6 +14,7 @@ export default function ContactClient() {
   const [state, formAction, isPending] = useActionState(sendContactEmail, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const [subjectParam, setSubjectParam] = useState("");
+  const [attribution, setAttribution] = useState<AttributionData | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -20,6 +22,7 @@ export default function ContactClient() {
     if (sub) {
       setSubjectParam(sub);
     }
+    setAttribution(collectAttribution());
   }, []);
 
   useEffect(() => {
@@ -128,6 +131,16 @@ export default function ContactClient() {
 
             <form ref={formRef} action={formAction} className="contact-form-grid reveal">
               <input type="hidden" name="subject" value={subjectParam} />
+              <input type="hidden" name="gclid" value={attribution?.gclid || ""} />
+              <input type="hidden" name="fbclid" value={attribution?.fbclid || ""} />
+              <input type="hidden" name="utm_source" value={attribution?.utmSource || ""} />
+              <input type="hidden" name="utm_medium" value={attribution?.utmMedium || ""} />
+              <input type="hidden" name="utm_campaign" value={attribution?.utmCampaign || ""} />
+              <input type="hidden" name="utm_term" value={attribution?.utmTerm || ""} />
+              <input type="hidden" name="utm_content" value={attribution?.utmContent || ""} />
+              <input type="hidden" name="landing_page" value={attribution?.landingPage || ""} />
+              <input type="hidden" name="referrer" value={attribution?.referrer || ""} />
+              <input type="hidden" name="hutk" value={attribution?.hutk || ""} />
               <div className="contact-form-row">
                 <div className="contact-form-field">
                   <label htmlFor="name">Your name</label>
