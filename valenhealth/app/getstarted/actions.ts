@@ -4,7 +4,9 @@ import { headers } from "next/headers";
 import { sendMetaCapiEvent } from "../../lib/meta-capi";
 import { buildAssessmentEmailHtml } from "../../lib/email-templates";
 import { transporter } from "../../lib/mailer";
-import { upsertHubSpotContact } from "../../lib/hubspot";
+import { submitToHubSpotForm } from "../../lib/hubspot";
+
+const ASSESSMENT_FORM_GUID = "0972e88a-2491-4874-8bbc-49c498fdef29";
 
 export type AssessmentFormState = {
   status: "success" | "error";
@@ -151,32 +153,34 @@ export async function submitAssessmentRequest(data: {
 
   // The lead's fate (thank-you screen, Google Ads conversion, Meta Lead
   // event) is decided ONLY by this — never by whether the notification
-  // email below succeeds. Uses the authenticated CRM API, not the public
-  // Forms API: the Forms API silently accepts-and-drops some submissions
-  // (returns a normal 200 success with no error signal at all) as part of
-  // its own anti-spam filtering, which made it impossible to detect a lost
-  // lead from the response. The CRM API has no such silent-drop mode — a
-  // rejected write always comes back as a real error.
-  const hubspotResult = await upsertHubSpotContact(
+  // email below succeeds.
+  const hubspotResult = await submitToHubSpotForm(
+    ASSESSMENT_FORM_GUID,
+    [
+      { name: "firstname", value: firstName },
+      { name: "lastname", value: "-" },
+      { name: "email", value: email?.trim() || "" },
+      { name: "phone", value: phone },
+      { name: "valen_service_interest", value: mapServiceInterest(concern) },
+      { name: "valen_funding_pathway", value: mapFundingPathway(funding) },
+      { name: "valen_gclid", value: gclid || "" },
+      { name: "valen_fbclid", value: fbclid || "" },
+      { name: "valen_utm_source", value: utmSource || "" },
+      { name: "valen_utm_medium", value: utmMedium || "" },
+      { name: "valen_utm_campaign", value: utmCampaign || "" },
+      { name: "valen_utm_term", value: utmTerm || "" },
+      { name: "valen_utm_content", value: utmContent || "" },
+      { name: "valen_landing_page", value: landingPage || pageUri || "" },
+      { name: "valen_referrer_url", value: referrer || "" },
+      { name: "valen_ad_platform", value: adPlatform },
+      { name: "valen_lead_source_detail", value: "Website form" },
+      { name: "hs_lead_status", value: "NEW" },
+    ],
     {
-      firstname: firstName,
-      lastname: "-",
-      email: email?.trim() || "",
-      phone,
-      valen_service_interest: mapServiceInterest(concern),
-      valen_funding_pathway: mapFundingPathway(funding),
-      valen_gclid: gclid,
-      valen_fbclid: fbclid,
-      valen_utm_source: utmSource,
-      valen_utm_medium: utmMedium,
-      valen_utm_campaign: utmCampaign,
-      valen_utm_term: utmTerm,
-      valen_utm_content: utmContent,
-      valen_landing_page: landingPage || pageUri,
-      valen_referrer_url: referrer,
-      valen_ad_platform: adPlatform,
-      valen_lead_source_detail: "Website form",
-      hs_lead_status: "NEW",
+      pageUri: pageUri || "https://valenhealth.com.au/getstarted",
+      pageName: pageName || "Get Started - Valen Health",
+      hutk: hutk || undefined,
+      ipAddress: remoteIp !== "Unknown" ? remoteIp : undefined,
     },
     "assessment form",
   );
