@@ -245,12 +245,8 @@ const FAQS = [
 
 export default function GetStartedClient() {
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
-  const [selectedConcern, setSelectedConcern] = useState<string | null>(
-    "Back or neck pain",
-  );
-  const [selectedFunding, setSelectedFunding] = useState<string | null>(
-    "Private",
-  );
+  const [selectedConcern, setSelectedConcern] = useState<string | null>(null);
+  const [selectedFunding, setSelectedFunding] = useState<string | null>(null);
   const [firstName, setFirstName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -490,10 +486,10 @@ export default function GetStartedClient() {
               <span ref={eyebrowSuffixRef} />
             </div>
             <h1 className="gs-hero-title">
-              A program built for <span className="gs-orange-text">your</span>{" "}
-              body.
+              Exercise Physiology in Spearwood.
               <br />
-              No guesswork.
+              A program built for <span className="gs-orange-text">your</span>{" "}
+              body. No guesswork.
             </h1>
             <p className="gs-hero-body">
               An ache that won&apos;t go. A condition you&apos;re managing. Or
@@ -548,8 +544,8 @@ export default function GetStartedClient() {
                   onClick={() => {
                     setFormStatus("idle");
                     setCurrentStep(1);
-                    setSelectedConcern("Back or neck pain");
-                    setSelectedFunding("Private");
+                    setSelectedConcern(null);
+                    setSelectedFunding(null);
                     setFirstName("");
                     setPhone("");
                     setEmail("");
@@ -667,6 +663,7 @@ export default function GetStartedClient() {
                         id="gs-firstName"
                         type="text"
                         required
+                        autoComplete="given-name"
                         className="gs-input-field"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
@@ -682,6 +679,7 @@ export default function GetStartedClient() {
                         id="gs-phone"
                         type="tel"
                         required
+                        autoComplete="tel"
                         className="gs-input-field"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
@@ -697,6 +695,7 @@ export default function GetStartedClient() {
                         id="gs-email"
                         type="email"
                         required
+                        autoComplete="email"
                         className="gs-input-field"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -802,9 +801,10 @@ export default function GetStartedClient() {
               Claim it before you leave.
             </h2>
             <p className="gs-funding-body">
-              HICAPS is at the front desk, so your rebate comes off there and
-              then and you only pay the difference. No forms to post, no waiting
-              weeks to get money back. NDIS and DVA are handled here too.
+              Assessments are claimable on most private health extras. What
+              you get back depends on your fund and your level of cover, so
+              we check it with you on the phone before you commit to
+              anything.
             </p>
           </div>
           <div className="gs-funding-rows">
@@ -1058,7 +1058,7 @@ export default function GetStartedClient() {
         <div className="gs-section-inner">
           <h2 className="gs-h2 gs-ink">What people say afterwards.</h2>
           <p className="gs-lead gs-ink-soft">
-            Thirty-four reviews on Google, all five stars.
+            30+ reviews on Google, all five stars.
           </p>
           <div className="gs-reviews-grid gs-reviews-grid-light">
             {REVIEWS.map((review) => (

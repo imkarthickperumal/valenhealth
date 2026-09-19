@@ -3,13 +3,13 @@ import GetStartedClient from "./GetStartedClient";
 import "./get-started.css";
 
 export const metadata: Metadata = {
-  title: "Book Your Assessment",
+  title: "Exercise Physiologist Spearwood | Book Your Assessment",
   description:
-    "We don't guess — we assess. Objective VALD force plate testing and a graded, supervised exercise program matched to your diagnosis.",
+    "Exercise physiology clinic and 24/7 gym in Spearwood, near Cockburn and Fremantle. Book your assessment online. Private health claimed on the spot.",
   openGraph: {
-    title: "Book Your Assessment | Valen Health",
+    title: "Exercise Physiologist Spearwood | Book Your Assessment | Valen Health",
     description:
-      "We don't guess — we assess. Objective VALD force plate testing and a graded, supervised exercise program matched to your diagnosis.",
+      "Exercise physiology clinic and 24/7 gym in Spearwood, near Cockburn and Fremantle. Book your assessment online. Private health claimed on the spot.",
     url: "https://valenhealth.com.au/getstarted",
   },
 };
