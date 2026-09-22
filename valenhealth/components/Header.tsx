@@ -24,7 +24,7 @@ export default function Header() {
       label: "Gym",
       subLinks: [
         { href: "/gym#memberships", label: "Memberships" },
-        { href: "/gym#classes", label: "Weekly Classes" },
+        { href: "/classes", label: "Weekly Classes" },
         { href: "/gym#amenities", label: "Amenities" },
         { href: "/gym#vald", label: "VALD Technology" },
       ],

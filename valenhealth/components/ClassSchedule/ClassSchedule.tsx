@@ -43,7 +43,11 @@ const ClassSchedule: React.FC = () => {
                   <div className="class-time">9AM</div>
                   <div className="class-name circuit">Circuit class</div>
                 </td>
-                <td className="empty"></td>
+                <td>
+                  <div className="class-time">9AM</div>
+                  <div className="class-name">Fit and Fab</div>
+                  <div className="class-type">(Clinical class)</div>
+                </td>
               </tr>
               <tr>
                 <td className="row-header">AFTERNOON</td>
@@ -53,8 +57,7 @@ const ClassSchedule: React.FC = () => {
                 </td>
                 <td>
                   <div className="class-time">5:30PM</div>
-                  <div className="class-name">Fit and Fab</div>
-                  <div className="class-type">(Clinical class)</div>
+                  <div className="class-name circuit">Circuit Class</div>
                 </td>
                 <td className="empty"></td>
                 <td className="empty"></td>
