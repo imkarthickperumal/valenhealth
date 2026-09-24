@@ -2,7 +2,6 @@ import HomeHeader from "../components/HomeHeader";
 import HomeFooter from "../components/HomeFooter";
 import ConversionLink from "../components/ConversionLink";
 import ConversionNextLink from "../components/ConversionNextLink";
-import HeroVideo from "../components/HeroVideo";
 import Link from "next/link";
 import "./home.css";
 import { Metadata } from "next";
@@ -34,68 +33,70 @@ export default function Home() {
         <div className="hp-hero-inner">
           {/* 1. LEFT CARD: HERO */}
           <div className="hp-hero-card">
-            <div className="pre-headline">
-              <span className="rule"></span>
-              <span>Spearwood&apos;s Health Ecosystem</span>
-            </div>
-            <h1>
-              MOVE WITH
-              <br />
-              <span className="black">PURPOSE.</span>
-            </h1>
-            <p className="lede">
-              Clinical exercise physiology and a 24/7 gym, working as one. Train
-              freely. Recover precisely. Build a stronger you — under one roof.
-            </p>
-            <div className="meta-row">
-              <div className="meta-item">
-                <div className="icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="9"
-                      stroke="#ED6C15"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M12 7v5l3 3"
-                      stroke="#ED6C15"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-                <span className="text">24/7 Gym</span>
+            <div className="hp-hero-card-content">
+              <div className="pre-headline">
+                <span className="rule"></span>
+                <span>Spearwood&apos;s Health Ecosystem</span>
               </div>
-              <div className="meta-divider"></div>
-              <div className="meta-item">
-                <div className="icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 3v18M3 12h18"
-                      stroke="#ED6C15"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
+              <h1>
+                MOVE WITH
+                <br />
+                <span className="black">PURPOSE.</span>
+              </h1>
+              <p className="lede">
+                Clinical exercise physiology and a 24/7 gym, working as one. Train
+                freely. Recover precisely. Build a stronger you — under one roof.
+              </p>
+              <div className="meta-row">
+                <div className="meta-item">
+                  <div className="icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        stroke="#ED6C15"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M12 7v5l3 3"
+                        stroke="#ED6C15"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text">24/7 Gym</span>
                 </div>
-                <span className="text">Clinical EP</span>
-              </div>
-              <div className="meta-divider"></div>
-              <div className="meta-item">
-                <div className="icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M3 12 L9 18 L21 6"
-                      stroke="#ED6C15"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                <div className="meta-divider"></div>
+                <div className="meta-item">
+                  <div className="icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M12 3v18M3 12h18"
+                        stroke="#ED6C15"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text">Clinical EP</span>
                 </div>
-                <span className="text">VALD Testing</span>
+                <div className="meta-divider"></div>
+                <div className="meta-item">
+                  <div className="icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M3 12 L9 18 L21 6"
+                        stroke="#ED6C15"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text">VALD Testing</span>
+                </div>
               </div>
             </div>
             <div className="hp-hero-buttons">
@@ -116,12 +117,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 2. MIDDLE COLUMN: VIDEO WITH SOUND CONTROLS */}
-          <HeroVideo />
-
-          {/* 3. RIGHT CARD: WHAT WE BELIEVE */}
+          {/* 2. RIGHT CARD: WHAT WE BELIEVE */}
           <div className="hp-hero-belief-card">
-            <div>
+            <div className="hp-hero-belief-content">
               <div className="hp-hero-belief-eyebrow">
                 <span className="rule"></span>
                 <span>What We Believe</span>

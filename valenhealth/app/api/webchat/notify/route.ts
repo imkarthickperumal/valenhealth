@@ -47,7 +47,7 @@ ${chatLog}
 
     // Also forward the notification to the admin WhatsApp number
     try {
-      const { sendWhatsAppMessage } = await import("../../whatsapp/route");
+      const { sendWhatsAppMessage } = await import("../../../../lib/whatsapp");
       const waMessage = `*New Lead from Webchat*\n\n*Contact Info:* ${contactInfo}\n\n*Transcript:*\n${chatLog}`;
       await sendWhatsAppMessage("61489293000", waMessage);
     } catch (e) {
