@@ -37,6 +37,24 @@ const posts = [
     avatar: "AD",
     image: "/images/GYM/GYM_A738801.jpg",
   },
+  {
+    title: "The Power of Starting Small",
+    slug: "the-power-of-starting-small",
+    excerpt:
+      "You've just started a new exercise program and your Exercise Physiologist tells you to do a 10-minute walk. Your first thought might be: \"Ten minutes? I could easily do 30.\" But being capable of doing something once and being able to consistently tolerate it are two very different things.",
+    authorName: "Kaylee van Schalkwyk",
+    avatar: "KV",
+    image: "/images/GYM/GYM_A738792.jpg",
+  },
+  {
+    title: "Can Exercise Lower Cholesterol?",
+    slug: "can-exercise-lower-cholesterol",
+    excerpt:
+      "If you've been told your cholesterol is high, you've probably heard the usual advice: eat well, exercise more and maintain a healthy weight. But can exercise actually change your cholesterol levels? Yes — and the way it works is more interesting than simply making your cholesterol \"go down\".",
+    authorName: "Kaylee van Schalkwyk",
+    avatar: "KV",
+    image: "/images/GYM/GYM_A738801.jpg",
+  },
 ];
 
 export default function BlogIndex() {

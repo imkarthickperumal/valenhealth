@@ -39,6 +39,24 @@ const blogData = {
     authorRole: "Exercise Physiologist",
     avatar: "AD",
     image: "/images/GYM/GYM_A738801.jpg"
+  },
+  'the-power-of-starting-small': {
+    title: "The Power of Starting Small",
+    metaTitle: "The Power of Starting Small | Valen Health",
+    metaDesc: "Why your Exercise Physiologist sometimes prescribes less exercise than you think you can do — and why that's actually the smarter approach.",
+    authorName: "Kaylee van Schalkwyk",
+    authorRole: "Exercise Physiologist",
+    avatar: "KV",
+    image: "/images/GYM/GYM_A738792.jpg"
+  },
+  'can-exercise-lower-cholesterol': {
+    title: "Can Exercise Lower Cholesterol?",
+    metaTitle: "Can Exercise Lower Cholesterol? | Valen Health",
+    metaDesc: "Regular physical activity can improve your cholesterol profile and reduce cardiovascular risk. Here's how it works — and where to start.",
+    authorName: "Kaylee van Schalkwyk",
+    authorRole: "Exercise Physiologist",
+    avatar: "KV",
+    image: "/images/GYM/GYM_A738801.jpg"
   }
 };
 
@@ -48,6 +66,8 @@ export function generateStaticParams() {
     { slug: '5-new-friends-to-help-you-manage-diabetes' },
     { slug: 'exercising-with-asthma' },
     { slug: 'back-pain-australias-most-expensive-health-problem' },
+    { slug: 'the-power-of-starting-small' },
+    { slug: 'can-exercise-lower-cholesterol' },
   ];
 }
 
@@ -554,6 +574,150 @@ export default async function BlogPost({ params }) {
                     </p>
                     <Link href="/contact" className="btn btn-orange">
                       Book in with the Valen Health team today
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {slug === 'the-power-of-starting-small' && (
+              <>
+                <p>You've just started a new exercise program and your Exercise Physiologist tells you to do a 10-minute walk.</p>
+                <p>Your first thought might be: <em>"Ten minutes? I could easily do 30."</em></p>
+                <p>And you might be right. But being capable of doing something once and being able to consistently tolerate it are two different things.</p>
+                <p>At Valen Health, we sometimes deliberately prescribe less exercise than you think you can manage. It's not because we think you're incapable. It's because finding the right starting point can help you build strength, fitness and physical capacity without constantly battling excessive soreness, fatigue or symptom flare-ups.</p>
+
+                <h2>Your Maximum Isn't Always the Best Starting Point</h2>
+                <p>Imagine you can walk for 30 minutes — but afterwards your pain increases significantly and you need the rest of the day to recover. Technically, you can walk for 30 minutes. But is 30 minutes the right exercise dose for you right now? Probably not.</p>
+                <p>Instead, we might start with 10 or 15 minutes. If you can complete that comfortably, recover well and repeat it consistently, we have something to build on.</p>
+
+                <div className="blog-callout">
+                  <p>Exercise prescription isn't about finding the absolute maximum you can tolerate. It's about finding the right amount to create positive change without overwhelming your current capacity.</p>
+                </div>
+
+                <h2>We Care About What Happens After Exercise</h2>
+                <p>How you feel during exercise is only part of the picture. As Exercise Physiologists, we're also interested in what happens later that day, the following morning and sometimes even over the next few days.</p>
+                <ul style={{ paddingLeft: '20px', marginBottom: '32px' }}>
+                  <li style={{ marginBottom: '8px' }}>Did your symptoms settle quickly?</li>
+                  <li style={{ marginBottom: '8px' }}>Were you able to continue with your normal activities?</li>
+                  <li style={{ marginBottom: '8px' }}>Did you sleep well?</li>
+                  <li style={{ marginBottom: '8px' }}>Could you exercise again when planned?</li>
+                  <li style={{ marginBottom: '8px' }}>Or did that one session leave you so sore, fatigued or symptomatic that you needed several days to recover?</li>
+                </ul>
+                <p>If your exercise program repeatedly leaves you unable to function normally afterwards, it may be difficult to build consistency. That's why your starting point can sometimes feel surprisingly manageable.</p>
+
+                <h2>More Exercise Isn't Always Better</h2>
+                <p>Exercise works by providing your body with a challenge and then allowing it to adapt. But the challenge needs to be appropriate. Too little stimulus may not create the changes we're looking for. Too much may cause excessive soreness, fatigue, symptom flare-ups or prolonged recovery.</p>
+                <p>We're looking for the "just right" dose. That might mean adjusting how long you exercise, how hard you exercise, how much weight you lift, how many sets and reps you perform, how frequently you train, or how much recovery you have between sessions.</p>
+
+                <h2>Starting With Less Helps Us Learn How Your Body Responds</h2>
+                <p>This is particularly important when someone is returning to exercise after an injury, surgery, illness or a long period of inactivity, or when they're living with persistent pain, fatigue or a chronic health condition.</p>
+
+                <div className="blog-highlight">
+                  <p>If you tolerate the exercise well, great — we can progress. If your symptoms increase significantly, we can modify the program without having pushed you too far in the first place. Think of your first few sessions as an opportunity to learn what your body can currently tolerate, rather than a test of everything it is capable of doing.</p>
+                </div>
+
+                <h2>The Aim Is Progression, Not Restriction</h2>
+                <p>Being asked to start with less can sometimes feel frustrating, particularly if you're eager to get back to your previous level of activity. But a conservative starting point isn't where we intend you to stay. We might gradually increase your walking time, add another set, increase the resistance, or introduce another exercise.</p>
+
+                <div className="blog-aep-statement">
+                  <p>In many cases, <strong>Start manageable → recover well → repeat → progress</strong> is far more effective than <strong>Start hard → flare up → stop → recover → start hard again.</strong></p>
+                </div>
+
+                <h2>Consistency Gives Us Something to Build On</h2>
+                <p>One great workout isn't usually what creates meaningful improvements in your health. It's what you can repeat over weeks and months that matters. That's why we sometimes prescribe an amount of exercise that feels easier than expected at the beginning. We're not just thinking about what you can do today — we're thinking about what we can help you do next week, next month and beyond.</p>
+
+                <h2>How Can an Exercise Physiologist Help?</h2>
+                <p>An Accredited Exercise Physiologist (AEP) uses exercise as part of the management of a range of injuries, chronic health conditions and physical limitations. At Valen Health, your Exercise Physiologist can assess your current capacity, symptoms and goals before developing an individualised exercise program. From there, your program can be progressively adjusted as your strength, fitness, confidence and tolerance improve.</p>
+
+                <div className="blog-bottom-line">
+                  <div className="blog-bottom-line-inner">
+                    <p className="blog-bottom-line-text" style={{ textTransform: 'none', lineHeight: '1.3', marginBottom: '24px' }}>
+                      Sometimes doing a little less today is exactly what allows you to do a whole lot <span className="accent">more tomorrow.</span>
+                    </p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '18px', color: 'rgba(251,241,230,0.8)', marginBottom: '32px' }}>
+                      Book an Exercise Physiology appointment and let us help you find the right starting point.
+                    </p>
+                    <Link href="/getstarted" className="btn btn-orange">
+                      Book Your Assessment
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {slug === 'can-exercise-lower-cholesterol' && (
+              <>
+                <p>If you've been told your cholesterol is high, you've probably heard the usual advice: eat well, exercise more and maintain a healthy weight.</p>
+                <p>But can exercise actually change your cholesterol levels? Yes — regular physical activity can help improve your cholesterol profile and, more importantly, reduce your overall cardiovascular risk. However, cholesterol isn't just one number, and the way exercise affects it is a little more interesting than simply making your "cholesterol go down".</p>
+
+                <h2>First, What Actually Is Cholesterol?</h2>
+                <p>Cholesterol and triglycerides aren't inherently bad — your body actually needs them. The problem occurs when certain types are present at unhealthy levels. Here's a simple way to think about them:</p>
+
+                <div className="blog-expertise-grid">
+                  <div className="blog-expertise-card">
+                    <h3 className="blog-expertise-card-title">🚚 LDL Cholesterol — the delivery truck</h3>
+                    <p>LDL carries cholesterol from your liver to cells around your body. When there is too much LDL circulating in your blood, cholesterol can build up within artery walls over time. This is why LDL is often referred to as "bad" cholesterol.</p>
+                  </div>
+                  <div className="blog-expertise-card">
+                    <h3 className="blog-expertise-card-title">🧹 HDL Cholesterol — the clean-up crew</h3>
+                    <p>HDL helps collect excess cholesterol and transport it back to the liver, where it can be processed and removed from the body. This is why HDL is commonly referred to as "good" cholesterol.</p>
+                  </div>
+                  <div className="blog-expertise-card" style={{ gridColumn: '1 / -1' }}>
+                    <h3 className="blog-expertise-card-title">⚡ Triglycerides — stored energy</h3>
+                    <p>Triglycerides are a type of fat your body uses to store energy. We all need triglycerides, but consistently high levels in the bloodstream are associated with increased cardiovascular risk.</p>
+                  </div>
+                </div>
+
+                <div className="blog-callout">
+                  <p>Rather than thinking of LDL and triglycerides as "bad things" that shouldn't be in your body, think of them as useful substances that can become problematic when their levels are too high. Your GP will usually look at these results together alongside blood pressure, smoking, diabetes, age and family history to understand your overall cardiovascular risk.</p>
+                </div>
+
+                <h2>So, How Does Exercise Help?</h2>
+
+                <h2>1. Exercise Can Improve Triglycerides</h2>
+                <p>One of the more consistent effects of regular physical activity is a reduction in triglyceride levels. Regular activity improves your body's ability to use fats and carbohydrates for energy, which can contribute to healthier triglyceride levels over time.</p>
+
+                <h2>2. Exercise Can Help Increase HDL Cholesterol</h2>
+                <p>When you exercise regularly, your body becomes better at breaking down and using triglycerides for energy. As these triglyceride-rich particles are processed, some of their components are transferred to HDL, helping HDL particles grow and mature — acting as the body's "clean-up crew". Over time, regular exercise can help increase HDL levels and improve how effectively HDL does its job.</p>
+
+                <h2>3. Exercise May Help Improve LDL Cholesterol</h2>
+                <p>Regular exercise can improve your liver's ability to remove LDL particles from the bloodstream. It may also help shift your LDL profile towards larger, less harmful particles.</p>
+
+                <div className="blog-highlight">
+                  <p>So, even if your LDL number doesn't dramatically decrease, exercise can still improve the way your body handles cholesterol and contribute to a lower overall cardiovascular risk. This is why we shouldn't judge the benefits of exercise based on a single cholesterol number.</p>
+                </div>
+
+                <h2>What Type of Exercise Is Best for Cholesterol?</h2>
+                <p>You don't need to become a marathon runner. A combination of aerobic exercise and resistance training is generally a great place to start.</p>
+                <p><strong>Aerobic exercise</strong> could include brisk walking, cycling, swimming, jogging, dancing, group fitness, or using a cross-trainer or rowing machine.</p>
+                <p><strong>Resistance training</strong> could include gym-based weights, resistance bands, machines or appropriately challenging bodyweight exercises.</p>
+                <p>Australian physical activity guidelines generally encourage adults to accumulate 150–300 minutes of moderate-intensity activity or 75–150 minutes of vigorous activity each week, alongside muscle-strengthening activities on at least two days per week. However, you don't need to immediately achieve those numbers to benefit.</p>
+
+                <h2>Can Exercise Replace Cholesterol Medication?</h2>
+                <p>Not necessarily. Lifestyle changes such as exercise, nutrition and smoking cessation can play an important role in managing cardiovascular risk. However, some people will still require cholesterol-lowering medication — this depends on your cholesterol levels, medical history, family history and overall cardiovascular risk.</p>
+
+                <div className="blog-callout">
+                  <p>If you've been prescribed medication, don't stop taking it because you've started exercising. Medication changes should always be discussed with your doctor. Think of exercise and medication as different tools that can sometimes be used together, rather than one automatically replacing the other.</p>
+                </div>
+
+                <h2>You Don't Have to Wait Until You're Fit to Start</h2>
+                <p>Start with what is achievable — a 10-minute walk after dinner, cycling a few times per week, two strength sessions, or simply breaking up long periods of sitting. Once that becomes manageable, you can build from there.</p>
+
+                <div className="blog-aep-statement">
+                  <p>An Accredited Exercise Physiologist (AEP) can help develop an individualised exercise program based on your cardiovascular risk factors, health conditions, current fitness and goals. <strong>You don't need a perfect exercise routine to improve your heart health. You just need somewhere to start.</strong></p>
+                </div>
+
+                <div className="blog-bottom-line">
+                  <div className="blog-bottom-line-inner">
+                    <p className="blog-bottom-line-text" style={{ textTransform: 'none', lineHeight: '1.3', marginBottom: '24px' }}>
+                      Your heart health can improve — <span className="accent">one session at a time.</span>
+                    </p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '18px', color: 'rgba(251,241,230,0.8)', marginBottom: '32px' }}>
+                      Let us help you find an appropriate starting point and build a realistic exercise plan for your long-term heart health.
+                    </p>
+                    <Link href="/getstarted" className="btn btn-orange">
+                      Book Your Assessment
                     </Link>
                   </div>
                 </div>
