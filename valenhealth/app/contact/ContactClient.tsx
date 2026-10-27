@@ -141,6 +141,12 @@ export default function ContactClient() {
               <input type="hidden" name="landing_page" value={attribution?.landingPage || ""} />
               <input type="hidden" name="referrer" value={attribution?.referrer || ""} />
               <input type="hidden" name="hutk" value={attribution?.hutk || ""} />
+              
+              {/* Spam protection honeypot */}
+              <div style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, overflow: "hidden" }} aria-hidden="true">
+                <input type="text" name="vh_hp_check" tabIndex={-1} autoComplete="off" />
+              </div>
+
               <div className="contact-form-row">
                 <div className="contact-form-field">
                   <label htmlFor="name">Your name</label>
@@ -148,7 +154,7 @@ export default function ContactClient() {
                 </div>
                 <div className="contact-form-field">
                   <label htmlFor="phone">Phone number</label>
-                  <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" />
+                  <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" required />
                 </div>
               </div>
               <div className="contact-form-field">
