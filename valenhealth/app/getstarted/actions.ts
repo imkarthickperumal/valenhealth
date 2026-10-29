@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { sendMetaCapiEvent } from "../../lib/meta-capi";
 import { buildAssessmentEmailHtml } from "../../lib/email-templates";
-import { transporter } from "../../lib/mailer";
+import { sendAdminEmail } from "../../lib/resend-mailer";
 import { submitToHubSpotForm } from "../../lib/hubspot";
 
 const ASSESSMENT_FORM_GUID = "0972e88a-2491-4874-8bbc-49c498fdef29";
@@ -97,7 +97,6 @@ export async function submitAssessmentRequest(data: {
   } = data;
 
   // Bots that skip the client and call this action directly still hit these checks:
-  // a filled hidden field, or a submit within 2s of the form rendering.
   const submittedTooFast =
     typeof formRenderedAt === "number" && Date.now() - formRenderedAt < 2000;
   if (honeypot || submittedTooFast) {
@@ -111,7 +110,7 @@ export async function submitAssessmentRequest(data: {
     return { status: "error", message: "Please fill in all required fields." };
   }
 
-  // Validate Australian phone number (mobile: 04XXXXXXXX, landline: 0[2378]XXXXXXXX, with optional +61 / spaces)
+  // Validate Australian phone number
   const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
   const isAusPhone =
     /^(?:\+?61|0)4\d{8}$/.test(cleanPhone) ||
@@ -120,8 +119,7 @@ export async function submitAssessmentRequest(data: {
   if (!isAusPhone) {
     return {
       status: "error",
-      message:
-        "Please enter a valid Australian mobile number (e.g. 0400 000 000).",
+      message: "Please enter a valid Australian mobile number (e.g. 0400 000 000).",
     };
   }
 
@@ -133,14 +131,14 @@ export async function submitAssessmentRequest(data: {
     : headersList.get("x-real-ip") || "Unknown";
 
   const now = new Date();
-  const dateStr = now.toLocaleDateString("en-US", {
+  const dateStr = now.toLocaleDateString("en-AU", {
     timeZone: "Australia/Perth",
     year: "numeric",
     month: "long",
     day: "numeric",
   });
   const timeStr = now
-    .toLocaleTimeString("en-US", {
+    .toLocaleTimeString("en-AU", {
       timeZone: "Australia/Perth",
       hour: "numeric",
       minute: "2-digit",
@@ -151,9 +149,7 @@ export async function submitAssessmentRequest(data: {
   const emailDisplay = email?.trim() || "Not provided";
   const adPlatform = gclid ? "Google Ads" : fbclid ? "Meta" : "Organic / direct";
 
-  // The lead's fate (thank-you screen, Google Ads conversion, Meta Lead
-  // event) is decided ONLY by this — never by whether the notification
-  // email below succeeds.
+  // ── Primary: HubSpot Forms API ───────────────────────────────────────────
   const hubspotResult = await submitToHubSpotForm(
     ASSESSMENT_FORM_GUID,
     [
@@ -185,21 +181,21 @@ export async function submitAssessmentRequest(data: {
     "assessment form",
   );
 
-  const textBody = `New Assessment Request Details:
+  const textBody = `New Assessment Request:
 
-First Name: ${firstName}
-Mobile Phone: ${phone}
-Email: ${emailDisplay}
+First Name:     ${firstName}
+Mobile Phone:   ${phone}
+Email:          ${emailDisplay}
 Primary Concern: ${concern}
-Funding Type: ${funding}
+Funding Type:   ${funding}
 
 ---
-
-Date: ${dateStr}
-Time: ${timeStr}
-Page URL: https://valenhealth.com.au/getstarted
+Date:       ${dateStr}
+Time:       ${timeStr} (Perth)
+Page URL:   https://valenhealth.com.au/getstarted
+Source:     ${adPlatform}${gclid ? ` / GCLID: ${gclid}` : ""}${fbclid ? ` / FBCLID: ${fbclid}` : ""}
 User Agent: ${userAgent}
-Remote IP: ${remoteIp}`;
+Remote IP:  ${remoteIp}`;
 
   const htmlBody = buildAssessmentEmailHtml({
     concern,
@@ -213,25 +209,18 @@ Remote IP: ${remoteIp}`;
     remoteIp,
   });
 
-  // Best-effort internal notification — it never decides what the visitor
-  // sees. If HubSpot rejected the lead, the subject/body call it out so the
-  // lead isn't silently lost even though the visitor sees an error.
-  try {
-    await transporter.sendMail({
-      from: `"Valen Health Assessment" <${process.env.SMTP_USER}>`,
-      to: "admin@valenhealth.com.au",
-      replyTo: email?.trim() ? email.trim() : undefined,
-      subject: hubspotResult.ok
-        ? `New Assessment Request: ${firstName} (${concern})`
-        : `[ACTION NEEDED - HubSpot rejected] New Assessment Request: ${firstName} (${concern})`,
-      text: hubspotResult.ok
-        ? textBody
-        : `HubSpot did NOT accept this lead (status ${hubspotResult.status}). Please follow up manually.\n\n${textBody}`,
-      html: htmlBody,
-    });
-  } catch (emailErr) {
-    console.error("Assessment notification email failed:", emailErr);
-  }
+  // ── Admin notification via Resend (HTTPS, no SMTP, works on Vercel) ──────
+  // Sends regardless of HubSpot outcome so the lead is never silently lost.
+  await sendAdminEmail({
+    subject: hubspotResult.ok
+      ? `New Assessment Request: ${firstName} (${concern})`
+      : `[HubSpot ERROR] Assessment: ${firstName} (${concern}) — follow up manually`,
+    html: htmlBody,
+    text: hubspotResult.ok
+      ? textBody
+      : `HubSpot rejected this lead (status ${hubspotResult.status}). Please follow up manually.\n\n${textBody}`,
+    replyTo: email?.trim() || undefined,
+  });
 
   if (!hubspotResult.ok) {
     return {
@@ -241,6 +230,7 @@ Remote IP: ${remoteIp}`;
     };
   }
 
+  // ── Best-effort: Meta Conversions API ────────────────────────────────────
   try {
     await sendMetaCapiEvent({
       eventName: "Lead",

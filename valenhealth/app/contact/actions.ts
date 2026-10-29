@@ -19,9 +19,9 @@ export async function sendContactEmail(
   _prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
+  // Honeypot spam guard — bots fill hidden fields, humans don't
   const honeypot = (formData.get("vh_hp_check") as string) || "";
   if (honeypot) {
-    // Silently succeed for bots
     return {
       status: "success",
       message: "Thank you! Your message has been sent. We'll be in touch within one business day.",
@@ -49,24 +49,10 @@ export async function sendContactEmail(
   }
 
   if (!phone) {
-    return { status: "error", message: "Please provide a contact phone number so we can reach you." };
+    return { status: "error", message: "Please provide a phone number so we can reach you." };
   }
 
-  // Validate phone format (accept Australian mobile/landline with optional +61/spaces)
-  const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
-  const isAusPhone =
-    /^(?:\+?61|0)4\d{8}$/.test(cleanPhone) ||
-    /^(?:\+?61|0)[2378]\d{8}$/.test(cleanPhone) ||
-    cleanPhone.length >= 8;
-
-  if (!isAusPhone) {
-    return {
-      status: "error",
-      message: "Please enter a valid phone number (e.g. 0400 000 000).",
-    };
-  }
-
-  // Extract request metadata for HubSpot & logging
+  // Extract request metadata
   const headersList = await headers();
   const userAgent = headersList.get("user-agent") || "Unknown";
   const forwardedFor = headersList.get("x-forwarded-for");
@@ -75,14 +61,14 @@ export async function sendContactEmail(
     : headersList.get("x-real-ip") || undefined;
 
   const now = new Date();
-  const dateStr = now.toLocaleDateString("en-US", {
+  const dateStr = now.toLocaleDateString("en-AU", {
     timeZone: "Australia/Perth",
     year: "numeric",
     month: "long",
     day: "numeric",
   });
   const timeStr = now
-    .toLocaleTimeString("en-US", {
+    .toLocaleTimeString("en-AU", {
       timeZone: "Australia/Perth",
       hour: "numeric",
       minute: "2-digit",
@@ -93,16 +79,9 @@ export async function sendContactEmail(
   const adPlatform = gclid ? "Google Ads" : fbclid ? "Meta" : "Organic / direct";
   const firstName = name.split(" ")[0] || name;
   const lastName = name.split(" ").slice(1).join(" ") || "-";
+  const emailSubject = subjectParam === "ep" ? "Exercise Physiology Appointment" : "Website Enquiry";
 
-  // Map service interest to valid HubSpot enums:
-  // "Injury or pain" | "Chronic condition" | "Post-surgery rehabilitation" | "Getting stronger / staying active" | "Not sure yet"
-  const serviceInterest = subjectParam === "ep" ? "Injury or pain" : "Not sure yet";
-  // Funding pathway enum: "Not yet known"
-  const fundingPathway = "Not yet known";
-
-  // ── Primary Path: Submit to HubSpot Forms API ────────────────────────────
-  // HubSpot is configured to automatically email admin@valenhealth.com.au
-  // and route the lead to CRM with hs_lead_status = "NEW".
+  // ── Primary: Submit to HubSpot Forms API ─────────────────────────────────
   const hsResult = await submitToHubSpotForm(
     CONTACT_FORM_GUID,
     [
@@ -110,10 +89,10 @@ export async function sendContactEmail(
       { name: "lastname", value: lastName },
       { name: "email", value: email },
       { name: "phone", value: phone },
-      { name: "valen_service_interest", value: serviceInterest },
-      { name: "valen_funding_pathway", value: fundingPathway },
+      { name: "valen_service_interest", value: subjectParam === "ep" ? "Injury or pain" : "Not sure yet" },
+      { name: "valen_funding_pathway", value: "Not yet known" },
       { name: "message", value: message },
-      { name: "subject", value: subjectParam === "ep" ? "Exercise Physiology Appointment" : "Website Enquiry" },
+      { name: "subject", value: emailSubject },
       { name: "valen_gclid", value: gclid },
       { name: "valen_fbclid", value: fbclid },
       { name: "valen_utm_source", value: utmSource },
@@ -136,45 +115,60 @@ export async function sendContactEmail(
     "contact form",
   );
 
-  // ── Secondary Path: Best-effort backup internal notification via SMTP ─────
-  // If SMTP is working, this delivers an immediate email.
-  // If Gmail rejects credentials or Vercel blocks port, it logs and does NOT block the user.
-  try {
-    const textBody = `New Website Contact Lead:
+  // ── Admin notification email via the existing SMTP account ────────────────
+  // Attempt the email even if HubSpot rejects the submission.
+  const textBody = `New Website Contact Enquiry
 
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
+Name:    ${name}
+Phone:   ${phone}
+Email:   ${email}
 Message: ${message}
 
 ---
-Date: ${dateStr}
-Time: ${timeStr}
-Page URL: https://valenhealth.com.au/contact/
+Date:       ${dateStr}
+Time:       ${timeStr} (Perth)
+Page:       https://valenhealth.com.au/contact
+Source:     ${adPlatform}${gclid ? ` / GCLID: ${gclid}` : ""}${fbclid ? ` / FBCLID: ${fbclid}` : ""}
 User Agent: ${userAgent}
-Remote IP: ${remoteIp || "Unknown"}`;
+IP:         ${remoteIp || "Unknown"}`;
 
-    const htmlBody = buildContactEmailHtml({
-      name,
-      phone,
-      email,
-      message,
-      date: dateStr,
-      time: timeStr,
-      userAgent,
-      remoteIp: remoteIp || "Unknown",
-    });
+  const hubspotFailure = hsResult.ok
+    ? ""
+    : `HubSpot submission failed (status ${hsResult.status}). Please follow up manually.\n\n`;
+  const htmlBody = buildContactEmailHtml({
+    name,
+    phone,
+    email,
+    message,
+    date: dateStr,
+    time: timeStr,
+    userAgent,
+    remoteIp: remoteIp || "Unknown",
+  });
 
+  let emailSent = false;
+  try {
     await transporter.sendMail({
       from: `"Valen Health Contact" <${process.env.SMTP_USER || "admin@valenhealth.com.au"}>`,
       to: "admin@valenhealth.com.au",
       replyTo: email,
-      subject: subjectParam === "ep" ? "Exercise Physiology Appointment Enquiry" : `New Website Lead: ${name}`,
-      text: textBody,
+      subject: `${hsResult.ok ? "" : "[HubSpot ERROR] "}New Contact Enquiry: ${name}${subjectParam === "ep" ? " — Exercise Physiology" : ""}`,
+      text: `${hubspotFailure}${textBody}`,
       html: htmlBody,
     });
+    emailSent = true;
   } catch (mailErr) {
-    console.error("Backup contact email notification failed (HubSpot handles primary delivery):", mailErr);
+    console.error("Contact form SMTP email failed:", mailErr);
+  }
+
+  if (!emailSent) {
+    console.error("Contact form admin notification email could not be delivered.");
+    return {
+      status: "error",
+      message: hsResult.ok
+        ? "Your details were received, but we couldn't notify our team by email. Please call us on 0489 293 000 to ensure we can follow up."
+        : "We couldn't send your message. Please call us on 0489 293 000 or email admin@valenhealth.com.au directly.",
+    };
   }
 
   // ── Best-effort: Meta Conversions API ────────────────────────────────────
@@ -190,16 +184,7 @@ Remote IP: ${remoteIp || "Unknown"}`;
       },
     });
   } catch (capiErr) {
-    console.error("Meta CAPI dispatch error on contact lead:", capiErr);
-  }
-
-  if (!hsResult.ok) {
-    console.error("HubSpot submission failed for contact form:", hsResult.status, hsResult.body);
-    return {
-      status: "error",
-      message:
-        "Something went wrong sending your message. Please call us directly on 0489 293 000 or email admin@valenhealth.com.au.",
-    };
+    console.error("Meta CAPI error on contact lead:", capiErr);
   }
 
   return {
