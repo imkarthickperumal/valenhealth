@@ -14,9 +14,6 @@ type Message = {
 
 export default function WhatsAppWidget() {
   const pathname = usePathname();
-  if (pathname === "/getstarted") {
-    return null;
-  }
 
   const [isOpen, setIsOpen] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
@@ -31,11 +28,9 @@ export default function WhatsAppWidget() {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isAwaitingContact, setIsAwaitingContact] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true);
     // Show a subtle notification badge/tooltip after 4 seconds to grab attention
     const timer = setTimeout(() => {
       setShowNotification(true);
@@ -80,7 +75,7 @@ export default function WhatsAppWidget() {
     try {
       if (isAwaitingContact) {
         // Send email notification with contact info
-        await fetch("/api/webchat/notify", {
+        const response = await fetch("/api/webchat/notify", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -88,6 +83,10 @@ export default function WhatsAppWidget() {
             history: [...messages, userMessage],
           }),
         });
+        const result = await response.json();
+        if (!response.ok || !result.success) {
+          throw new Error(result.error || "Could not submit chat enquiry.");
+        }
 
         // Track conversion on webchat lead submission
         trackConversion();
@@ -95,7 +94,7 @@ export default function WhatsAppWidget() {
         setTimeout(() => {
           const botMessage: Message = {
             id: (Date.now() + 1).toString(),
-            text: "✅ Thank you! We've notified our team and sent your details to admin@valenhealth.com.au. We will be in touch shortly.",
+            text: "✅ Thank you! We've received your details and will be in touch shortly.",
             sender: "bot",
             time: new Date().toLocaleTimeString([], {
               hour: "2-digit",
@@ -150,6 +149,21 @@ export default function WhatsAppWidget() {
       }
     } catch (error) {
       console.error("Chat error:", error);
+      if (isAwaitingContact) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: (Date.now() + 1).toString(),
+            text: "Sorry, we couldn't submit your details just now. Please call us on 0489 293 000 or email admin@valenhealth.com.au.",
+            sender: "bot",
+            time: new Date().toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            }),
+          },
+        ]);
+        setIsAwaitingContact(false);
+      }
       setIsTyping(false);
     }
   };
@@ -164,7 +178,7 @@ export default function WhatsAppWidget() {
     ));
   };
 
-  if (!mounted) return null;
+  if (pathname === "/getstarted") return null;
 
   return (
     <div className="wa-widget-container">

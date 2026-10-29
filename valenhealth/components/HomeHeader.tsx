@@ -83,7 +83,6 @@ export default function HomeHeader() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "4px",
-                  color: "#fff",
                 }}
               >
                 {link.label}
@@ -149,7 +148,6 @@ export default function HomeHeader() {
               href={link.href}
               className={pathname === link.href ? "active" : ""}
               onClick={closeMenu}
-              style={{ color: "#fff" }}
             >
               {link.label}
             </Link>

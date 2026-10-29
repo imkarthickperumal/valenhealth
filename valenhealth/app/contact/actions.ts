@@ -54,6 +54,8 @@ export async function sendContactEmail(
 
   // Extract request metadata
   const headersList = await headers();
+  const pageUri =
+    headersList.get("referer") || "https://valenhealth.com.au/contact";
   const userAgent = headersList.get("user-agent") || "Unknown";
   const forwardedFor = headersList.get("x-forwarded-for");
   const remoteIp = forwardedFor
@@ -100,14 +102,14 @@ export async function sendContactEmail(
       { name: "valen_utm_campaign", value: utmCampaign },
       { name: "valen_utm_term", value: utmTerm },
       { name: "valen_utm_content", value: utmContent },
-      { name: "valen_landing_page", value: landingPage || "https://valenhealth.com.au/contact" },
+      { name: "valen_landing_page", value: landingPage || pageUri },
       { name: "valen_referrer_url", value: referrer },
       { name: "valen_ad_platform", value: adPlatform },
       { name: "valen_lead_source_detail", value: "Contact form" },
       { name: "hs_lead_status", value: "NEW" },
     ],
     {
-      pageUri: landingPage || "https://valenhealth.com.au/contact",
+      pageUri,
       pageName: "Contact - Valen Health",
       hutk: hutk || undefined,
       ipAddress: remoteIp,

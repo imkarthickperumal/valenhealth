@@ -140,7 +140,15 @@ h1,h2,h3,h4,h5,h6 {
   transition: opacity 0.2s;
 }
 .sub-nav a:hover { opacity: 0.6; }
-.sub-nav a.active { border-bottom: 2px solid var(--black); padding-bottom: 4px; }
+.home-header .sub-nav a,
+.sub-header .sub-nav > a,
+.sub-header .sub-nav > .nav-dropdown-wrap > a {
+  color: var(--white);
+}
+.home-header .sub-nav a.active,
+.sub-header .sub-nav a.active {
+  color: var(--black);
+}
 .sub-header-cta {
   background: var(--black);
   color: var(--cream);
@@ -432,7 +440,8 @@ h1,h2,h3,h4,h5,h6 {
       margin-top: 12px;
       border-bottom: none;
     }
-    .sub-nav a.active { border-bottom: none; color: var(--white); }
+    .home-header .sub-nav a.active,
+    .sub-header .sub-nav a.active { border-bottom: none; color: var(--black); }
     .sub-hamburger { display: flex; }
     .header-actions { display: none; }
     .sub-footer-inner { flex-direction: column; text-align: center; gap: 24px; }

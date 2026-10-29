@@ -129,7 +129,7 @@ export default function ContactClient() {
               </div>
             )}
 
-            <form ref={formRef} action={formAction} className="contact-form-grid reveal">
+            <form ref={formRef} action={formAction} className="contact-form-grid reveal" data-hs-do-not-collect="true">
               <input type="hidden" name="subject" value={subjectParam} />
               <input type="hidden" name="gclid" value={attribution?.gclid || ""} />
               <input type="hidden" name="fbclid" value={attribution?.fbclid || ""} />
